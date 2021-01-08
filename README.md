@@ -1,8 +1,7 @@
 # Jee-Project
 A web app, can be used by students and job seekers to find an internship or a job that matches their skills, also can be used by companies to hire the best talents. 
 
-TARGET
-  Job seekers and students (internship).
+TARGET: Job seekers and students (internship).
 
 FEATURES
 

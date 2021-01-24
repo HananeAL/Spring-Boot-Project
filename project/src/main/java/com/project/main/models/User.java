@@ -1,11 +1,18 @@
 package com.project.main.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
   
   @Id
@@ -20,6 +27,10 @@ public class User {
   private String description;
   
   private String remeberMeCode;
+
+  @OneToMany
+  @JoinColumn(name = "user_id")
+  private List<SocialMedia> socialMedias = new ArrayList<SocialMedia>();
 
   public int getId() {
     return id;

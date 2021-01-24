@@ -13,15 +13,17 @@ CREATE TABLE IF NOT EXISTS User(
     UNIQUE (email),
     UNIQUE (remeber_me_code)
 );
-
+/* represent a social media account of a user */
 CREATE TABLE IF NOT EXISTS SocialMedia(
     id INT UNSIGNED AUTO_INCREMENT,
     name ENUM('facebook', 'instagram', 'twitter', 'linkedin'),
+    user_id INT UNSIGNED,
     PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     UNIQUE(name)
 );
 /* represent a social media account of a user */
-CREATE TABLE IF NOT EXISTS UserMedia(
+/*CREATE TABLE IF NOT EXISTS UserMedia(
     user_id INT UNSIGNED,
     social_media_id INT UNSIGNED,
     link VARCHAR(255) NOT NULL,
@@ -29,7 +31,7 @@ CREATE TABLE IF NOT EXISTS UserMedia(
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (social_media_id) REFERENCES SocialMedia(id),
     UNIQUE (link)
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS City(
     id INT UNSIGNED AUTO_INCREMENT,

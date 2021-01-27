@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS User(
     id INT UNSIGNED AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    image BLOB NOT NULL,
     description TEXT NOT NULL,
     remeber_me_code VARCHAR(255),
     PRIMARY KEY (id),
@@ -54,8 +53,9 @@ CREATE TABLE IF NOT EXISTS Candidate(
     id INT UNSIGNED,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    address_id INT UNSIGNED,
+    photo BLOB NOT NULL,
     cv BLOB,
+    address_id INT UNSIGNED,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (address_id) REFERENCES Address(id)
@@ -189,6 +189,7 @@ CREATE TABLE IF NOT EXISTS Company(
     id INT UNSIGNED,
     size INT UNSIGNED,
     foundation_date DATE NOT NULL,
+    logo BLOB NOT NULL,
     wallpaper BLOB,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE
@@ -300,7 +301,7 @@ CREATE TABLE IF NOT EXISTS SavedOffer(
 );
 
 /* mysql user that we will use to connect to the database */
-CREATE USER 'sb_user'@'localhost' IDENTIFIED BY 'sb';
+CREATE USER IF NOT EXISTS 'sb_user'@'localhost' IDENTIFIED BY 'sb';
 GRANT ALL ON sb_db.* TO 'sb_user'@'localhost';
 
 

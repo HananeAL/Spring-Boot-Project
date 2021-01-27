@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form method="POST" action="/signup" enctype="multipart/form-data" th:object="${candidate}">
+    <p>
+      <label for="firstName">First name</label>
+      <input type="text" name="firstName" id="firstName" th:field="*{firstName}" />
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" >
+    </p>
+    <p>
+      <label for="lastName">Last name</label>
+      <input type="text" name="lastName" id="lastName" th:field="*{lastName}" />
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+    </p>
+    <p>
+      <label for="cv">CV</label>
+      <input type="file" name="cv" id="cv" />
+    <p th:if="${#fields.hasErrors('cv')}" th:errors="*{cv}">
+    </p>
+    <p>
+      <label for="photo">Photo</label>
+      <input type="file" name="photo" id="photo" />
+    <p th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">
+    </p>
+    <input type="submit" value="Sign up" />
+  </form>
+</body>
+
+</html>

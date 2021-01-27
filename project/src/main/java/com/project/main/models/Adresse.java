@@ -1,9 +1,12 @@
 package com.project.main.models;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class Adresse {
+  
   @Id
   private int id;
 

@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS springboot_project_db;
-USE springboot_project_db;
+CREATE DATABASE IF NOT EXISTS sb_db;
+USE sb_db;
 
 /* represent a user in general */
 CREATE TABLE IF NOT EXISTS User(
@@ -300,8 +300,8 @@ CREATE TABLE IF NOT EXISTS SavedOffer(
 );
 
 /* mysql user that we will use to connect to the database */
-CREATE USER 'springboot_project_user'@'localhost' IDENTIFIED BY 'springboot_project';
-GRANT ALL ON springboot_project_db.* TO 'springboot_project_user'@'localhost';
+CREATE USER 'sb_user'@'localhost' IDENTIFIED BY 'sb';
+GRANT ALL ON sb_db.* TO 'sb_user'@'localhost';
 
 
 

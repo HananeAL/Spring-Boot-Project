@@ -10,6 +10,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,12 +22,15 @@ public class User {
   @Id
   private int id;
 
+  @NotBlank(message = "email is required")
+  @Email(message = "email is invalid")
+  @Max(value = 100, message = "max length is 100")
   private String email;
 
-  @Lob  @Column(columnDefinition="BLOB")
-  private byte[] image;
-
-  @Lob  @Column(columnDefinition = "TEXT")
+  @NotBlank
+  @Min(value = 20, message = "min length is 20")
+  @Lob  
+  @Column(columnDefinition = "TEXT")
   private String description;
   
   private String remeberMeCode;
@@ -46,14 +53,6 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public byte[] getImage() {
-    return image;
-  }
-
-  public void setImage(byte[] image) {
-    this.image = image;
   }
 
   public String getDescription() {

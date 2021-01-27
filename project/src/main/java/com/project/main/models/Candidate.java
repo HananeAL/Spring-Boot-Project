@@ -1,25 +1,47 @@
 package com.project.main.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import com.project.main.models.annotations.Document;
+import com.project.main.models.annotations.Image;
+import com.project.main.models.annotations.RequiredFile;
+import org.springframework.web.multipart.MultipartFile;
 
-@Entity
+//@Entity
 public class Candidate extends User {
 
+  @NotBlank(message = "first name is required")
+  @Size(min = 2, max = 50, message = "length should be between 2 and 50")
   private String firstName;
-  
+
+  @NotBlank(message = "last name is required")
+  @Size(min = 2, max = 50, message = "length should be between 2 and 50")
   private String lastName;
-  
-  @Lob  @Column(columnDefinition = "BLOB")
-  private byte[] cv;
+
+  @RequiredFile(message = "photo is required")
+  @Image(message = "photo has to be in jpg or png format")
+  private MultipartFile photo;
+
+  @RequiredFile(message = "cv is required")
+  @Document(message = "cv has to be in pdf or word format")
+  private MultipartFile cv;
 
   @ManyToOne
+  @JoinColumn(name = "adresse_id")
   private Adresse adresse;
 
   public String getFirstName() {
     return firstName;
+  }
+
+  public MultipartFile getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(MultipartFile photo) {
+    this.photo = photo;
   }
 
   public void setFirstName(String firstName) {
@@ -34,11 +56,11 @@ public class Candidate extends User {
     this.lastName = lastName;
   }
 
-  public byte[] getCv() {
-    return cv;
+  public MultipartFile getCv() {
+    return this.cv;
   }
 
-  public void setCv(byte[] cv) {
+  public void setCv(MultipartFile cv) {
     this.cv = cv;
   }
 

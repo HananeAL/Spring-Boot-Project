@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 
 public @interface Document {
-  String message() default "";
+  String message() default "only pdf and word are allowed";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 }

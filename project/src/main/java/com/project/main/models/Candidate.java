@@ -1,47 +1,60 @@
 package com.project.main.models;
 
+import java.io.IOException;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import com.project.main.models.annotations.Document;
-import com.project.main.models.annotations.Image;
-import com.project.main.models.annotations.RequiredFile;
+
 import org.springframework.web.multipart.MultipartFile;
 
-//@Entity
+@Entity
 public class Candidate extends User {
 
-  @NotBlank(message = "first name is required")
-  @Size(min = 2, max = 50, message = "length should be between 2 and 50")
   private String firstName;
 
-  @NotBlank(message = "last name is required")
-  @Size(min = 2, max = 50, message = "length should be between 2 and 50")
   private String lastName;
 
-  @RequiredFile(message = "photo is required")
-  @Image(message = "photo has to be in jpg or png format")
-  private MultipartFile photo;
+  @Lob
+  @Column(columnDefinition = "LONGBLOB")
+  private byte[] photo;
 
-  @RequiredFile(message = "cv is required")
-  @Document(message = "cv has to be in pdf or word format")
-  private MultipartFile cv;
+  @Lob
+  @Column(columnDefinition = "LONGBLOB")
+  private byte[] cv;
 
   @ManyToOne
-  @JoinColumn(name = "adresse_id")
+  @JoinColumn(name = "address_id")
   private Adresse adresse;
+
+  public Candidate() {}
+  
+  public Candidate(CandidateForm candidateForm) {
+    super(candidateForm);
+    this.firstName = candidateForm.getFirstName();
+    this.lastName = candidateForm.getLastName();
+    setPhoto(candidateForm.getPhoto());
+    setCv(candidateForm.getCv());
+  }
+
+  private void setCv(MultipartFile cv) {
+    try {
+      this.cv = cv.getBytes();
+    } catch (IOException e) {
+    }
+  }
+
+  private void setPhoto(MultipartFile photo) {
+    try {
+      this.photo = photo.getBytes();
+    } catch (IOException e) {
+    }
+  }
 
   public String getFirstName() {
     return firstName;
-  }
-
-  public MultipartFile getPhoto() {
-    return photo;
-  }
-
-  public void setPhoto(MultipartFile photo) {
-    this.photo = photo;
   }
 
   public void setFirstName(String firstName) {
@@ -56,11 +69,19 @@ public class Candidate extends User {
     this.lastName = lastName;
   }
 
-  public MultipartFile getCv() {
-    return this.cv;
+  public byte[] getPhoto() {
+    return photo;
   }
 
-  public void setCv(MultipartFile cv) {
+  public void setPhoto(byte[] photo) {
+    this.photo = photo;
+  }
+
+  public byte[] getCv() {
+    return cv;
+  }
+
+  public void setCv(byte[] cv) {
     this.cv = cv;
   }
 
@@ -71,5 +92,4 @@ public class Candidate extends User {
   public void setAdresse(Adresse adresse) {
     this.adresse = adresse;
   }
-
 }

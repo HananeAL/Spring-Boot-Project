@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 
 public @interface RequiredFile {
-    String message() default "";
+    String message() default "required file";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

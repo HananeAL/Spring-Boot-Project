@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 
 public @interface Image {
-  String message() default "";
+  String message() default "Only jpg and png are allowed";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 }

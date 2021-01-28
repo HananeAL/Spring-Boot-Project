@@ -8,11 +8,26 @@
 </head>
 
 <body>
-  <form method="POST" action="/signup" enctype="multipart/form-data" th:object="${candidate}">
+  <form method="POST" action="/signup/candidate" enctype="multipart/form-data" th:object="${candidateForm}">
+    <p>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" th:field="*{email}">
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+    </p>
+    <p>
+      <label for="password">password</label>
+      <input type="password" name="password" id="password" th:field="*{password}">
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+    </p>
+    <p>
+      <label for="description">description</label><br/>
+      <textarea name="description" id="description" cols="30" rows="3"></textarea>
+    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+    </p>
     <p>
       <label for="firstName">First name</label>
       <input type="text" name="firstName" id="firstName" th:field="*{firstName}" />
-    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" >
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
     </p>
     <p>
       <label for="lastName">Last name</label>
@@ -31,6 +46,7 @@
     </p>
     <input type="submit" value="Sign up" />
   </form>
+  <p th:if="${status} != null" th:text="'status:' +  ${status}">
 </body>
 
 </html>

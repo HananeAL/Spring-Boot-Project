@@ -69,6 +69,13 @@ public class User {
     this.userType = UserType.CANDIDATE;
   }
 
+  public User(CompanyForm companyForm) {
+    this.email = companyForm.getEmail();
+    this.password = companyForm.getPassword();
+    this.description = companyForm.getDescription();
+    this.userType = UserType.COMPANY;
+  }
+
   public int getId() {
     return id;
   }
@@ -108,6 +115,5 @@ public class User {
   public void setPassword(String password) {
     this.password = password;
   }
-
 
 }

@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import com.project.main.models.Candidate;
 import com.project.main.models.CandidateForm;
+import com.project.main.models.Company;
+import com.project.main.models.CompanyForm;
 import com.project.main.services.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,7 @@ public class SignUpController {
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
 
     if (UserType.isCompany(userType)) {
-      //model.addAttribute("companyForm", new companyForm());
+      model.addAttribute("companyForm", new CompanyForm());
       return COMPANY_SIGN_UP_FORM;
     } else { // by default
       model.addAttribute("candidateForm", new CandidateForm());
@@ -46,7 +48,7 @@ public class SignUpController {
     return CANDIDATE_SIGN_UP_FORM;
   }
 
-  /*@PostMapping("/signup/company")
+  @PostMapping("/signup/company")
   public String signUp(@Valid CompanyForm companyForm, BindingResult result, Model model) {
 
     if (!result.hasErrors()) {
@@ -57,6 +59,6 @@ public class SignUpController {
     }
 
     return COMPANY_SIGN_UP_FORM;
-  }*/
+  }
 
 }

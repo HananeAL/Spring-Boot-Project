@@ -22,16 +22,6 @@ CREATE TABLE IF NOT EXISTS SocialMedia(
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     UNIQUE(name)
 );
-/* represent a social media account of a user */
-/*CREATE TABLE IF NOT EXISTS UserMedia(
-    user_id INT UNSIGNED,
-    social_media_id INT UNSIGNED,
-    link VARCHAR(255) NOT NULL,
-    PRIMARY KEY (user_id, social_media_id),
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
-    FOREIGN KEY (social_media_id) REFERENCES SocialMedia(id),
-    UNIQUE (link)
-);*/
 
 CREATE TABLE IF NOT EXISTS City(
     id INT UNSIGNED AUTO_INCREMENT,
@@ -190,8 +180,8 @@ CREATE TABLE IF NOT EXISTS Company(
     id INT UNSIGNED,
     size INT UNSIGNED,
     foundation_date DATE NOT NULL,
-    logo BLOB NOT NULL,
-    wallpaper BLOB,
+    logo LONGBLOB NOT NULL,
+    wallpaper LONGBLOB,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE
 );

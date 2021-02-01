@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Name de l'Entreprises</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body>
+    <div th:replace="fragments/header :: header" />
+
+    <!--Companybar-->
+    <section class="bar">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="clearfix">
+                    <img class="company-logo img-thumbnail float-left mr-5" src="../img/3.jpg" alt="">
+                    <h1 class="company-name"> Name de l'entreprise</h1>
+                    <ul class="company-info">
+                        <li class="company-lieu"><i class="fa fa-map-marker fa-fw"></i>Lieu</li>
+                        <li class="company-link"> <a href=""> <i class="fa fa-globe fa-fw"></i>Link de
+                                l'entreprise</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+                    aria-controls="description" aria-selected="true">
+                    Description de l'entreprise
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="offres-tab" data-toggle="tab" href="#offres" role="tab" aria-controls="offres"
+                    aria-selected="false">
+                    Les offres
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <div class="desc-entrp">
+                    Description de l'entreprise
+                </div>
+            </div>
+            <div class="tab-pane fade" id="offres" role="tabpanel" aria-labelledby="offres-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10">
+
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="date">Date</div>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="date">Date</div>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="date">Date</div>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</body>
+
+</html>

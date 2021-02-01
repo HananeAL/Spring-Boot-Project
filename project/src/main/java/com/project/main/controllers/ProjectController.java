@@ -9,15 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProjectController {
 
 	private static final String HOME_PAGE = "home";
-	private static final String COMPANIE_PAGE = "companies";
+	private static final String COMPANY_PAGE = "company";
+	private static final String COMPANY_PROFILE = "company_profile";
 
 	@RequestMapping("/")
 	public String Home(HttpServletRequest request) {
 		return HOME_PAGE;
 	}
 
-	@RequestMapping("/companies")
-	public String Companies(HttpServletRequest request) {
-		return COMPANIE_PAGE;
+	@RequestMapping("/company")
+	public String Company(HttpServletRequest request) {
+		return COMPANY_PAGE;
+	}
+
+	@RequestMapping("/companyprofile")
+	public String CompanyProfile(HttpServletRequest request) {
+		return COMPANY_PROFILE;
 	}
 }

@@ -1,3 +1,4 @@
+</div>
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -9,7 +10,7 @@
 <body>
     <div th:replace="fragments/header :: header" />
     <!-- Searchbar -->
-    <section class="search-bar">
+    <section class="bar">
         <div class="container-fluid">
             <form>
                 <div class="site-content text-center">
@@ -17,23 +18,26 @@
                 </div>
                 <div class="form-group row">
                     <div class="ml-5"></div>
-                    <label class=" control-label">Spécialités</label>
+                    <label class=" control-label">Spécialité</label>
                     <div class="col-sm-3">
                         <select name="" class="form-control">
-                            <option>1</option>
+                            <option selected>Spécialité</option>
+                            <option value="1">One</option>
                         </select>
                     </div>
 
-                    <label class="control-label">Villes</label>
+                    <label class="control-label">Ville</label>
                     <div class="col-sm-3">
                         <select name="" class="form-control">
-                            <option>1</option>
+                            <option selected>Ville</option>
+                            <option value="1">One</option>
                         </select>
                     </div>
 
                     <label class="control-label ">Type</label>
                     <div class="col-sm-2">
                         <select name="" class="form-control">
+                            <option selected>Type</option>
                             <option>CDI</option>
                             <option>CDD</option>
                             <option>STAGE</option>

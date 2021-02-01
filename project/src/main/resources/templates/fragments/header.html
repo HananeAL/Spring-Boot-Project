@@ -12,8 +12,10 @@
         <link rel="stylesheet" href="../../css/bootstrap.min.css" />
         <link rel="stylesheet" href="../../css/frontend.css" />
         <link rel="stylesheet" href="../../css/bootstrap.css" />
+        <link rel="stylesheet" href="../../css/font-awesome.css" />
         <link rel="stylesheet" href="../../css/font-awesome.min.css" />
         <link rel="stylesheet" href="../../css/jquery-ui.css" />
+
 
     </div>
 </head>
@@ -21,7 +23,7 @@
 <body>
     <div th:fragment="header">
         <!-- this is header -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark nav-1">
             <a class="navbar-brand ml-3" href="/">Sta:)<span style="color: #00E8E8;">Jobs</span></a>
 
             <button class="navbar-toggler nav-link" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,22 +34,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav my-md-0 mr-auto ml-auto">
                     <li class="nav-item ml-4 active ">
-                        <a class="nav-link" href="/">Offres d'Emploi</a>
+                        <a class="nav-link nav1-link" href="/">Offres d'Emploi</a>
                     </li>
                     <li class="nav-item ml-4 ">
-                        <a class="nav-link" href="/companies">Entreprises</a>
+                        <a class="nav-link nav1-link" href="/company">Entreprises</a>
                     </li>
                     <li class="nav-item ml-4">
-                        <a class="nav-link" href="/articles">Articles</a>
+                        <a class="nav-link nav1-link" href="/articles">Articles</a>
                     </li>
                 </ul>
                 <div class="border-start">
                     <ul class="navbar-nav my-md-0 mr-md-2 ">
                         <li class="nav-item">
-                            <a class="nav-link " href="/login">Connexion</a>
+                            <a class="nav-link nav1-link" href="/login">Connexion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">Inscription</a>
+                            <a class="nav-link nav1-link" href="/register">Inscription</a>
                         </li>
                     </ul>
                 </div>

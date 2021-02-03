@@ -1,21 +1,18 @@
 package com.project.main.models;
 
 import java.io.IOException;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Entity
-public class Candidate extends User {
-
-  private String firstName;
-
-  private String lastName;
+public class Candidate extends CandidateGeneralInfo {
+  
+  private static final long serialVersionUID = 1L;
 
   @Lob
   @Column(columnDefinition = "LONGBLOB")
@@ -29,12 +26,14 @@ public class Candidate extends User {
   @JoinColumn(name = "address_id")
   private Adresse adresse;
 
-  public Candidate() {}
-  
+  public Candidate() { }
+
+  public Candidate(User user) {
+    setId(user.getId());
+  }
+
   public Candidate(CandidateForm candidateForm) {
     super(candidateForm);
-    this.firstName = candidateForm.getFirstName();
-    this.lastName = candidateForm.getLastName();
     setPhoto(candidateForm.getPhoto());
     setCv(candidateForm.getCv());
   }
@@ -51,22 +50,6 @@ public class Candidate extends User {
       this.photo = photo.getBytes();
     } catch (IOException e) {
     }
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
   }
 
   public byte[] getPhoto() {

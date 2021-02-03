@@ -71,23 +71,25 @@ CREATE TABLE IF NOT EXISTS Specialty(
     UNIQUE (name)
 );
 /* represent specialty of a candidate */
-CREATE TABLE IF NOT EXISTS CandSpec(
+/*CREATE TABLE IF NOT EXISTS CandSpec(
     candidate_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     level ENUM('junior', 'mid-level', 'senior'),
     PRIMARY KEY (candidate_id, specialty_id),
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id)
-);
+);*/
 /* represent a skill */
 CREATE TABLE IF NOT EXISTS Skill(
     id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
+    level ENUM('beginner', 'intermidate', 'advanced'),
+    candidate_id INT UNSIGNED,
     PRIMARY KEY (id),
-    UNIQUE (name)
+    FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE
 );
 /* represent a skill of a candidate in a specialty */
-CREATE TABLE IF NOT EXISTS CandSpecSkill(
+/*CREATE TABLE IF NOT EXISTS CandSpecSkill(
     candidate_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     skill_id INT UNSIGNED,
@@ -96,16 +98,16 @@ CREATE TABLE IF NOT EXISTS CandSpecSkill(
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id),
     FOREIGN KEY (skill_id) REFERENCES Skill(id)
-);
+);*/
 /* represent a skill of a candidate, this skill does not belong to a specialty */
-CREATE TABLE IF NOT EXISTS CandSkill(
+/*CREATE TABLE IF NOT EXISTS CandSkill(
     candidate_id INT UNSIGNED,
     skill_id INT UNSIGNED,
     level ENUM('beginner', 'intermidate', 'advanced'),
     PRIMARY KEY (candidate_id, skill_id),
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (skill_id) REFERENCES Skill(id)
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS Diploma(
     id INT UNSIGNED AUTO_INCREMENT,
@@ -178,6 +180,7 @@ CREATE TABLE IF NOT EXISTS PrefSpec(
 
 CREATE TABLE IF NOT EXISTS Company(
     id INT UNSIGNED,
+    name VARCHAR(100) NOT NULL,
     size INT UNSIGNED,
     foundation_date DATE NOT NULL,
     logo LONGBLOB NOT NULL,

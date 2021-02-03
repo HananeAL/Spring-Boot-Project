@@ -1,11 +1,12 @@
 package com.project.main.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import com.project.main.models.Candidate;
 import com.project.main.models.CandidateForm;
 import com.project.main.models.Company;
 import com.project.main.models.CompanyForm;
+import com.project.main.models.User;
 import com.project.main.services.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,35 +18,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SignUpController {
-  private static final String CANDIDATE_SIGN_UP_FORM = "candidate_sign_up_form";
-  private static final String COMPANY_SIGN_UP_FORM = "company_sign_up_form";
 
   @Autowired
   private SignUpService signUpService;
 
-  @GetMapping({"/signup", "/signup/{userType}"})
+  @GetMapping({ "/signup", "/signup/{userType}" })
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
 
     if (UserType.isCompany(userType)) {
       model.addAttribute("companyForm", new CompanyForm());
-      return COMPANY_SIGN_UP_FORM;
+      return Views.COMPANY_SIGN_UP_FORM;
     } else { // by default
       model.addAttribute("candidateForm", new CandidateForm());
-      return CANDIDATE_SIGN_UP_FORM;
+      return Views.CANDIDATE_SIGN_UP_FORM;
     }
   }
 
   @PostMapping("/signup/candidate")
-  public String signUp(@Valid CandidateForm candidateForm, BindingResult result, Model model) {
-
+  public String signUp(@Valid CandidateForm candidateForm, BindingResult result, Model model, 
+  HttpSession session) {
+    
     if (!result.hasErrors()) {
       Candidate candidate = new Candidate(candidateForm);
       signUpService.signUp(candidate);
-      model.addAttribute("status", "succes");
-      // redirect to another view
+      session.setAttribute("user", (User)candidate); // !!!
+      return Views.ADD_SKILLS;
     }
-
-    return CANDIDATE_SIGN_UP_FORM;
+    return Views.CANDIDATE_SIGN_UP_FORM;
   }
 
   @PostMapping("/signup/company")
@@ -58,7 +57,7 @@ public class SignUpController {
       // redirect to another view
     }
 
-    return COMPANY_SIGN_UP_FORM;
+    return Views.COMPANY_SIGN_UP_FORM;
   }
 
 }

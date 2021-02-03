@@ -1,5 +1,7 @@
 package com.project.main.controllers;
 
+import com.project.main.models.User;
+
 public class UserType {
   public static final String CANDIDATE = "candidate";
   public static final String COMPANY = "company";
@@ -14,10 +16,14 @@ public class UserType {
   }
 
   public static boolean isCandidate(String userType) {
-    return userType != null && userType.equals(CANDIDATE);
+    return CANDIDATE.equals(userType);
   }
 
   public static boolean isCompany(String userType) {
-    return userType != null && userType.equals(COMPANY);
+    return COMPANY.equals(userType);
+  }
+
+  public static boolean isCandidate(User user) {
+    return CANDIDATE.equals(user.getUserType());
   }
 }

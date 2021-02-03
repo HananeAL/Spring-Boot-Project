@@ -1,0 +1,12 @@
+.removeButton {
+  background-color: red;
+  color: white;
+  border: none;
+  margin-left: 20px;
+}
+
+#skills li {
+  display: grid;
+  grid-template-columns: 30% 10%;
+  margin-bottom: 20px;
+}

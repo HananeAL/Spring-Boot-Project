@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <p th:if="${session.user != null}" th:text="${session.user.email}"></p>
     <div th:replace="fragments/header :: header" />
     <!-- Searchbar -->
     <section class="search-bar">

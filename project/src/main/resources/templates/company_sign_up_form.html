@@ -21,13 +21,18 @@
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     </p>
     <p>
+      <label for="name">name</label>
+      <input type="text" name="name" id="name" th:field="*{name}">
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{name}"></p>
+    </p>
+    <p>
       <label for="description">description</label><br />
       <textarea name="description" id="description" cols="30" rows="3"></textarea>
     <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
     </p>
     <p>
       <label>Size</label>
-      <input type="text" name="size" id="size" th:field="*{size}">
+      <input type="number" min="0" name="size" id="size" th:field="*{size}">
     <p th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></p>
     </p>
     <p>

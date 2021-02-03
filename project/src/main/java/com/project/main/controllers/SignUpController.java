@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SignUpController {
-  private static final String CANDIDATE_SIGN_UP_FORM = "candidate_sign_up_form";
-  private static final String COMPANY_SIGN_UP_FORM = "company_sign_up_form";
+  private static final String CANDIDATE_SIGN_UP_FORM = "sign_up_candidate";
+  private static final String COMPANY_SIGN_UP_FORM = "sign_up_company";
 
   @Autowired
   private SignUpService signUpService;
 
-  @GetMapping({"/signup", "/signup/{userType}"})
+  @GetMapping({ "/signup", "/signup/{userType}" })
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
 
     if (UserType.isCompany(userType)) {

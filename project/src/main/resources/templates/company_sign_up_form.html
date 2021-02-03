@@ -8,8 +8,7 @@
 </head>
 
 <body>
-  <form method="POST" action="/signup/company" enctype="multipart/form-data" 
-  th:object="${companyForm}">
+  <form method="POST" action="/signup/company" enctype="multipart/form-data" th:object="${companyForm}">
     <p>
       <label for="email">Email</label>
       <input type="text" name="email" id="email" th:field="*{email}">

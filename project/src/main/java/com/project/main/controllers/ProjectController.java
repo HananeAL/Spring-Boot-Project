@@ -11,6 +11,7 @@ public class ProjectController {
 	private static final String HOME_PAGE = "home";
 	private static final String COMPANY_PAGE = "company";
 	private static final String COMPANY_PROFILE = "company_profile";
+	private static final String SIGNUP = "sign_up";
 
 	@RequestMapping("/")
 	public String Home(HttpServletRequest request) {
@@ -25,5 +26,10 @@ public class ProjectController {
 	@RequestMapping("/companyprofile")
 	public String CompanyProfile(HttpServletRequest request) {
 		return COMPANY_PROFILE;
+	}
+
+	@RequestMapping("/sign_up")
+	public String Signup(HttpServletRequest request) {
+		return SIGNUP;
 	}
 }

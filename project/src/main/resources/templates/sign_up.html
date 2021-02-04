@@ -1,0 +1,58 @@
+</div>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>SingUp</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body style="background-color: #f8f9fa;">
+    <div th:replace="fragments/header :: header" />
+
+    <div class="container register">
+        <div class="row">
+
+            <!-- register-left-->
+            <div class="col-md-3 register-left">
+                <a class="navbar-brand ml-0" href="/">Sta:)<span style="color: #00E8E8;">Jobs</span></a>
+                <h3 style="font-family: auto;margin-top: 20px;">Bonjour</h3>
+                <p>
+                    Notre mission vous simplifier le travail! <br>
+                    Tout le monde peut utiliser <span style="font-family: 'Pacifico'; color: #de7537;">Sta:)Jobs.</span>
+                </p>
+                <div class="form-group">
+                    <p class="text-center" style="margin-top: 10px;">Vous avez déjà un compte?
+                        <a href="/signin" style="color: #88edfd;"> Connectez-vous ici</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- register-right-->
+            <div class="col-md-9 register-right">
+                <!--Link Page Sing_up Company Et Candidat-->
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">Candidat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false">Entreprise</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <!--Page Sign_up_Candidat-->
+                    <div th:replace="sign_up_candidate :: Candidat" />
+                    <!--Page Sign_up_Company-->
+                    <div th:replace="sign_up_company :: Company" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</body>
+
+</html>

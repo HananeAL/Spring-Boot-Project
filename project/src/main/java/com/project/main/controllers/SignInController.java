@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SignInController {
 
+
   @Autowired
   private SignInService signInService;
 
@@ -35,7 +36,7 @@ public class SignInController {
       if (user.getUserType().equals(UserType.CANDIDATE))
         return Views.HOME; // whatever
       else
-        return Views.ADD_COMPANY_ADDRESSES; // to test
+        return Views.ADD_COMPANY_ADDRESSES;// to test
     }
   }
 

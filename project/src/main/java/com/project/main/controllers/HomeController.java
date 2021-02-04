@@ -30,11 +30,11 @@ public class HomeController {
 		return Views.ADD_SKILLS;
 	}
 
-	@GetMapping("/company/add-adresses")
+/*	@GetMapping("/company/add-adresses")
 	private String getAddCompanyAddrPage() {
 		// get cities from DB
-		cityRepository.
+		cityRepository
 		return Views.ADD_COMPANY_ADDRESSES;
-	}
+	}*/
 
 }

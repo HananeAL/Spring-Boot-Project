@@ -12,8 +12,8 @@ public class CityService {
   @Autowired
   private CityRepository cityRepository;
 
-  public List<City> getAll() {
+  /*public List<City> getAll() {
     
-  }
+  }*/
   
 }

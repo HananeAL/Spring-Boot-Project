@@ -3,7 +3,6 @@
 body {
   padding: 0;
   margin: 0;
-  min-height: 150vh;
   font-family: "Lato";
 }
 /*-------- Navbar --------*/
@@ -77,7 +76,31 @@ body {
 }
 
 /*-------- Main --------*/
+.btn-type {
+  color: #fff;
+  background-color: #d05a07;
+  border-color: #d05a07 !important;
+  border-radius: 5px !important;
+  width: 50px;
+}
 
+.offre-card {
+  margin: 10px 15px 0px 15px;
+  box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 10%);
+  transition: 0.3s;
+  border-radius: 5px !important;
+  padding-left: 20px;
+}
+
+.offre-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.panel-body {
+  max-height: 57pc;
+  min-height: 57pc;
+  overflow-y: scroll;
+}
 /*-------- CompanyCard --------*/
 .company-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -149,6 +172,87 @@ body {
   text-align: right;
   color: #129092;
 }
+/*---- Icon Heart ----*/
+
+.flexbox {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-btn {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes favme-anime {
+  0% {
+    opacity: 1;
+    font-size: ms(0);
+    -webkit-text-stroke-color: transparent;
+  }
+  25% {
+    opacity: 0.6;
+    color: #fff;
+    font-size: ms(-2);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dc3232;
+  }
+  75% {
+    opacity: 0.6;
+    color: #fff;
+    font-size: ms(3);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dc3232;
+  }
+  100% {
+    opacity: 1;
+    font-size: ms(2);
+    -webkit-text-stroke-color: transparent;
+  }
+}
+
+@keyframes favme-hover {
+  from {
+    font-size: ms(3);
+  }
+  80% {
+    font-size: ms(2);
+  }
+}
+
+.favme {
+  display: block;
+  font-size: ms(2);
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.2s ease;
+  color: #cbcdce;
+  margin: 0;
+}
+
+.active1 {
+  color: #bd2130;
+}
+
+:hover {
+  animation: favme-hover 0.3s infinite alternate;
+}
+
+.is_animating {
+  animation: favme-anime 0.3s;
+}
+
+.bordered {
+  border-radius: 50%;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+}
 
 /*-------- Companybar --------*/
 .clearfix .company-logo {
@@ -157,6 +261,7 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .clearfix .img-thumbnail {
   width: 143px;
   min-width: 143px;
@@ -186,10 +291,26 @@ body {
 }
 
 .clearfix .company-link,
+.clearfix .company-date,
 .company-link a {
   color: #d05a07;
 }
 
+.mr-30 {
+  margin-right: 30px;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #f8f9fa !important;
+  background-color: #343a40 !important;
+  border-color: #343a40 #343a40 #f8f9fa !important;
+  font-family: cursive;
+}
+
+.nav-tabs .nav-link {
+  font-family: cursive;
+}
 /*-------- Cmpanyprofile_info--------*/
 .desc-entrp {
   margin: 22px;
@@ -233,6 +354,7 @@ body {
   padding-right: 21px;
   min-width: 110px;
   padding: 1.25rem;
+  padding-top: 0px;
 }
 
 .card-right .date {
@@ -243,4 +365,154 @@ body {
 
 .card-right .type {
   font-family: serif;
+}
+
+/*-- SingUp --*/
+.register {
+  background: #343a40;
+  margin-top: 4%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 72%);
+}
+
+.register-left {
+  text-align: center;
+  color: #fff;
+  margin-top: 4%;
+}
+
+.register-left .btn {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  width: 60%;
+  background: #f8f9fa;
+  font-weight: bold;
+  color: #383d41;
+  margin-bottom: 3%;
+  cursor: pointer;
+}
+.register-right {
+  background: #e9ecef;
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+  font-family: "ui-rounded";
+}
+
+.register-left .navbar-brand {
+  font-size: 40 !important;
+  margin-top: 30%;
+  margin-bottom: 5%;
+  width: 100%;
+  -webkit-animation: mover 2s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.register-left p {
+  font-weight: lighter;
+  padding: 12%;
+  margin-top: -9%;
+  font-family: "ui-rounded";
+}
+
+.register .register-form {
+  padding: 10%;
+  margin-top: 10%;
+}
+
+.btnRegister {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 52%);
+  float: right;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #de7537;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+}
+
+.register .nav-tabs {
+  margin-top: 3%;
+  border: none;
+  background: #de7537;
+  border-radius: 1.5rem;
+  width: 28%;
+  float: right;
+  box-shadow: inset 0px 0px 7px 0 rgb(0 0 0 / 61%);
+}
+
+.register .nav-tabs .nav-link {
+  padding: 4%;
+  height: 34px;
+  font-weight: 200;
+  color: #fff;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  font-family: auto;
+}
+
+.register .nav-tabs .nav-link:hover {
+  border: none;
+}
+
+.register .nav-tabs .nav-link.active {
+  width: 120px;
+  padding: 1px;
+  color: #fff !important;
+  border: 4px solid #343a40;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.register-heading {
+  text-align: center;
+  margin-top: 8%;
+  margin-bottom: -15%;
+  color: #de7537;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 61%);
+  background-color: #343a40 !important;
+  border-color: #343a40 #343a40 #343a40 !important;
+  font-family: auto;
+}
+
+.custom-file input:focus {
+  color: #495057;
+  border-color: #80bdff !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%) !important;
+  width: 100% !important;
+  height: calc(2.25rem + 2px) !important;
+}
+
+.btnConnexion {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 52%);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #de7537;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
 }

@@ -16,12 +16,11 @@
                 <div class="site-content text-center">
                     <h1 class="site-title">Trouvez le job qui vous correspond</h1>
                 </div>
-                <div class="form-group row">
-                    <div class="ml-5"></div>
+                <div class="form-group row d-flex justify-content-center">
                     <label class=" control-label">Spécialité</label>
                     <div class="col-sm-3">
                         <select name="" class="form-control">
-                            <option selected>Spécialité</option>
+                            <option class="hidden" selected="" disabled="">Spécialité</option>
                             <option value="1">One</option>
                         </select>
                     </div>
@@ -29,7 +28,7 @@
                     <label class="control-label">Ville</label>
                     <div class="col-sm-3">
                         <select name="" class="form-control">
-                            <option selected>Ville</option>
+                            <option class="hidden" selected="" disabled="">Ville</option>
                             <option value="1">One</option>
                         </select>
                     </div>
@@ -37,7 +36,12 @@
                     <label class="control-label ">Type</label>
                     <div class="col-sm-2">
                         <select name="" class="form-control">
-                            <option selected>Type</option>
+                            <option class="hidden" selected="" disabled="">Type</option>
+                            <option>CDI</option>
+                            <option>CDD</option>
+                            <option>STAGE</option>
+                            <option>PFA</option>
+                            <option>PFE</option>
                             <option>CDI</option>
                             <option>CDD</option>
                             <option>STAGE</option>
@@ -61,20 +65,187 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6" style="margin-right: 0px;">
+                <div class="col-sm-6 mr-0">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card" style="border-right: 1px; border-top: 0px;">
+                            <div class="card-header" style="background-color: #fff;">
+                                <!--Panel Heading-->
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Dropdown
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body panel-body" style="padding: 0px;">
+                                <!--Panel Body-->
+                                <!--Card1-->
+                                <div class="card offre-card">
+                                    <div class="row">
+                                        <div class="card-body" style="padding-bottom: 5px;">
+                                            <div class="clearfix">
+                                                <img class="company-logo img-thumbnail float-left mr-5 mt-0"
+                                                    src="../img/3.jpg" alt="">
 
-                            <div class="card-header">Panel Heading</div>
-                            <div class="card-body">Panel Body</div>
+                                                <h5 class="card-name">
+                                                    <a href=""><b>Name d'offre</b></a>
+                                                </h5>
+                                                <div class="offres-info mb-2">
+                                                    <span class="name-entrp">Name Entreprise</span>
+                                                    <span class="ville-entrp">ville</span>
+                                                </div>
+                                                <p class="commentaire">
+                                                    commentaire commentaire
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card-right">
+                                            <div class="row ml-5 mt-1">
+                                                <div class="flexbox">
+                                                    <div class="fav-btn">
+                                                        <span href="" class="favme dashicons dashicons-heart"><i
+                                                                class="fa fa-heart fa-fw fa-10x"
+                                                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="date">Date</span><br>
+                                            <span class="type">Type</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Card2-->
+                                <div class="card offre-card">
+                                    <div class="row">
+                                        <div class="card-body" style="padding-bottom: 5px;">
+                                            <div class="clearfix">
+                                                <img class="company-logo img-thumbnail float-left mr-5 mt-0"
+                                                    src="../img/3.jpg" alt="">
+
+                                                <h5 class="card-name">
+                                                    <a href=""><b>Name d'offre</b></a>
+                                                </h5>
+                                                <div class="offres-info mb-2">
+                                                    <span class="name-entrp">Name Entreprise</span>
+                                                    <span class="ville-entrp">ville</span>
+                                                </div>
+                                                <p class="commentaire">
+                                                    commentaire commentaire
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card-right">
+                                            <div class="row ml-5 mt-1">
+                                                <div class="flexbox">
+                                                    <div class="fav-btn">
+                                                        <span href="" class="favme dashicons dashicons-heart"><i
+                                                                class="fa fa-heart fa-fw fa-10x"
+                                                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="date">Date</span><br>
+                                            <span class="type">Type</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Card3-->
+                                <div class="card offre-card">
+                                    <div class="row">
+                                        <div class="card-body" style="padding-bottom: 5px;">
+                                            <div class="clearfix">
+                                                <img class="company-logo img-thumbnail float-left mr-5 mt-0"
+                                                    src="../img/3.jpg" alt="">
+
+                                                <h5 class="card-name">
+                                                    <a href=""><b>Name d'offre</b></a>
+                                                </h5>
+                                                <div class="offres-info mb-2">
+                                                    <span class="name-entrp">Name Entreprise</span>
+                                                    <span class="ville-entrp">ville</span>
+                                                </div>
+                                                <p class="commentaire">
+                                                    commentaire commentaire
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card-right">
+                                            <div class="row ml-5 mt-1">
+                                                <div class="flexbox">
+                                                    <div class="fav-btn">
+                                                        <span href="" class="favme dashicons dashicons-heart"><i
+                                                                class="fa fa-heart fa-fw fa-10x"
+                                                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="date">Date</span><br>
+                                            <span class="type">Type</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6" style="margin-left: 0px;">
+                <div class="col-sm-6 ml-0">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">Panel Heading</div>
-                            <div class="card-body">Panel Body</div>
+                            <div class="card-header" style="background-color: #fff; padding: 0px;">
+                                <!--Panel Heading-->
+                                <section class="bar">
+                                    <div class="container-fluid">
+                                        <div class="container">
+                                            <div class="clearfix">
+                                                <img class="company-logo img-thumbnail float-left mr-5"
+                                                    src="../img/3.jpg" alt="">
+                                                <div class="row borderd float-right" style="margin-top: 33px;">
+                                                    <div class="flexbox">
+                                                        <div class="fav-btn">
+                                                            <span href="" class="favme dashicons dashicons-heart">
+                                                                <i class="fa fa-bookmark fa-fw"
+                                                                    style="font-size: 40px;"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 class="company-name"> Name d'Offre </h1>
+                                                <ul class="company-info">
+                                                    <li class="company-link mr-30">
+                                                        <a href="/companyprofile">
+                                                            <i class="fa fa-globe fa-fw"></i>N.Entreprise
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="company-lieu">
+                                                        <i class="fa fa-map-marker fa-fw"></i>Ville
+                                                    </li>
+
+                                                    <li class="company-date mr-30">
+                                                        <i class="fa fa-calendar fa-fw"></i>Date
+                                                    </li>
+
+                                                    <li class="company-type">
+                                                        <button type="button" class="btn btn-type btn-sm">type</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
+                                <!--Panel body-->
+
+                            </div>
                         </div>
                     </div>
                 </div>

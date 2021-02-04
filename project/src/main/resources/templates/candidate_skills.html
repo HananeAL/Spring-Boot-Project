@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/candidate_skills.css}" />
+  <script th:src="@{/js/candidate_skills.js}"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <section>
+    <h1>Enter your skills !!!</h1>
+    <div>
+      <form id="form">
+        <label for="skill">Skill</label>
+        <input type="text" name="skill" id="skill">
+        <label for="level">Level</label>
+        <select name="level" id="level">
+          <option value="beginner">beginner</option>
+          <option value="intermidate">intermidate</option>
+          <option value="advanced">advanced</option>
+        </select>
+        <button id="addButton" type="button">Add</button>
+      </form>
+      <button id="saveButton" type="button">Save</button>
+    </div>
+    <ul id="skills"></ul>
+  </section>
+</body>
+
+</html>

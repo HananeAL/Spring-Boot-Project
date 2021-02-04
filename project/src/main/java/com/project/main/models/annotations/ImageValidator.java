@@ -10,9 +10,10 @@ public class ImageValidator implements ConstraintValidator<Image, MultipartFile>
 
   @Override
   public boolean isValid(MultipartFile file, ConstraintValidatorContext context) {
-    RequiredFileValidator fileValidator = new RequiredFileValidator();
+    /*RequiredFileValidator fileValidator = new RequiredFileValidator();
     // if file not present
-    if (!fileValidator.isValid(file, context))  return true;
+    if (!fileValidator.isValid(file, context))  return true;*/
+    if (file.isEmpty()) return true;
     String extension = FilenameUtils.getExtension(file.getOriginalFilename());
     return isPng(extension) || isJpg(extension);
   }

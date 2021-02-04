@@ -1,5 +1,6 @@
 package com.project.main.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +11,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 import com.project.main.controllers.UserType;
 import com.project.main.models.annotations.UniqueEmail;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class User implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,11 +48,22 @@ public class User {
 
   private String userType;
 
-  @OneToMany
-  @JoinColumn(name = "user_id")
-  private List<SocialMedia> socialMedias = new ArrayList<SocialMedia>();
+  public User() {}
 
-  public User() {
+  public User(User user) {
+    setEmail(user.getEmail());
+    setPassword(user.getPassword());
+    setDescription(user.getDescription());
+  }
+  
+  public User(CandidateGeneralInfo candidateGeneralInfo) {
+    this((User)candidateGeneralInfo);
+    setUserType(UserType.CANDIDATE);
+  }
+
+  public User(CompanyGeneralInfo companyGeneralInfo) {
+    this((User)companyGeneralInfo);
+    setUserType(UserType.COMPANY);
   }
 
   public String getUserType() {
@@ -60,20 +72,6 @@ public class User {
 
   public void setUserType(String userType) {
     this.userType = userType;
-  }
-
-  public User(CandidateForm candidateForm) {
-    this.email = candidateForm.getEmail();
-    this.password = candidateForm.getPassword();
-    this.description = candidateForm.getDescription();
-    this.userType = UserType.CANDIDATE;
-  }
-
-  public User(CompanyForm companyForm) {
-    this.email = companyForm.getEmail();
-    this.password = companyForm.getPassword();
-    this.description = companyForm.getDescription();
-    this.userType = UserType.COMPANY;
   }
 
   public int getId() {

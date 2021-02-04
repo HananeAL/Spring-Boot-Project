@@ -9,9 +9,10 @@ public class DocumentValidator implements ConstraintValidator<Document, Multipar
 
   @Override
   public boolean isValid(MultipartFile file, ConstraintValidatorContext context) {
-    RequiredFileValidator fileValidator = new RequiredFileValidator();
+    /*RequiredFileValidator fileValidator = new RequiredFileValidator();
     if (!fileValidator.isValid(file, context)) // if file not present
-      return true;
+      return true;*/
+    if (file.isEmpty()) return true;
     String extension  = FilenameUtils.getExtension(file.getOriginalFilename());
     return isPdf(extension) || isWord(extension);
   }

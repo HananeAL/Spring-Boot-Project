@@ -1,5 +1,8 @@
 package com.project.main.controllers;
 
+import javax.servlet.http.HttpSession;
+
+import com.project.main.models.User;
 import com.project.main.services.SignInService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +15,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SignInController {
 
-  private static final String SIGN_IN_FORM = "sign_in";
 
   @Autowired
   private SignInService signInService;
 
   @GetMapping("/signin")
   public String getSignInForm() {
-    return SIGN_IN_FORM;
+    return Views.SIGN_IN_FORM;
   }
 
   @PostMapping("/signin")
-  public String signIn(@RequestParam String email, @RequestParam String password, Model model) {
+  public String signIn(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
 
     if (!signInService.isUser(email, password)) {
-      model.addAttribute("error", "Invalid email and/or mot de passe");
+      model.addAttribute("error", "invalid email and/or password");
+      return Views.SIGN_IN_FORM;
+    } else {
+      User user = signInService.getUser();
+      session.setAttribute("user", user);
+      if (user.getUserType().equals(UserType.CANDIDATE))
+        return Views.HOME; // whatever
+      else
+        return Views.ADD_COMPANY_ADDRESSES;// to test
     }
-
-    // additional conditions(if company ---> template + get the user ...
-    return SIGN_IN_FORM;
   }
 
 }

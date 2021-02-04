@@ -34,8 +34,10 @@ CREATE TABLE IF NOT EXISTS Address(
     id INT UNSIGNED AUTO_INCREMENT,
     street VARCHAR(100) NOT NULL,
     city_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED,
     PRIMARY KEY (id),
     FOREIGN KEY (city_id) REFERENCES City(id),
+    FOREIGN KEY (user_id) REFERENCES User(id),
     UNIQUE (street, city_id)
 );
 
@@ -46,10 +48,8 @@ CREATE TABLE IF NOT EXISTS Candidate(
     last_name VARCHAR(50) NOT NULL,
     photo LONGBLOB NOT NULL,
     cv LONGBLOB,
-    address_id INT UNSIGNED,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE,
-    FOREIGN KEY (address_id) REFERENCES Address(id)
+    FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE
 );
 /* represent an experience of a candidate */
 CREATE TABLE IF NOT EXISTS Experience(
@@ -63,31 +63,27 @@ CREATE TABLE IF NOT EXISTS Experience(
     PRIMARY KEY (id),
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE
 );
-/* represent a specialty */
-CREATE TABLE IF NOT EXISTS Specialty(
-    id INT UNSIGNED AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE (name)
-);
+
 /* represent specialty of a candidate */
-CREATE TABLE IF NOT EXISTS CandSpec(
+/*CREATE TABLE IF NOT EXISTS CandSpec(
     candidate_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     level ENUM('junior', 'mid-level', 'senior'),
     PRIMARY KEY (candidate_id, specialty_id),
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id)
-);
+);*/
 /* represent a skill */
 CREATE TABLE IF NOT EXISTS Skill(
     id INT UNSIGNED AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
+    level ENUM('beginner', 'intermidate', 'advanced'),
+    candidate_id INT UNSIGNED,
     PRIMARY KEY (id),
-    UNIQUE (name)
+    FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE
 );
 /* represent a skill of a candidate in a specialty */
-CREATE TABLE IF NOT EXISTS CandSpecSkill(
+/*CREATE TABLE IF NOT EXISTS CandSpecSkill(
     candidate_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     skill_id INT UNSIGNED,
@@ -96,16 +92,16 @@ CREATE TABLE IF NOT EXISTS CandSpecSkill(
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id),
     FOREIGN KEY (skill_id) REFERENCES Skill(id)
-);
+);*/
 /* represent a skill of a candidate, this skill does not belong to a specialty */
-CREATE TABLE IF NOT EXISTS CandSkill(
+/*CREATE TABLE IF NOT EXISTS CandSkill(
     candidate_id INT UNSIGNED,
     skill_id INT UNSIGNED,
     level ENUM('beginner', 'intermidate', 'advanced'),
     PRIMARY KEY (candidate_id, skill_id),
     FOREIGN KEY (candidate_id) REFERENCES Candidate(id) ON DELETE CASCADE,
     FOREIGN KEY (skill_id) REFERENCES Skill(id)
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS Diploma(
     id INT UNSIGNED AUTO_INCREMENT,
@@ -122,7 +118,7 @@ CREATE TABLE IF NOT EXISTS School(
     UNIQUE(name)
 );
 /* represent a diploma of a candidate */
-CREATE TABLE IF NOT EXISTS CandDip(
+/*CREATE TABLE IF NOT EXISTS CandDip(
     candidate_id INT UNSIGNED,
     diploma_id INT UNSIGNED,
     date DATE NOT NULL,
@@ -133,7 +129,7 @@ CREATE TABLE IF NOT EXISTS CandDip(
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id),
     FOREIGN KEY (diploma_id) REFERENCES Diploma(id),
     FOREIGN KEY (school_id) REFERENCES School(id)
-);
+);*/
 /* represent a preference of a candidate */
 CREATE TABLE IF NOT EXISTS Preference(
     id INT UNSIGNED,
@@ -168,22 +164,32 @@ CREATE TABLE IF NOT EXISTS PrefCity(
     FOREIGN KEY (city_id) REFERENCES City(id)
 );
 /* represent a specialty of a preference */
-CREATE TABLE IF NOT EXISTS PrefSpec(
+/*CREATE TABLE IF NOT EXISTS PrefSpec(
     preference_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     PRIMARY KEY (preference_id, specialty_id),
     FOREIGN KEY (preference_id) REFERENCES Preference(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id)
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS Company(
     id INT UNSIGNED,
+    name VARCHAR(100) NOT NULL,
     size INT UNSIGNED,
     foundation_date DATE NOT NULL,
     logo LONGBLOB NOT NULL,
     wallpaper LONGBLOB,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE
+);
+
+/* represent a specialty */
+CREATE TABLE IF NOT EXISTS CompanySpecialty(
+    id INT UNSIGNED AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    company_id INT UNSIGNED,
+    PRIMARY KEY (id),
+    FOREIGN KEY (company_id) REFERENCES Company(id) ON DELETE CASCADE 
 );
 /* represent an address of a company */
 CREATE TABLE IF NOT EXISTS CompAddr(
@@ -195,13 +201,13 @@ CREATE TABLE IF NOT EXISTS CompAddr(
     FOREIGN KEY (address_id) REFERENCES Address(id)
 );
 /* represent a specialty of a company */
-CREATE TABLE IF NOT EXISTS CompSpec(
+/*CREATE TABLE IF NOT EXISTS CompSpec(
     company_id INT UNSIGNED,
     specialty_id INT UNSIGNED,
     PRIMARY KEY (company_id, specialty_id),
     FOREIGN KEY (company_id) REFERENCES Company(id) ON DELETE CASCADE,
     FOREIGN KEY (specialty_id) REFERENCES Specialty(id)
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS Offer(
     id INT UNSIGNED AUTO_INCREMENT,
@@ -296,6 +302,29 @@ CREATE USER IF NOT EXISTS 'sb_user'@'localhost' IDENTIFIED BY 'sb';
 GRANT ALL ON sb_db.* TO 'sb_user'@'localhost';
 
 
+/* we had to do it, because by default SPRING_SESSION_ATTRIBUTES.ATTRIBUTE_BYTES has type BLOB 
+wich is not enough, so we had to changed to LONGBLOB */
+CREATE TABLE IF NOT EXISTS SPRING_SESSION (
+  PRIMARY_ID char(36) NOT NULL,
+  SESSION_ID char(36) NOT NULL,
+  CREATION_TIME bigint NOT NULL,
+  LAST_ACCESS_TIME bigint NOT NULL,
+  MAX_INACTIVE_INTERVAL int NOT NULL,
+  EXPIRY_TIME bigint NOT NULL,
+  PRINCIPAL_NAME varchar(100) DEFAULT NULL,
+  PRIMARY KEY (PRIMARY_ID),
+  UNIQUE KEY SPRING_SESSION_IX1 (`SESSION_ID`),
+  KEY SPRING_SESSION_IX2 (`EXPIRY_TIME`),
+  KEY SPRING_SESSION_IX3 (`PRINCIPAL_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+
+CREATE TABLE SPRING_SESSION_ATTRIBUTES (
+  SESSION_PRIMARY_ID char(36) NOT NULL,
+  ATTRIBUTE_NAME varchar(200) NOT NULL,
+  ATTRIBUTE_BYTES longblob NOT NULL, /* changed from blob to longblob */
+  PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME),
+  CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION (PRIMARY_ID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 

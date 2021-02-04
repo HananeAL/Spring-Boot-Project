@@ -22,7 +22,7 @@ public class SignUpController {
   @Autowired
   private SignUpService signUpService;
 
-  @GetMapping({ "/signup", "/signup/{userType}" })
+  @GetMapping({ "/signup/{userType}" })
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
 
     if (UserType.isCompany(userType)) {

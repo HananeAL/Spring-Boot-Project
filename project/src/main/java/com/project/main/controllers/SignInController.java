@@ -32,7 +32,10 @@ public class SignInController {
     } else {
       User user = signInService.getUser();
       session.setAttribute("user", user);
-      return Views.ADD_SKILLS; // to test add skills
+      if (user.getUserType().equals(UserType.CANDIDATE))
+        return Views.HOME; // whatever
+      else
+        return Views.ADD_COMPANY_ADDRESSES; // to test
     }
   }
 

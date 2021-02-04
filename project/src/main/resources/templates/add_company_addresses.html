@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script th:src="@{/js/add_company_addresses.js}"></script>
+  <style>
+    form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: end;
+      justify-items: center;
+    }
+
+    form div {
+      /*margin-right: 10%;*/
+    }
+
+    #save-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Enter your addresses !!!</h1>
+    <div id="container">
+      <form>
+        <div>
+          <label for="street">Street (optional)</label>
+          <input type="text" id="street">
+        </div>
+        <div>
+          <label for="city">City</label>
+          <select id="city">
+            <option value="agadir">Agadir</option>
+            <option value="rabat">Rabat</option>
+          </select>
+        </div>
+        <div>
+          <button type="button">Add</button>
+        </div>
+      </form>
+      <div id="save-button">
+        <button type="button">Save</button>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

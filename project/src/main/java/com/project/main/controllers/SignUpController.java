@@ -35,8 +35,7 @@ public class SignUpController {
   }
 
   @PostMapping("/signup/candidate")
-  public String signUp(@Valid CandidateForm candidateForm, BindingResult result, Model model, 
-  HttpSession session) {
+  public String signUp(@Valid CandidateForm candidateForm, BindingResult result, HttpSession session) {
     
     if (!result.hasErrors()) {
       Candidate candidate = new Candidate(candidateForm);
@@ -48,15 +47,14 @@ public class SignUpController {
   }
 
   @PostMapping("/signup/company")
-  public String signUp(@Valid CompanyForm companyForm, BindingResult result, Model model) {
+  public String signUp(@Valid CompanyForm companyForm, BindingResult result, HttpSession session) {
 
     if (!result.hasErrors()) {
       Company company = new Company(companyForm);
       signUpService.signUp(company);
-      model.addAttribute("status", "succes");
-      // redirect to another view
+      session.setAttribute("user", (User)company);
+      return Views.ADD_COMPANY_ADDRESSES;
     }
-
     return Views.COMPANY_SIGN_UP_FORM;
   }
 

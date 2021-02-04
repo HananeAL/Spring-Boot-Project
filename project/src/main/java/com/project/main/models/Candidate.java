@@ -22,10 +22,6 @@ public class Candidate extends CandidateGeneralInfo {
   @Column(columnDefinition = "LONGBLOB")
   private byte[] cv;
 
-  @ManyToOne
-  @JoinColumn(name = "address_id")
-  private Adresse adresse;
-
   public Candidate() { }
 
   public Candidate(User user) {
@@ -67,12 +63,5 @@ public class Candidate extends CandidateGeneralInfo {
   public void setCv(byte[] cv) {
     this.cv = cv;
   }
-
-  public Adresse getAdresse() {
-    return adresse;
-  }
-
-  public void setAdresse(Adresse adresse) {
-    this.adresse = adresse;
-  }
+  
 }

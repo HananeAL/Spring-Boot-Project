@@ -34,7 +34,7 @@ public class SignInController {
       User user = signInService.getUser();
       session.setAttribute("user", user);
       if (user.getUserType().equals(UserType.CANDIDATE))
-        return Views.HOME; // whatever
+        return Views.HOME_PAGE; // whatever
       else
         return Views.ADD_COMPANY_ADDRESSES;// to test
     }

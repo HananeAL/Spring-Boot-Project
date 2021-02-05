@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Name d'Entreprises</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body>
+    <div th:replace="fragments/header :: header" />
+
+    <!--Companybar-->
+    <section class="bar">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="clearfix">
+                    <img class="company-logo img-thumbnail float-left mr-5" src="../img/3.jpg" alt="">
+                    <div class="row borderd float-right" style="margin-top: 50px;">
+                        <div class="flexbox">
+                            <div class="fav-btn">
+                                <span href="" class="favme dashicons dashicons-heart"><i class="fa fa-bookmark fa-fw"
+                                        style="font-size: 40px;margin-right: 4cm;"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="company-name"> Name d'entreprise</h1>
+                    <ul class="company-info">
+                        <li class="company-lieu"><i class="fa fa-map-marker fa-fw"></i>Lieu</li>
+                        <li class="company-link"> <a href=""> <i class="fa fa-globe fa-fw"></i>Link d'entreprise</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+                    aria-controls="description" aria-selected="true">
+                    Description d'entreprise
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="offres-tab" data-toggle="tab" href="#offres" role="tab" aria-controls="offres"
+                    aria-selected="false">
+                    Les offres
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <div class="desc-entrp">
+                    Description d'entreprise
+                </div>
+            </div>
+            <div class="tab-pane fade" id="offres" role="tabpanel" aria-labelledby="offres-tab">
+                <div class="container">
+                    <div class="row ml-3">
+                        <div class="col-sm-10 ml-5">
+                            <!--Card1-->
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info mb-2">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="row ml-5 mt-1">
+                                            <div class="flexbox">
+                                                <div class="fav-btn">
+                                                    <span href="" class="favme dashicons dashicons-heart"><i
+                                                            class="fa fa-heart fa-fw fa-10x"
+                                                            style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="date">Date</span><br>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Card2-->
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info mb-2">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="row ml-5 mt-1">
+                                            <div class="flexbox">
+                                                <div class="fav-btn">
+                                                    <span href="" class="favme dashicons dashicons-heart"><i
+                                                            class="fa fa-heart fa-fw fa-10x"
+                                                            style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="date">Date</span><br>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Card3-->
+                            <div class="card companyprofile-card">
+                                <div class="row">
+                                    <div class="card-body">
+                                        <h5 class="card-name">
+                                            <a href=""><b>Name d'offre</b></a>
+                                        </h5>
+                                        <div class="offres-info mb-2">
+                                            <span class="name-entrp">Name Entreprise</span>
+                                            <span class="ville-entrp">ville</span>
+                                        </div>
+                                        <p class="commentaire">
+                                            commentaire commentaire
+                                        </p>
+                                    </div>
+                                    <div class="card-right">
+                                        <div class="row ml-5 mt-1">
+                                            <div class="flexbox">
+                                                <div class="fav-btn">
+                                                    <span href="" class="favme dashicons dashicons-heart"><i
+                                                            class="fa fa-heart fa-fw fa-10x"
+                                                            style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="date">Date</span><br>
+                                        <span class="type">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</body>
+
+</html>

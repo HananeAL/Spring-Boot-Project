@@ -1,28 +1,46 @@
 package com.project.main.controllers;
 
+import com.project.main.models.CandidateForm;
 import com.project.main.repositories.CityRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-
-	private static final String HOME_PAGE = "home";
-	private static final String COMPANIES_PAGE = "companies";
 
 	@Autowired
 	private CityRepository cityRepository;
 
 	@GetMapping({ "/", "/home" })
 	public String getHomePage() {
-		return HOME_PAGE;
+		return Views.HOME_PAGE;
 	}
 
-	@GetMapping("/companies")
+	@RequestMapping("/companies")
 	public String getCompaniesPage() {
-		return COMPANIES_PAGE;
+		return Views.COMPANIES_PAGE;
+	}
+
+	@RequestMapping("/company-page")
+	public String getCompanyPage() {
+		// get data and put it in the model
+		return Views.COMPANY_PAGE;
+	}
+
+	@RequestMapping("/company-profile/{id}")
+	public String getCompanyProfile(@PathVariable int id, Model model) {
+		// get data put it in model
+		return Views.COMPANY_PROFILE;
+	}
+
+	@RequestMapping("/signup")
+	public String getSignUpForm(Model model) {
+		model.addAttribute("candidateForm", new CandidateForm());
+		return Views.SIGN_UP;
 	}
 
 	@GetMapping("add-skills")

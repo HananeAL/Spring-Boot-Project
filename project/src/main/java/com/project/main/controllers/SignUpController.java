@@ -7,6 +7,7 @@ import com.project.main.models.CandidateForm;
 import com.project.main.models.Company;
 import com.project.main.models.CompanyForm;
 import com.project.main.models.User;
+import com.project.main.services.CityService;
 import com.project.main.services.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class SignUpController {
 
   @Autowired
   private SignUpService signUpService;
+  @Autowired CityService cityService;
 
   @GetMapping({ "/signup/{userType}" })
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
@@ -46,6 +48,12 @@ public class SignUpController {
     return Views.CANDIDATE_SIGN_UP_FORM;
   }
 
+  @GetMapping("add-skills")
+	public String getAddSkillsPage() {
+    return Views.ADD_SKILLS;
+  }
+  
+  
   @PostMapping("/signup/company")
   public String signUp(@Valid CompanyForm companyForm, BindingResult result, HttpSession session) {
 
@@ -57,5 +65,12 @@ public class SignUpController {
     }
     return Views.COMPANY_SIGN_UP_FORM;
   }
+
+  @GetMapping("/company/add-adresses")
+	public String getAddCompanyAddrPage(Model model) {
+
+		model.addAttribute("cities", cityService.getAll());
+		return Views.ADD_COMPANY_ADDRESSES;
+	}
 
 }

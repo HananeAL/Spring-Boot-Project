@@ -26,4 +26,11 @@ public class UserType {
   public static boolean isCandidate(User user) {
     return CANDIDATE.equals(user.getUserType());
   }
+
+  public static boolean isCompant(User user) {
+    return COMPANY.equals(user.getUserType());
+  }
+
+
+
 }

@@ -1,8 +1,6 @@
 package com.project.main.controllers;
 
 import com.project.main.models.CandidateForm;
-import com.project.main.repositories.CityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-
-	@Autowired
-	private CityRepository cityRepository;
 
 	@GetMapping({ "/", "/home" })
 	public String getHomePage() {
@@ -25,6 +20,7 @@ public class HomeController {
 		return Views.COMPANIES_PAGE;
 	}
 
+	// to be changed--> /company-page/{id}
 	@RequestMapping("/company-page")
 	public String getCompanyPage() {
 		// get data and put it in the model
@@ -37,22 +33,11 @@ public class HomeController {
 		return Views.COMPANY_PROFILE;
 	}
 
+	// return an entry to sign up for candidate and companies
 	@RequestMapping("/signup")
 	public String getSignUpForm(Model model) {
 		model.addAttribute("candidateForm", new CandidateForm());
 		return Views.SIGN_UP;
 	}
-
-	@GetMapping("add-skills")
-	private String getAddSkillsPage() {
-		return Views.ADD_SKILLS;
-	}
-
-/*	@GetMapping("/company/add-adresses")
-	private String getAddCompanyAddrPage() {
-		// get cities from DB
-		cityRepository
-		return Views.ADD_COMPANY_ADDRESSES;
-	}*/
 
 }

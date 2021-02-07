@@ -29,16 +29,17 @@ CREATE TABLE IF NOT EXISTS City(
     PRIMARY KEY (id),
     UNIQUE (name)
 );
+/* just to test, we can later add more cities */
+INSERT INTO City(name) VALUES ('Agadir'), ('Casablanca'), ('Rabat'), ('Marrakech');
 
 CREATE TABLE IF NOT EXISTS Address(
     id INT UNSIGNED AUTO_INCREMENT,
-    street VARCHAR(100) NOT NULL,
-    city_id INT UNSIGNED NOT NULL,
+    street VARCHAR(100),
+    city_id INT UNSIGNED,
     user_id INT UNSIGNED,
     PRIMARY KEY (id),
     FOREIGN KEY (city_id) REFERENCES City(id),
-    FOREIGN KEY (user_id) REFERENCES User(id),
-    UNIQUE (street, city_id)
+    FOREIGN KEY (user_id) REFERENCES User(id)
 );
 
 /* represent a candidate */
@@ -192,14 +193,14 @@ CREATE TABLE IF NOT EXISTS CompanySpecialty(
     FOREIGN KEY (company_id) REFERENCES Company(id) ON DELETE CASCADE 
 );
 /* represent an address of a company */
-CREATE TABLE IF NOT EXISTS CompAddr(
+/*CREATE TABLE IF NOT EXISTS CompAddr(
     company_id INT UNSIGNED,
     address_id INT UNSIGNED,
-    is_main BOOLEAN NOT NULL, /* main address or not */ 
+    is_main BOOLEAN NOT NULL, #main address or not 
     PRIMARY KEY (company_id, address_id),
     FOREIGN KEY (company_id) REFERENCES Company(id) ON DELETE CASCADE,
     FOREIGN KEY (address_id) REFERENCES Address(id)
-);
+);*/
 /* represent a specialty of a company */
 /*CREATE TABLE IF NOT EXISTS CompSpec(
     company_id INT UNSIGNED,

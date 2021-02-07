@@ -3,6 +3,7 @@ package com.project.main.controllers;
 import javax.servlet.http.HttpSession;
 
 import com.project.main.models.User;
+import com.project.main.services.CityService;
 import com.project.main.services.SignInService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SignInController {
 
-
   @Autowired
   private SignInService signInService;
+  @Autowired
+  private CityService cityService;
 
   @GetMapping("/signin")
   public String getSignInForm() {
@@ -33,10 +35,11 @@ public class SignInController {
     } else {
       User user = signInService.getUser();
       session.setAttribute("user", user);
-      if (user.getUserType().equals(UserType.CANDIDATE))
+      if (UserType.isCandidate(user))
         return Views.HOME_PAGE; // whatever
-      else
-        return Views.ADD_COMPANY_ADDRESSES;// to test
+      else {
+        return Views.HOME_PAGE; // we can change it
+      }
     }
   }
 

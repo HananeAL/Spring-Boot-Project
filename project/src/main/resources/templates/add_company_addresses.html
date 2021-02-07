@@ -14,14 +14,23 @@
       justify-items: center;
     }
 
-    form div {
-      /*margin-right: 10%;*/
-    }
-
     #save-button {
       display: flex;
       justify-content: center;
       margin-top: 30px;
+    }
+
+    .remove-button {
+      background-color: red;
+      color: white;
+      border: none;
+      margin-left: 20px;
+    }
+
+    #addresses li {
+      display: grid;
+      grid-template-columns: 30% 10%;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -30,27 +39,41 @@
   <section>
     <h1>Enter your addresses !!!</h1>
     <div id="container">
-      <form>
+      <form id="form">
         <div>
           <label for="street">Street (optional)</label>
           <input type="text" id="street">
         </div>
         <div>
           <label for="city">City</label>
-          <select id="city">
-            <option value="agadir">Agadir</option>
-            <option value="rabat">Rabat</option>
+          <select id="cities">
+            <option th:each="city:${cities}" th:value="${city.name}" th:text="${city.name}"></option>
           </select>
         </div>
-        <div>
+        <div id="add-button">
           <button type="button">Add</button>
         </div>
       </form>
       <div id="save-button">
         <button type="button">Save</button>
       </div>
+      <ul id="addresses"></ul>
     </div>
+    <ul id="addresses"></ul>
   </section>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

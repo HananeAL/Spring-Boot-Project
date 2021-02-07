@@ -1,11 +1,8 @@
 package com.project.main.controllers;
 
 import javax.servlet.http.HttpSession;
-
 import com.project.main.models.User;
-import com.project.main.services.CityService;
 import com.project.main.services.SignInService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +15,6 @@ public class SignInController {
 
   @Autowired
   private SignInService signInService;
-  @Autowired
-  private CityService cityService;
 
   @GetMapping("/signin")
   public String getSignInForm() {

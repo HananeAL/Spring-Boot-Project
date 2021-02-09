@@ -24,7 +24,7 @@ public class SignUpController {
   private SignUpService signUpService;
   @Autowired CityService cityService;
 
-  @GetMapping({ "/signup/{userType}" })
+  @GetMapping({"/signup", "/signup/{userType}"})
   public String getSignUpForm(@PathVariable(required = false) String userType, Model model) {
 
     if (UserType.isCompany(userType)) {
@@ -38,7 +38,7 @@ public class SignUpController {
 
   @PostMapping("/signup/candidate")
   public String signUp(@Valid CandidateForm candidateForm, BindingResult result, HttpSession session) {
-    
+
     if (!result.hasErrors()) {
       Candidate candidate = new Candidate(candidateForm);
       signUpService.signUp(candidate);
@@ -52,8 +52,8 @@ public class SignUpController {
 	public String getAddSkillsPage() {
     return Views.ADD_SKILLS;
   }
-  
-  
+
+
   @PostMapping("/signup/company")
   public String signUp(@Valid CompanyForm companyForm, BindingResult result, HttpSession session) {
 

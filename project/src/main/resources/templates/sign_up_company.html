@@ -1,75 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte Entreprise</title>
     <div th:replace="fragments/header :: header-css" />
 </head>
 
-<div th:fragment="Company" class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<body style="background-color: #f8f9fa;">
+    <div th:replace="fragments/header :: header" />
 
-    <h2 class="register-heading">Créer un compte Entreprise</h2>
+    <div class="container register">
+        <div class="row">
 
-    <form method="POST" action="/signup/company" enctype="multipart/form-data" th:object="${companyForm}">
-        <div class="row register-form">
-
-            <div class="col-md-6">
+            <!-- register-left-->
+            <div class="col-md-3 register-left">
+                <a class="navbar-brand ml-0" href="/">Sta:)<span style="color: #00E8E8;">Jobs</span></a>
+                <h3 style="font-family: auto;margin-top: 20px;">Bonjour</h3>
+                <p>
+                    Notre mission vous simplifier le travail! <br>
+                    Tout le monde peut utiliser <span style="font-family: 'Pacifico'; color: #de7537;">Sta:)Jobs.</span>
+                </p>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email *" name="email" id="email">
+                    <p class="text-center" style="margin-top: 10px;">Vous avez déjà un compte?
+                        <a href="/signin" style="color: #88edfd;"> Connectez-vous ici</a>
+                    </p>
                 </div>
 
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Mot de passe *" name="password"
-                        id="password">
-                </div>
+            </div>
+
+            <!-- register-right-->
+            <div class="col-md-9 register-right">
+
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup/candidate">Candidat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/signup/candidate">Entreprise</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h2 class="register-heading">Créer un compte Entreprise</h2>
+
+                        <form method="POST" action="/signup/company" enctype="multipart/form-data"
+                            th:object="${companyForm}">
+                            <div class="row register-form mb-0 pb-3">
+
+                                <div class="col-md-6 mb-0 pb-0">
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="email">Email *:</label>
+                                        <input type="email" class="form-control mt-0" placeholder="Email *" name="email"
+                                            id="email" th:field="*{email}">
+                                        <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="password">Mot de passe *:</label>
+                                        <input type="password" class="form-control mt-0" placeholder="Mot de passe *"
+                                            name="password" id="password" th:field="*{password}">
+                                        <p class="error" th:if="${#fields.hasErrors('password')}"
+                                            th:errors="*{password}"></p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="nameCompany">Nom d'entreprise
+                                            *:</label>
+                                        <input type="text" class="form-control mt-0" placeholder="Nom d'entreprise *"
+                                            name="nameCompany" id="nameCompany">
+                                        <!--<input type="text" class="form-control mt-0" placeholder="Nom d'entreprise *"
+                                            name="nameCompany" id="nameCompany" th:field="*{nameCompany}">-->
+                                        <!--<p class="error" th:if="${#fields.hasErrors('nameCompany')}" th:errors="*{nameCompany}">-->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="logo">Logo d'entreprise *:</label>
+                                        <input type="file" class="form-control mt-0" aria-describedby="logo" name="logo"
+                                            id="logo" th:field="*{logo}" />
+                                        <p class="error" th:if="${#fields.hasErrors('logo')}" th:errors="*{logo}"></p>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="size">Size d'entreprise *:</label>
+                                        <input type="text" class="form-control mt-0" placeholder="Size d'entreprise *"
+                                            name="size" id="size" th:field="*{size}">
+                                        <p class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="foundationDate">Date de fondation
+                                            *:</label>
+                                        <input type="date" class="form-control mt-0" placeholder="Date de fondation *"
+                                            name="foundationDate" id="foundationDate" th:field="*{foundationDate}">
+                                        <p class="error" th:if="${#fields.hasErrors('foundationDate')}"
+                                            th:errors="*{foundationDate}">
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="wallpaper">Ajouter une wallpape
+                                            *:</label>
+                                        <input type="file" class="form-control mt-0" aria-describedby="wallpaper"
+                                            name="wallpaper" id="wallpaper" th:field="*{wallpaper}" />
+                                    </div>
+                                    <p class="error" th:if="${#fields.hasErrors('wallpaper')}" th:errors="*{wallpaper}">
+                                    </p>
+                                </div>
 
 
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="description">Description *:</label>
+                                        <textarea name="description" class="form-control mt-0"
+                                            placeholder="Description *" id="description" th:field="*{description}"
+                                            rows="3" style="margin-top: 0px;"></textarea>
+                                        <p class="error" th:if="${#fields.hasErrors('description')}"
+                                            th:errors="*{description}"></p>
+                                    </div>
+                                </div>
 
-                <div class="form-group">
-                    <div class="custom-file">
-                        <input type="file" aria-describedby="logo" name="logo" id="logo" />
-                        <label class="custom-file-label" for="photo">Logo d'entreprise *</label>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <input type="submit" class="btnRegister" value="Register">
+                                </div>
+                            </div>
+
+                        </form>
+                        <p th:if="${status} != null" th:text="'status:' +  ${status}"></p>
                     </div>
                 </div>
-
             </div>
-
-            <div class="col-md-6">
-
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Size d'entreprise *" name="size" id="size">
-                </div>
-
-                <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Date de fondation *" name="foundationDate"
-                        id="foundationDate">
-                </div>
-
-                <div class="form-group">
-                    <div class="custom-file">
-                        <input type="file" aria-describedby="wallpaper" name="wallpaper" id="wallpaper" />
-                        <label class="custom-file-label" for="wallpaper">Ajouter une wallpaper *</label>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="Description *" id="description"
-                        rows="3" style="margin-top: 0px;"></textarea>
-                </div>
-            </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <input type="submit" class="btnRegister" value="Register">
-            </div>
-
         </div>
-    </form>
-</div>
 
+        <div th:replace="fragments/footer :: footer" />
 </body>
 
 </html>

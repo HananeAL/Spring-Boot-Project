@@ -33,11 +33,4 @@ public class HomeController {
 		return Views.COMPANY_PROFILE;
 	}
 
-	// return an entry to sign up for candidate and companies
-	@RequestMapping("/signup")
-	public String getSignUpForm(Model model) {
-		model.addAttribute("candidateForm", new CandidateForm());
-		return Views.SIGN_UP;
-	}
-
 }

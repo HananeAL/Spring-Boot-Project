@@ -368,9 +368,17 @@ body {
 }
 
 /*-- SingUp --*/
+label {
+  color: #343a40;
+}
+
+.error {
+  color: red;
+}
+
 .register {
   background: #343a40;
-  margin-top: 4%;
+  margin-top: 1%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 72%);
 }
 

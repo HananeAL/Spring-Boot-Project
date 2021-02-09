@@ -15,11 +15,6 @@ public class HomeController {
 		return Views.HOME_PAGE;
 	}
 
-	@RequestMapping("/companies")
-	public String getCompaniesPage() {
-		return Views.COMPANIES_PAGE;
-	}
-
 	// to be changed--> /company-page/{id}
 	@RequestMapping("/company-page")
 	public String getCompanyPage() {

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -20,7 +21,8 @@ public class Company extends CompanyGeneralInfo {
   @Column(columnDefinition = "BLOB")
   private byte[] wallpaper;
 
-  public Company() {}
+  public Company() {
+  }
 
   public Company(CompanyForm companyForm) {
     super(companyForm);
@@ -38,12 +40,16 @@ public class Company extends CompanyGeneralInfo {
   private void setLogo(MultipartFile logo) {
     try {
       this.logo = logo.getBytes();
-    } catch(IOException e) {
+    } catch (IOException e) {
     }
   }
 
   public byte[] getLogo() {
     return logo;
+  }
+
+  public String generateBase64Logo() {
+    return Base64.encodeBase64String(this.getLogo());
   }
 
   public void setLogo(byte[] logo) {
@@ -54,9 +60,12 @@ public class Company extends CompanyGeneralInfo {
     return wallpaper;
   }
 
+  public String generateBase64Wallpaper() {
+    return Base64.encodeBase64String(this.getWallpaper());
+  }
+
   public void setWallpaper(byte[] wallpaper) {
     this.wallpaper = wallpaper;
   }
 
-  
 }

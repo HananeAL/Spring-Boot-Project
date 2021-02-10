@@ -15,29 +15,10 @@ public class HomeController {
 		return Views.HOME_PAGE;
 	}
 
-	@RequestMapping("/companies")
-	public String getCompaniesPage() {
-		return Views.COMPANIES_PAGE;
-	}
-
-	// to be changed--> /company-page/{id}
-	@RequestMapping("/company-page")
-	public String getCompanyPage() {
-		// get data and put it in the model
-		return Views.COMPANY_PAGE;
-	}
-
 	@RequestMapping("/company-profile/{id}")
 	public String getCompanyProfile(@PathVariable int id, Model model) {
 		// get data put it in model
 		return Views.COMPANY_PROFILE;
-	}
-
-	// return an entry to sign up for candidate and companies
-	@RequestMapping("/signup")
-	public String getSignUpForm(Model model) {
-		model.addAttribute("candidateForm", new CandidateForm());
-		return Views.SIGN_UP;
 	}
 
 }

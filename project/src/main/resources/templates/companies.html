@@ -50,55 +50,28 @@
 
     <!-- CompanyCard -->
     <div class="container">
+        <div class="alert alert-companies text-center" th:if="${companies.empty}">
+            No Companies Available
+        </div>
         <div class="row">
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" th:each="company : ${companies}">
                 <div class="card company-card">
-                    <img class="card-img" src="../img/1.jpg" alt="">
+                    <img class="card-img" th:src="@{'data:image/png;base64,'+${company.generateBase64Wallpaper()}}">
                     <div class="logo-wrapper">
-                        <img src="../img/3.jpg" />
+                        <img th:src="@{'data:image/png;base64,'+${company.generateBase64Logo()}}" />
                     </div>
                     <div class="container">
                         <h5 class="card-name">
-                            <a href="/company-page"><b>Name de l'Entreprise</b></a>
+                            <a th:href="@{/company-page/{id}(id=${company.id})}"><b th:utext="${company.name}"></b></a>
                         </h5>
-                        <p class="card-offre">Nbr des Ofrres</p>
+                        <p class="card-offre">Nbr des Offres</p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="card company-card">
-                    <img class="card-img" src="../img/1.jpg" alt="">
-                    <div class="logo-wrapper">
-                        <img src="../img/3.jpg" />
-                    </div>
-                    <div class="container">
-                        <h5 class="card-name">
-                            <a href="/company-page"><b>Name de l'Entreprise</b></a>
-                        </h5>
-                        <p class="card-offre">Nbr des Ofrres</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card company-card">
-                    <img class="card-img" src="../img/1.jpg" alt="">
-                    <div class="logo-wrapper">
-                        <img src="../img/3.jpg" />
-                    </div>
-                    <div class="container">
-                        <h5 class="card-name">
-                            <a href="/company-page"><b>Name de l'Entreprise</b></a>
-                        </h5>
-                        <p class="card-offre">Nbr des Ofrres</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <div th:replace="fragments/footer :: footer" />
+    </div>
+    <div th:replace="fragments/footer :: footer" />
 </body>
 
 </html>

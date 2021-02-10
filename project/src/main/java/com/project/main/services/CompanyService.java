@@ -1,6 +1,6 @@
 package com.project.main.services;
 
-import java.util.ArrayList;
+import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,18 @@ public class CompanyService {
     private CompanyRepository companyRepository;
 
     public List<Company> getAllCompanies() {
-        List<Company> companies = new ArrayList<Company>();
-        for (Company company : companyRepository.findAll()) {
-            companies.add(company);
+        return companyRepository.findAll();
+    }
+
+    public Company getCompanyById(int id) {
+        Optional<Company> optional = companyRepository.findById(id);
+        Company company = null;
+        if (optional.isPresent()) {
+            company = optional.get();
+        } else {
+            throw new RuntimeException("Company not found for id :: " + id);
         }
-        return companies;
+        return company;
     }
 
 }

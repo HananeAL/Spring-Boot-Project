@@ -14,7 +14,8 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="clearfix">
-                    <img class="company-logo img-thumbnail float-left mr-5" src="../img/3.jpg" alt="">
+                    <img class="company-logo img-thumbnail float-left mr-5"
+                        th:src="@{'data:image/png;base64,'+${company.generateBase64Logo()}}" />
                     <div class="row borderd float-right" style="margin-top: 50px;">
                         <div class="flexbox">
                             <div class="fav-btn">
@@ -23,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="company-name"> Name d'entreprise</h1>
+                    <h1 class="company-name"><span th:utext="${company.name}"></span></h1>
                     <ul class="company-info">
                         <li class="company-lieu"><i class="fa fa-map-marker fa-fw"></i>Lieu</li>
                         <li class="company-link"> <a href=""> <i class="fa fa-globe fa-fw"></i>Link d'entreprise</a>
@@ -54,7 +55,10 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                 <div class="desc-entrp">
-                    Description d'entreprise
+                    Description d'entreprise<br>
+                    Lieu : <span></span><br>
+                    size : <span th:utext="${company.size}"></span><br>
+                    Création : <span th:utext="${company.foundationDate}"></span>
                 </div>
             </div>
             <div class="tab-pane fade" id="offres" role="tabpanel" aria-labelledby="offres-tab">

@@ -15,13 +15,6 @@ public class HomeController {
 		return Views.HOME_PAGE;
 	}
 
-	// to be changed--> /company-page/{id}
-	@RequestMapping("/company-page")
-	public String getCompanyPage() {
-		// get data and put it in the model
-		return Views.COMPANY_PAGE;
-	}
-
 	@RequestMapping("/company-profile/{id}")
 	public String getCompanyProfile(@PathVariable int id, Model model) {
 		// get data put it in model

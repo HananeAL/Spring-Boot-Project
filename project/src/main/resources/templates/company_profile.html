@@ -18,12 +18,12 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3">
-                      <h4>AppCompany</h4>
+                    <img src="" alt="Company Logo" class="rounded-circle" width="150">
+                    <!-- <div class="mt-3">
+                      <h4>Company Name</h4>
                       <p class="text-secondary mb-1">Web Application</p>
                       <p class="text-muted font-size-sm">Casa , Hay Alfarah</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -34,10 +34,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Company Name</i></h6>
+                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="text" value="AppCompany"></input>
+                      <input type="text" th:value="${company.name}"></input>
                     </div>
                   </div>
                   <hr>
@@ -46,18 +46,18 @@
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     <input type="email" value="AppCompany@gmail.com"></input> 
+                     <input type="email" th:value=${company.email}/> 
                     </div>
                   </div>
                   <hr>
-                  <div  class="row">
+                  <!-- <div  class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Password</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                      <input type="password" value=""></input> 
                     </div>
-                  </div>
+                  </div> -->
                   <hr>
 
                    <div class="row">
@@ -65,7 +65,7 @@
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Size</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="number" value="14"></input> 
+                      <input type="number" th:value=${company.size}/> 
                     </div>
                   </div>
                   <hr>
@@ -74,7 +74,7 @@
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Foundation Date</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     <input type="date" value=" 12/06/1998 "></input>  
+                     <input type="date" th:value=${company.foundationDate}/>  
                     </div>
                   </div>
                   <hr>
@@ -93,7 +93,7 @@
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <textarea class="form-control"  placeholder ="Description *"name="description" id="description" rows="3">our company is the best in our domaine</textarea> 
+                      <textarea class="form-control"  placeholder ="Description *"name="description" id="description" rows="3" th:text=${company.description}></textarea> 
                     </div>
                   </div>
                   

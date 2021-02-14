@@ -33,10 +33,10 @@
 
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" href="/signup/candidate">Candidat</a>
+                        <a class="nav-link" href="/candidate/signup">Candidat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/signup/candidate">Entreprise</a>
+                        <a class="nav-link active" href="/company/signup">Entreprise</a>
                     </li>
                 </ul>
 
@@ -44,7 +44,7 @@
                     <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h2 class="register-heading">Créer un compte Entreprise</h2>
 
-                        <form method="POST" action="/signup/company" enctype="multipart/form-data"
+                        <form method="POST" action="/company/signup" enctype="multipart/form-data"
                             th:object="${companyForm}">
                             <div class="row register-form mb-0 pb-3">
 

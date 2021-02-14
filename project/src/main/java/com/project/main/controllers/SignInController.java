@@ -24,18 +24,19 @@ public class SignInController {
   @PostMapping("/signin")
   public String signIn(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
 
-    if (!signInService.isUser(email, password)) {
-      model.addAttribute("error", "invalid email and/or password");
-      return Views.SIGN_IN_FORM;
-    } else {
+    boolean isUser = signInService.isUser(email, password);
+    if (isUser) {
       User user = signInService.getUser();
       session.setAttribute("user", user);
       if (UserType.isCandidate(user))
         return Views.HOME_PAGE; // whatever
-      else {
-        return Views.HOME_PAGE; // we can change it
-      }
+      else
+        return "redirect:/company/profile"; // ! we should be changed to company/profile
+    } else {
+      model.addAttribute("error", "invalid email and/or password");
+      return Views.SIGN_IN_FORM;
     }
+
   }
 
 }

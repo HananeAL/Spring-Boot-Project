@@ -22,6 +22,10 @@ public class AddressService {
   @Autowired 
   private CityRepository cityRepository;
 
+  public List<Address> getAddresses(User user) {
+    return addressRepository.findByUserId(user.getId());
+  }
+  
   public void saveAll(Address[] addresses, User user) {
     Map<String, Integer> ids = getIds();
     for (Address a : addresses) {
@@ -41,6 +45,8 @@ public class AddressService {
     }
     return ids;
   }
+
+
 
 
 

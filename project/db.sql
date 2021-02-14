@@ -212,43 +212,46 @@ CREATE TABLE IF NOT EXISTS CompanySpecialty(
 
 CREATE TABLE IF NOT EXISTS Offer(
     id INT UNSIGNED AUTO_INCREMENT,
+    type ENUM('cdd', 'cdi', 'stage', 'pfa', 'pfe'),
+    speciality VARCHAR(255) NOT NULL,
+    city VARCHAR(50) NOT NULL,
     position VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    min_exp TINYINT UNSIGNED,
-    max_exp TINYINT UNSIGNED,
+    min_experience TINYINT UNSIGNED,
+    max_experience TINYINT UNSIGNED,
     min_salary DECIMAL,
     max_salary DECIMAL,
     start_date DATE NOT NULL,
     end_date DATE,
     creation_date DATE NOT NULL,
-    closing_date DATE, /* date in which the offer will be closed automatically */
-    is_open BOOLEAN NOT NULL,
+    closing_date DATE, /*date in which the offer will be closed automatically*/
+    /*is_open BOOLEAN NOT NULL,*/
     is_public BOOLEAN NOT NULL,
-    receive_recomm BOOLEAN NOT NULL,
-    offer_type_id INT UNSIGNED,
+    receive_recommendations BOOLEAN NOT NULL,
+    /*offer_type_id INT UNSIGNED,*/
     company_id INT UNSIGNED,
     PRIMARY KEY (id),
-    FOREIGN KEY (offer_type_id) REFERENCES OfferType(id),
+    /*FOREIGN KEY (offer_type_id) REFERENCES OfferType(id),*/
     FOREIGN KEY (company_id) REFERENCES Company(id) ON DELETE CASCADE,
-    CHECK (min_exp <= max_exp),
+    CHECK (min_experience <= max_experience),
     CHECK (min_salary <= max_salary)
 );
 /* represent a responsability in an offer */
-CREATE TABLE IF NOT EXISTS OfferResp(
+CREATE TABLE IF NOT EXISTS OfferResponsibility(
     id INT UNSIGNED AUTO_INCREMENT,
-    resp TEXT NOT NULL,
+    name TEXT NOT NULL,
     offer_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (offer_id) REFERENCES Offer(id) ON DELETE CASCADE
 );
 /* represent a skill in an offer */
 CREATE TABLE IF NOT EXISTS OfferSkill(
+    id INT UNSIGNED AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    level ENUM('beginner', 'intermidate', 'advanced'),
     offer_id INT UNSIGNED,
-    skill_id INT UNSIGNED,
-    min_level ENUM('beginner', 'intermidate', 'advanced'),
-    PRIMARY KEY (offer_id, skill_id),
-    FOREIGN KEY (offer_id) REFERENCES Offer(id) ON DELETE CASCADE,
-    FOREIGN KEY (skill_id) REFERENCES Skill(id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (offer_id) REFERENCES Offer(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS EducationLevel(

@@ -43,11 +43,6 @@
                             <option>STAGE</option>
                             <option>PFA</option>
                             <option>PFE</option>
-                            <option>CDI</option>
-                            <option>CDD</option>
-                            <option>STAGE</option>
-                            <option>PFA</option>
-                            <option>PFE</option>
                         </select>
                     </div>
 
@@ -72,7 +67,8 @@
                             <div class="card-body panel-body" style="padding: 0px;">
                                 <!--Panel Body-->
                                 <!--Card1-->
-                                <div class="card offre-card">
+
+                                <div th:each="offer: ${offers}" class="card offre-card">
                                     <div class="row">
                                         <div class="card-body" style="padding-bottom: 5px;">
                                             <div class="clearfix">
@@ -80,15 +76,15 @@
                                                     src="../img/3.jpg" alt="">
 
                                                 <h5 class="card-name">
-                                                    <a href=""><b>Name d'offre</b></a>
+                                                    <a href=""><b th:text="${offer.position}">Name d'offre</b></a>
                                                 </h5>
                                                 <div class="offres-info mb-2">
                                                     <span class="name-entrp">Name Entreprise</span>
-                                                    <span class="ville-entrp">ville</span>
+                                                    <span class="ville-entrp" th:text="${offer.city}">ville</span>
                                                 </div>
-                                                <p class="commentaire">
+                                                <!-- <p class="commentaire">
                                                     commentaire commentaire
-                                                </p>
+                                                </p> -->
                                             </div>
                                         </div>
                                         <div class="card-right">
@@ -101,13 +97,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="date">Date</span><br>
-                                            <span class="type">Type</span>
+                                            <span class="date" th:text="${offer.creationDate}">Date</span><br>
+                                            <span class="type" th:text="${offer.type}">Type</span>
                                         </div>
                                     </div>
                                 </div>
                                 <!--Card2-->
-                                <div class="card offre-card">
+                                <!-- <div class="card offre-card">
                                     <div class="row">
                                         <div class="card-body" style="padding-bottom: 5px;">
                                             <div class="clearfix">
@@ -140,9 +136,9 @@
                                             <span class="type">Type</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!--Card3-->
-                                <div class="card offre-card">
+                                <!-- <div class="card offre-card">
                                     <div class="row">
                                         <div class="card-body" style="padding-bottom: 5px;">
                                             <div class="clearfix">
@@ -175,7 +171,7 @@
                                             <span class="type">Type</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

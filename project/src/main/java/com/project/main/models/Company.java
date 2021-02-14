@@ -4,9 +4,7 @@ import java.io.IOException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Company extends CompanyGeneralInfo {
@@ -26,22 +24,20 @@ public class Company extends CompanyGeneralInfo {
 
   public Company(CompanyForm companyForm) {
     super(companyForm);
-    setLogo(companyForm.getLogo());
-    setWallpaper(companyForm.getWallpaper());
-  }
-
-  private void setWallpaper(MultipartFile wallpaper) {
     try {
-      this.wallpaper = wallpaper.getBytes();
+      setLogo(companyForm.getLogo().getBytes());
     } catch (IOException e) {
+      e.printStackTrace();
+    }
+    try {
+      setWallpaper(companyForm.getWallpaper().getBytes());
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
-  private void setLogo(MultipartFile logo) {
-    try {
-      this.logo = logo.getBytes();
-    } catch (IOException e) {
-    }
+  public Company(User user) {
+    setId(user.getId());
   }
 
   public byte[] getLogo() {

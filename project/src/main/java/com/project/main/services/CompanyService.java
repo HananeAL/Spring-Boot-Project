@@ -18,6 +18,10 @@ public class CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
 
+    public void signUp(Company company) {
+        companyRepository.save(company);
+    }
+
     public List<Company> getAllCompanies() {
         return companyRepository.findAll();
     }
@@ -27,10 +31,16 @@ public class CompanyService {
         Company company = null;
         if (optional.isPresent()) {
             company = optional.get();
-        } else {
-            throw new RuntimeException("Company not found for id :: " + id);
         }
         return company;
+    }
+
+    /*
+     * the same as getCompanyById(int), just wanted to change the name without
+     * affecting existing code
+     */
+    public Company getCompany(int id) {
+        return getCompanyById(id);
     }
 
 }

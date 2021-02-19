@@ -19,11 +19,11 @@ public class ImageValidator implements ConstraintValidator<Image, MultipartFile>
   }
 
   private boolean isJpg(String extension) {
-    return extension != null && extension.equals("jpg");
+    return extension != null && extension.equalsIgnoreCase("jpg");
   }
 
   private boolean isPng(String extension) {
-    return extension != null && extension.equals("png");
+    return extension != null && extension.equalsIgnoreCase("png");
   }
 
 

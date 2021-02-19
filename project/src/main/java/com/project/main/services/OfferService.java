@@ -35,4 +35,18 @@ public class OfferService {
   public List<Offer> getAll() {
     return offerRepository.findAll();
   }
+
+  public List<Offer> getOffers(Company company) {
+    return offerRepository.findByCompanyId(company.getId());   
+  }
+
+
+
+
+
+
+
+
+
+  
 }

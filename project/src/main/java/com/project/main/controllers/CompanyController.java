@@ -7,6 +7,7 @@ import com.project.main.models.CompanyForm;
 import com.project.main.models.User;
 import com.project.main.services.CityService;
 import com.project.main.services.CompanyService;
+import com.project.main.services.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CompanyController {
@@ -26,12 +26,14 @@ public class CompanyController {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private OfferService offerService;
 
     @GetMapping("company/signup")
     public String getSignUpForm(Model model) {
 
-      model.addAttribute("companyForm", new CompanyForm());
-      return Views.COMPANY_SIGN_UP_FORM;
+        model.addAttribute("companyForm", new CompanyForm());
+        return Views.COMPANY_SIGN_UP_FORM;
     }
 
     @PostMapping("/company/signup")
@@ -46,21 +48,20 @@ public class CompanyController {
         return Views.COMPANY_SIGN_UP_FORM;
     }
 
-    @GetMapping("company/add-addresses")
+    @GetMapping("/company/add-addresses")
     public String getAddCompanyAddrPage(Model model) {
         model.addAttribute("cities", cityService.getAll());
         return Views.ADD_COMPANY_ADDRESSES;
     }
 
-    
-    @GetMapping("/company/profile")
-    public String getCompanyProfile(Model model, HttpSession session) {
+    @GetMapping("/company/offers")
+    public String getCompanyOffersPage(Model model, HttpSession session) {
         // we are sure the user is signed in and it's a company (thanks to filters)
-        User user = (User)session.getAttribute("user");
-        model.addAttribute("company", user);
-        return Views.COMPANY_PROFILE;
+        User user = (User) session.getAttribute("user");
+        Company company = new Company(user);
+        model.addAttribute("offers", offerService.getOffers(company));
+        return Views.COMPANY_OFFERS_PAGE;
     }
-
 
     @RequestMapping("/companies")
     public String getAllCompanies(Model model) {
@@ -70,7 +71,13 @@ public class CompanyController {
 
     @RequestMapping("/company-page/{id}")
     public String getCompanyPage(@PathVariable int id, Model model) {
-        model.addAttribute("company", companyService.getCompanyById(id));
-        return Views.COMPANY_PAGE;
+        Company company = companyService.getCompanyById(id);
+        if (company == null) {
+            return "redirect:/companies";
+        } 
+        else {
+            model.addAttribute("company", company);
+            return Views.COMPANY_PAGE;
+        }
     }
 }

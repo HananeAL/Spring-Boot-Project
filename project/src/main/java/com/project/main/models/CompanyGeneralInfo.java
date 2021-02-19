@@ -1,5 +1,6 @@
 package com.project.main.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
@@ -21,7 +22,10 @@ public class CompanyGeneralInfo extends User {
 
   @NotNull(message = "foundation date is required")
   @PastOrPresent(message = "foundation date must be in the past or the present")
-  private Date foundationDate;
+  private LocalDate foundationDate;
+
+  @NotBlank(message = "site web is required")
+  private String site_web;
 
   public CompanyGeneralInfo() {
   }
@@ -31,6 +35,7 @@ public class CompanyGeneralInfo extends User {
     setName(companyGeneralInfo.getName());
     setSize(companyGeneralInfo.getSize());
     setFoundationDate(companyGeneralInfo.getFoundationDate());
+    setSite_web(companyGeneralInfo.getSite_web());
   }
 
   public String getName() {
@@ -49,12 +54,20 @@ public class CompanyGeneralInfo extends User {
     this.size = size;
   }
 
-  public Date getFoundationDate() {
+  public LocalDate getFoundationDate() {
     return foundationDate;
   }
 
-  public void setFoundationDate(Date foundationDate) {
+  public void setFoundationDate(LocalDate foundationDate) {
     this.foundationDate = foundationDate;
+  }
+
+  public String getSite_web() {
+    return site_web;
+  }
+
+  public void setSite_web(String site_web) {
+    this.site_web = site_web;
   }
 
 }

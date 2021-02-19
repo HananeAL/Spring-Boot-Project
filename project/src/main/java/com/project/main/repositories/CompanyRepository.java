@@ -9,4 +9,5 @@ public interface CompanyRepository extends CrudRepository<Company, Integer> {
 
     List<Company> findAll();
 
+    List<Company> findByNameLike(String name);
 }

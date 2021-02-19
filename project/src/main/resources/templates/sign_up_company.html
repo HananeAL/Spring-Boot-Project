@@ -10,7 +10,7 @@
     <div th:replace="fragments/header :: header" />
 
     <div class="container register">
-        <div class="row">
+        <div class="row mb-3">
 
             <!-- register-left-->
             <div class="col-md-3 register-left">
@@ -99,6 +99,15 @@
                                         <p class="error" th:if="${#fields.hasErrors('foundationDate')}"
                                             th:errors="*{foundationDate}">
                                         </p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="mb-0 font-weight-bold" for="site_web">Site web
+                                            *:</label>
+                                        <input type="text" class="form-control mt-0" placeholder="Site web *"
+                                            name="site_web" id="site_web" th:field="*{site_web}">
+                                        <p class="error" th:if="${#fields.hasErrors('site_web')}"
+                                            th:errors="*{site_web}">-
                                     </div>
 
                                     <div class="form-group">

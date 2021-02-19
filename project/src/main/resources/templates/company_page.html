@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Name d'Entreprises</title>
+    <title th:utext="${company.name}"></title>
     <div th:replace="fragments/header :: header-css" />
 </head>
 
@@ -26,8 +26,15 @@
                     </div>
                     <h1 class="company-name"><span th:utext="${company.name}"></span></h1>
                     <ul class="company-info">
-                        <li class="company-lieu"><i class="fa fa-map-marker fa-fw"></i>Lieu</li>
-                        <li class="company-link"> <a href=""> <i class="fa fa-globe fa-fw"></i>Link d'entreprise</a>
+                        <li class="company-email">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span th:utext="${company.email}"></span>
+                        </li>
+                        <li class="company-link">
+                            <a th:href="${company.site_web}" target="_blank">
+                                <i class="fa fa-globe mr-2"></i>
+                                <span th:utext="${company.site_web}"></span>
+                            </a>
                         </li>
                     </ul>
 
@@ -37,50 +44,64 @@
     </section>
 
     <div class="container">
-
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
-                    aria-controls="description" aria-selected="true">
-                    Description d'entreprise
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="offres-tab" data-toggle="tab" href="#offres" role="tab" aria-controls="offres"
-                    aria-selected="false">
-                    Les offres
-                </a>
-            </li>
-        </ul>
+        <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+                        aria-controls="description" aria-selected="true">
+                        Description d'entreprise
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="offres-tab" data-toggle="tab" href="#offres" role="tab"
+                        aria-controls="offres" aria-selected="false">
+                        Les offres (<span th:text="${nbrOffers}"></span>)
+                    </a>
+                </li>
+            </ul>
+            <div class="pull-right ml-5 sidebar">
+                <div class="sidebar_content">
+                    <ul class="mt-2" style="padding-left: 15px;">
+                        <li class="company-lieu" style="list-style: none; white-space: nowrap;"
+                            th:each="address : ${addresses}">
+                            <i class="fa fa-map-marker mr-2"></i><span th:text="${address.street}"></span> -
+                            <span th:text="${address.getCity().name}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                <div class="desc-entrp">
-                    Description d'entreprise<br>
-                    Lieu : <span></span><br>
+                <div class="desc-entrp mt-4 col-8">
+                    <span th:utext="${company.description}"></span><br>
                     size : <span th:utext="${company.size}"></span><br>
                     Création : <span th:utext="${company.foundationDate}"></span>
                 </div>
             </div>
             <div class="tab-pane fade" id="offres" role="tabpanel" aria-labelledby="offres-tab">
                 <div class="container">
-                    <div class="row ml-3">
-                        <div class="col-sm-10 ml-5">
-                            <!--Card1-->
-                            <div class="card companyprofile-card">
+                    <div class="row">
+                        <div class="col-sm-12 ml-5">
+                            <div class="alert alert-offer text-center mt-4" th:if="${offers.empty}">
+                                Aucune offre disponible
+                            </div>
+
+                            <div class="card companyprofile-card" th:each="offer : ${offers}">
                                 <div class="row">
-                                    <div class="card-body">
+                                    <div class="card-body col-10">
                                         <h5 class="card-name">
-                                            <a href=""><b>Name d'offre</b></a>
+                                            <a href="#"><b><span th:utext="${offer.position}"></span></b></a>
                                         </h5>
                                         <div class="offres-info mb-2">
-                                            <span class="name-entrp">Name Entreprise</span>
-                                            <span class="ville-entrp">ville</span>
+                                            <span class="name-entrp" th:utext="${company.name}"></span>
+                                            <span class="ville-entrp" th:utext="${offer.city}"></span>
                                         </div>
                                         <p class="commentaire">
-                                            commentaire commentaire
+                                            <span th:utext="${offer.description}"></span>
                                         </p>
                                     </div>
-                                    <div class="card-right">
+                                    <div class="card-right col-2">
                                         <div class="row ml-5 mt-1">
                                             <div class="flexbox">
                                                 <div class="fav-btn">
@@ -90,71 +111,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="date">Date</span><br>
-                                        <span class="type">Type</span>
+                                        <span class="date" th:utext="${offer.creationDate}"></span><br>
+                                        <span class="type ml-4" th:utext="${offer.type}"></span>
                                     </div>
                                 </div>
                             </div>
-                            <!--Card2-->
-                            <div class="card companyprofile-card">
-                                <div class="row">
-                                    <div class="card-body">
-                                        <h5 class="card-name">
-                                            <a href=""><b>Name d'offre</b></a>
-                                        </h5>
-                                        <div class="offres-info mb-2">
-                                            <span class="name-entrp">Name Entreprise</span>
-                                            <span class="ville-entrp">ville</span>
-                                        </div>
-                                        <p class="commentaire">
-                                            commentaire commentaire
-                                        </p>
-                                    </div>
-                                    <div class="card-right">
-                                        <div class="row ml-5 mt-1">
-                                            <div class="flexbox">
-                                                <div class="fav-btn">
-                                                    <span href="" class="favme dashicons dashicons-heart"><i
-                                                            class="fa fa-heart fa-fw fa-10x"
-                                                            style="margin-bottom: 15px; font-size: 20px;"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="date">Date</span><br>
-                                        <span class="type">Type</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Card3-->
-                            <div class="card companyprofile-card">
-                                <div class="row">
-                                    <div class="card-body">
-                                        <h5 class="card-name">
-                                            <a href=""><b>Name d'offre</b></a>
-                                        </h5>
-                                        <div class="offres-info mb-2">
-                                            <span class="name-entrp">Name Entreprise</span>
-                                            <span class="ville-entrp">ville</span>
-                                        </div>
-                                        <p class="commentaire">
-                                            commentaire commentaire
-                                        </p>
-                                    </div>
-                                    <div class="card-right">
-                                        <div class="row ml-5 mt-1">
-                                            <div class="flexbox">
-                                                <div class="fav-btn">
-                                                    <span href="" class="favme dashicons dashicons-heart"><i
-                                                            class="fa fa-heart fa-fw fa-10x"
-                                                            style="margin-bottom: 15px; font-size: 20px;"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="date">Date</span><br>
-                                        <span class="type">Type</span>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

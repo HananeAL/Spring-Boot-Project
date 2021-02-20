@@ -10,7 +10,7 @@ const CITIES_LIST_ID = "cities";
 const ADDRESS_LIST_ID = "addresses";
 const ERROR_ID = "error";
 const REMOVE_BUTTON_CLASS = "remove-button";
-const HOME = "/home";
+const PROFILE = "/company/offers";
 const URL = "/signup/add-company-addresses";
 
 const errorMessage = {
@@ -23,7 +23,7 @@ function sendAddresses() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      window.location = HOME; // redirect the company to the home !
+      window.location = PROFILE; // redirect the company to it's profile page
     }
   }
   var addresses = JSON.stringify(getAddresses());

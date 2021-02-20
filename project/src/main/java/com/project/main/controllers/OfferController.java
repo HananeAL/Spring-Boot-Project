@@ -1,6 +1,5 @@
 package com.project.main.controllers;
 
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import com.project.main.models.Company;
 import com.project.main.models.Offer;
@@ -25,11 +24,10 @@ public class OfferController {
   private CityService cityService;
 
   @GetMapping({ "/", "/home" })
-  @ResponseBody
-  public List<Offer> getOffers(Model model) {
+  public String getOffers(Model model) {
 
     model.addAttribute("offers", offerService.getAll());
-    return offerService.getAll();
+    return Views.HOME_PAGE;
   }
 
   @GetMapping("/company/post-offer")

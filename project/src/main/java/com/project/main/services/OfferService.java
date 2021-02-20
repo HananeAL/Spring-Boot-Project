@@ -1,12 +1,9 @@
 package com.project.main.services;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-
 import com.project.main.models.Company;
 import com.project.main.models.Offer;
-import com.project.main.models.User;
 import com.project.main.repositories.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

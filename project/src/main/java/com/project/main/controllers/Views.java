@@ -12,5 +12,6 @@ abstract public class Views {
   public static final String COMPANY_SIGN_UP_FORM = "sign_up_company";
   public static final String ADD_COMPANY_ADDRESSES = "add_company_addresses";
   public static final String POST_OFFER_FORM = "post_offer";
+  public static final String COMPANY_OFFERS_PAGE = "company_offers";
 
 }

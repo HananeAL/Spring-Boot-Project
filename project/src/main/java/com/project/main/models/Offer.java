@@ -1,7 +1,6 @@
 package com.project.main.models;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,17 +27,7 @@ public class Offer {
 
   private String description;
 
-  // private short minExperience;
-
-  // private short maxExperience;
-
-  // private double minSalary;
-
-  // private double maxSalary;
-
   private LocalDate startDate;
-
-  // private Date endDate;
 
   private LocalDate creationDate;
 
@@ -98,38 +87,6 @@ public class Offer {
     this.description = description;
   }
 
-  // public short getMinExperience() {
-  // return minExperience;
-  // }
-
-  // public void setMinExperience(short minExperience) {
-  // this.minExperience = minExperience;
-  // }
-
-  // public short getMaxExperience() {
-  // return maxExperience;
-  // }
-
-  // public void setMaxExperience(short maxExperience) {
-  // this.maxExperience = maxExperience;
-  // }
-
-  // public double getMinSalary() {
-  // return minSalary;
-  // }
-
-  // public void setMinSalary(double minSalary) {
-  // this.minSalary = minSalary;
-  // }
-
-  // public double getMaxSalary() {
-  // return maxSalary;
-  // }
-
-  // public void setMaxSalary(double maxSalary) {
-  // this.maxSalary = maxSalary;
-  // }
-
   public LocalDate getStartDate() {
     return startDate;
   }
@@ -137,14 +94,6 @@ public class Offer {
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
-
-  // public Date getEndDate() {
-  // return endDate;
-  // }
-
-  // public void setEndDate(Date endDate) {
-  // this.endDate = endDate;
-  // }
 
   public LocalDate getCreationDate() {
     return creationDate;

@@ -46,7 +46,6 @@ public class OfferController {
 
     Company company = getCompany(session);
     offerService.saveOffer(offer, company);
-    // todo: redirect to an appropriate view
   }
 
   private Company getCompany(HttpSession session) {

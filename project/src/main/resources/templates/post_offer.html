@@ -11,7 +11,9 @@
 </head>
 
 <body>
-
+  <nav>
+    <a href="/company/offers">Retour</a>
+  </nav>
   <div id="wrapper">
     <form id="post-offer-form">
       <label for="type">Type d'offre</label>
@@ -25,21 +27,9 @@
 
       <label for="speciality">Specialité</label>
       <input type="text" id="speciality" />
-      
+
       <label for="position">Position *</label>
       <input type="text" id="position" />
-
-      <!-- <label for="min-experience">Experience min</label>
-      <input type="number" id="min-experience" min="0" />
-
-      <label for="max-experience">Experience maximale</label>
-      <input type="number" id="max-experience" min="0" />
-
-      <label for="min-salary">Salaire min</label>
-      <input type="number" id="min-salary" min="0" />
-
-      <label for="max-salary">Salaire max</label>
-      <input type="number" id="max-salary" min="0" /> -->
 
       <label for="city">Ville</label>
       <select id="city">
@@ -47,9 +37,6 @@
       </select>
       <label for="start-date">Date début *</label>
       <input type="date" id="start-date" />
-
-      <!-- <label for="end-date">Date fin</label>
-      <input type="date" id="end-date" /> -->
 
       <label for="closing-date">Date de fermuture de l'offre</label>
       <input type="date" id="closing-date">
@@ -64,8 +51,6 @@
       <label for="add-responsibility">Les Résponsabilitées</label>
       <div id="responsibilities-container"></div>
       <input type="button" id="add-responsibility" value="Ajouter résponsabilitée" />
-
-      <!-- we need offer cities -->
 
       <label for="public">Public</label>
       <input type="checkbox" id="public" />

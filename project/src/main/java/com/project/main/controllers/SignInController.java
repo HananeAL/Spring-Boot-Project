@@ -29,9 +29,9 @@ public class SignInController {
       User user = signInService.getUser();
       session.setAttribute("user", user);
       if (UserType.isCandidate(user))
-        return Views.HOME_PAGE; // whatever
+        return Views.HOME_PAGE; // ? is it good
       else
-        return "redirect:/company/profile"; // ! we should be changed to company/profile
+        return "redirect:/company/offers";
     } else {
       model.addAttribute("error", "invalid email and/or password");
       return Views.SIGN_IN_FORM;

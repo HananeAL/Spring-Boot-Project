@@ -1,18 +1,14 @@
 package com.project.main.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-
 import com.project.main.models.Address;
-import com.project.main.models.Company;
 import com.project.main.models.City;
+import com.project.main.models.Company;
 import com.project.main.models.User;
 import com.project.main.repositories.AddressRepository;
 import com.project.main.repositories.CityRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

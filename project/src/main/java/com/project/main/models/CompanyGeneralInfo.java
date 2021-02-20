@@ -1,8 +1,6 @@
 package com.project.main.models;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

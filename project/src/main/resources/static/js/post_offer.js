@@ -77,6 +77,11 @@ function sendOffer() {
   const URL = "/company/post-offer";
   var data = JSON.stringify(offer);
   var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      window.location = "/company/offers"; // redirect to thes url if offer is saved
+    }
+  }
   xhttp.open("POST", URL, true);
   xhttp.setRequestHeader('Content-type', 'application/json');
   xhttp.send(data);

@@ -10,17 +10,17 @@ import com.project.main.repositories.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CityService {
 
   @Autowired
   private CityRepository cityRepository;
 
-  @Autowired AddressService addressService;
+  @Autowired
+  AddressService addressService;
 
   public List<City> getAll() {
-    return cityRepository.findAll();  
+    return cityRepository.findAll();
   }
 
   public List<City> getCities(Company company) {
@@ -29,13 +29,12 @@ public class CityService {
   }
 
   /* get list of cities out of a list of addresses */
-  private List<City> getCities(List<Address> addresses) {
+  public List<City> getCities(List<Address> addresses) {
     List<City> cities = new ArrayList<>();
-    for(Address addr: addresses) {
+    for (Address addr : addresses) {
       cities.add(addr.getCity());
     }
     return cities;
   }
-  
-  
+
 }

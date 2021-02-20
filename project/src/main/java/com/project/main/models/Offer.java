@@ -1,5 +1,6 @@
 package com.project.main.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -35,13 +36,13 @@ public class Offer {
 
   // private double maxSalary;
 
-  private Date startDate;
+  private LocalDate startDate;
 
   // private Date endDate;
 
-  private Date creationDate;
+  private LocalDate creationDate;
 
-  private Date closingDate;
+  private LocalDate closingDate;
 
   private boolean isPublic;
 
@@ -98,66 +99,66 @@ public class Offer {
   }
 
   // public short getMinExperience() {
-  //   return minExperience;
+  // return minExperience;
   // }
 
   // public void setMinExperience(short minExperience) {
-  //   this.minExperience = minExperience;
+  // this.minExperience = minExperience;
   // }
 
   // public short getMaxExperience() {
-  //   return maxExperience;
+  // return maxExperience;
   // }
 
   // public void setMaxExperience(short maxExperience) {
-  //   this.maxExperience = maxExperience;
+  // this.maxExperience = maxExperience;
   // }
 
   // public double getMinSalary() {
-  //   return minSalary;
+  // return minSalary;
   // }
 
   // public void setMinSalary(double minSalary) {
-  //   this.minSalary = minSalary;
+  // this.minSalary = minSalary;
   // }
 
   // public double getMaxSalary() {
-  //   return maxSalary;
+  // return maxSalary;
   // }
 
   // public void setMaxSalary(double maxSalary) {
-  //   this.maxSalary = maxSalary;
+  // this.maxSalary = maxSalary;
   // }
 
-  public Date getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(Date startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
 
   // public Date getEndDate() {
-  //   return endDate;
+  // return endDate;
   // }
 
   // public void setEndDate(Date endDate) {
-  //   this.endDate = endDate;
+  // this.endDate = endDate;
   // }
 
-  public Date getCreationDate() {
+  public LocalDate getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(LocalDate creationDate) {
     this.creationDate = creationDate;
   }
 
-  public Date getClosingDate() {
+  public LocalDate getClosingDate() {
     return closingDate;
   }
 
-  public void setClosingDate(Date closingDate) {
+  public void setClosingDate(LocalDate closingDate) {
     this.closingDate = closingDate;
   }
 

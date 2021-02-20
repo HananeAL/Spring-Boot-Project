@@ -1,10 +1,13 @@
 package com.project.main.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.project.main.models.Address;
+import com.project.main.models.Company;
 import com.project.main.models.City;
 import com.project.main.models.User;
 import com.project.main.repositories.AddressRepository;
@@ -19,13 +22,13 @@ public class AddressService {
   @Autowired
   private AddressRepository addressRepository;
 
-  @Autowired 
+  @Autowired
   private CityRepository cityRepository;
 
   public List<Address> getAddresses(User user) {
     return addressRepository.findByUserId(user.getId());
   }
-  
+
   public void saveAll(Address[] addresses, User user) {
     Map<String, Integer> ids = getIds();
     for (Address a : addresses) {
@@ -46,15 +49,8 @@ public class AddressService {
     return ids;
   }
 
-
-
-
-
-
-
-
-
-
-
+  public List<Address> getAddresses(Company company) {
+    return addressRepository.findByUserId(company.getId());
+  }
   
 }

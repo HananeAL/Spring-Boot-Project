@@ -1,6 +1,8 @@
 package com.project.main.models;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -44,21 +47,25 @@ public class User implements Serializable {
 
   private String userType;
 
-  public User() {}
+  @OneToMany(mappedBy = "user")
+  private List<Address> addresses;
+
+  public User() {
+  }
 
   public User(User user) {
     setEmail(user.getEmail());
     setPassword(user.getPassword());
     setDescription(user.getDescription());
   }
-  
+
   public User(CandidateGeneralInfo candidateGeneralInfo) {
-    this((User)candidateGeneralInfo);
+    this((User) candidateGeneralInfo);
     setUserType(UserType.CANDIDATE);
   }
 
   public User(CompanyGeneralInfo companyGeneralInfo) {
-    this((User)companyGeneralInfo);
+    this((User) companyGeneralInfo);
     setUserType(UserType.COMPANY);
   }
 
@@ -110,4 +117,7 @@ public class User implements Serializable {
     this.password = password;
   }
 
+  public List<Address> getAddresses() {
+    return addresses;
+  }
 }

@@ -42,11 +42,10 @@
                         <a class="nav-link nav1-link" href="/companies">Entreprises</a>
                     </li>
                 </ul>
-                <div class="border-start">
+                <!--<th:block th:if="${session.isEmpty()}">-->
+                <div class=" border-start">
                     <ul class="navbar-nav my-md-0 mr-md-2 ">
                         <li class="nav-item">
-
-                            <!--<a class="nav-link " href="/signin">Connexion</a>-->
                             <a class="nav-link nav1-link" href="/signin">Connexion</a>
                         </li>
                         <li class="nav-item">
@@ -54,6 +53,20 @@
                         </li>
                     </ul>
                 </div>
+                <!--</th:block>-->
+
+                <!--<th:block th:if="!${session.isEmpty()}">
+                <div class=" border-start">
+                    <ul class="navbar-nav my-md-0 mr-md-2 ">
+                        <li class="nav-item">
+                            <a class="nav-link nav1-link" href="">Mon compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav1-link" href="">Se déconnecter</a>
+                        </li>
+                    </ul>
+                </div>
+                </th:block>-->
             </div>
         </nav>
     </div>

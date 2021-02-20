@@ -26,6 +26,10 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
+    public List<Company> findByName(String name) {
+        return companyRepository.findByNameLike(name + "%");
+    }
+
     public Company getCompanyById(int id) {
         Optional<Company> optional = companyRepository.findById(id);
         Company company = null;

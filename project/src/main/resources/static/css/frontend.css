@@ -102,7 +102,8 @@ body {
   overflow-y: scroll;
 }
 /*-------- CompanyCard --------*/
-.alert-companies {
+.alert-companies,
+.alert-offer {
   box-shadow: 3px 3px 2px 0 rgb(0 0 0 / 10%);
   font-family: auto;
   font-weight: bold;
@@ -293,7 +294,8 @@ body {
   margin-top: 15px;
 }
 
-.company-lieu {
+.company-lieu,
+.company-email {
   margin-right: 30px;
   color: #d05a07;
 }
@@ -319,7 +321,22 @@ body {
 .nav-tabs .nav-link {
   font-family: cursive;
 }
-/*-------- Cmpanyprofile_info--------*/
+/*-------- Cmpanypage_info--------*/
+.sidebar {
+  min-width: 250px;
+  margin-top: -20px;
+}
+
+.sidebar_content {
+  padding: 5px;
+  min-height: 100px;
+  background: #fff;
+  -ms-box-shadow: 0 1px 5px 0 rgb(0 0 0 / 35%);
+  -webkit-box-shadow: 0 1px 5px 0 rgb(0 0 0 / 35%);
+  -moz-box-shadow: 0 1px 5px 0 rgb(0 0 0 / 35%);
+  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 35%);
+}
+
 .desc-entrp {
   margin: 22px;
 }
@@ -363,6 +380,7 @@ body {
   min-width: 110px;
   padding: 1.25rem;
   padding-top: 0px;
+  color: #117a8b;
 }
 
 .card-right .date {

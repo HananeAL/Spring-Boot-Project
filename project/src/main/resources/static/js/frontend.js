@@ -3,14 +3,14 @@ $(function () {
 'use strict';
 
 // Navbar
-var  height = $('.navbar').height();
+/*var  height = $('.navbar').height();
 $(window).scroll(function(){
     if($(this).scrollTop() > height){
         $('.navbar').addClass('fixed');
     }else{
         $('.navbar').removeClass('fixed');
     }
-});
+});*/
 
 
 // Favorite Button - Heart

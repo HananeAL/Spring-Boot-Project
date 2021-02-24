@@ -21,8 +21,7 @@ public class AddCompanyAddrController {
     User user = (User) session.getAttribute("user");
     if (user != null) {
       addressService.saveAll(addresses, user);
-    }
-    else { // we need a filter
+    } else { // we need a filter
       System.out.println("no user in session");
     }
   }

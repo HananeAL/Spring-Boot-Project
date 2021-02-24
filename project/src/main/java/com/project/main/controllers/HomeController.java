@@ -7,8 +7,4 @@ import org.springframework.ui.Model;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/addresses")
-    public String getAddCompanyAddresses(Model model) {
-        return Views.ADD_COMPANY_ADDRESSES;
-    }
 }

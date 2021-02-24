@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Profile Entreprise</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body class="main-breadcrumb" style="background-color: #f8f9fa;">
+
+    <div th:replace="fragments/company_header"></div>
+
+    <form th:action="@{/company/profile/update}" method="post" enctype="multipart/form-data" th:object="${company}">
+        <div class="container mt-3">
+            <div class="main-body mt-3">
+                <div class="row gutters-sm">
+                    <div class="col-md-12">
+                        <div class="card mb-3">
+                            <div class="card-body pt-0" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="hidden" th:value="${session.user.id}" class="form-control"
+                                            name="id">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" class="form-control" id="newPname" name="newPname"
+                                            th:value="${session.user.name}"></input>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="email" class="form-control" th:value=${session.user.email} />
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Site web</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="site_web" class="form-control" th:value=${session.user.site_web} />
+                                    </div>
+                                </div>
+                                <!-- <div  class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Password</i></h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <input type="password" value=""></input> 
+                    </div>
+                  </div> -->
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Size</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" class="form-control" th:value=${session.user.size} />
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Foundation Date</i>
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="date" class="form-control"
+                                            th:value=${session.user.foundationDate} />
+                                    </div>
+                                </div>
+                                <!--<hr>
+
+                                <div class="row">
+                                    <div class="col-sm-3 mt-4">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Wallet Paper</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="file" placeholder="Wallet Paper"
+                                            class="form-control form-control-file" name="wallpaper" id="wallpaper">
+                                    </div>
+                                </div>-->
+
+                                <!--<hr>
+
+                                <div class="row">
+                                    <div class="col-sm-3 mt-4">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Logo</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="file" placeholder="Logo" class="form-control form-control-file"
+                                            name="ogo" id="logo" th:value=${session.user.logo}>
+                                    </div>
+                                </div>-->
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <textarea class="form-control" placeholder="Description *" name="description"
+                                            id="description" rows="3" th:text=${session.user.description}></textarea>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <input type="submit" class="btn btn-outline-primary mt-3 pr-5 pl-5" value="Editer">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </form>
+</body>
+
+</html>

@@ -5,13 +5,13 @@ import java.io.IOException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Entity
 public class Candidate extends CandidateGeneralInfo {
-  
+
   private static final long serialVersionUID = 1L;
 
   @Lob
@@ -22,7 +22,8 @@ public class Candidate extends CandidateGeneralInfo {
   @Column(columnDefinition = "LONGBLOB")
   private byte[] cv;
 
-  public Candidate() { }
+  public Candidate() {
+  }
 
   public Candidate(User user) {
     setId(user.getId());
@@ -56,6 +57,10 @@ public class Candidate extends CandidateGeneralInfo {
     this.photo = photo;
   }
 
+  public String generateBase64Photo() {
+    return Base64.encodeBase64String(this.getPhoto());
+  }
+
   public byte[] getCv() {
     return cv;
   }
@@ -63,5 +68,5 @@ public class Candidate extends CandidateGeneralInfo {
   public void setCv(byte[] cv) {
     this.cv = cv;
   }
-  
+
 }

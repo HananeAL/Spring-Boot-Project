@@ -393,6 +393,25 @@ body {
   font-family: serif;
 }
 
+.btn-img {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #343a40 !important;
+  color: white;
+  font-size: 16px;
+  padding: 8px 13px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.btn-img:hover {
+  color: white;
+  background-color: #007bff !important;
+}
 /*-- SingUp --*/
 label {
   color: #343a40;

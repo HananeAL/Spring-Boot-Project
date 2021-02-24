@@ -369,7 +369,7 @@ function addSkill() {
 
   var skillWrapper = createElement('div');
   var attributes = {
-    class: "skill-wrapper"
+    class: "skill-wrapper "
   };
   setAttribute(skillWrapper, attributes);
 
@@ -379,8 +379,9 @@ function addSkill() {
   var attributes = {
     type: "text",
     placeholder: "skill",
-    class: "skill"
+    class: "skill form-control mt-0"
   };
+  
   setAttribute(input, attributes);
 
   var skillLevelLabel = createElement('label', SKILL_LEVEL_LABEL);
@@ -388,8 +389,9 @@ function addSkill() {
   var optionsValues = [BEGINNER, INTERMIDATE, ADVANCED];
   var select = createSelectElement(optionsValues);
   var attributes = {
-    class: "skill-level"
+    class: "skill-level form-control" 
   };
+  
   setAttribute(select, attributes);
 
   var elements = [skillNameLabel, input, skillLevelLabel, select];
@@ -412,7 +414,7 @@ function addResponsibility() {
   var textarea = createElement('textarea');
   textarea.value = '';
   var attributes = {
-    class: "responsibility"
+    class: "responsibility form-control"/**/
   };
   setAttribute(textarea, attributes);
 

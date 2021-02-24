@@ -4,94 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script th:src="@{/js/add_company_addresses.js}"></script>
-  <title>Document</title>
-  <style>
-    form {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: end;
-      justify-items: center;
-    }
-
-    #save-button {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .remove-button {
-      background-color: red;
-      color: white;
-      border: none;
-      margin-left: 20px;
-    }
-
-    #addresses li {
-      display: grid;
-      grid-template-columns: 30% 10%;
-      margin-bottom: 20px;
-    }
-
-    section {
-      margin-top: 5%;
-    }
-
-    section h1 {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    #skip {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-  </style>
+  <title>Créer un compte Entreprise (Adresses)</title>
+  <div th:replace="fragments/header :: header-css" />
+  <link rel="stylesheet" href="../../css/add_company_addresses.css" />
 </head>
 
-<body>
-  <section>
-    <h1>Enter your addresses</h1>
-    <div id="container">
-      <form id="form">
-        <div>
-          <label for="street">Street (optional)</label>
-          <input type="text" id="street">
+<body style="background-color: #f8f9fa;">
+  <div th:replace="fragments/company_header"></div>
+  <nav id="retour">
+    <a href="/company/profile">Retour</a>
+  </nav>
+  <div class="container register-add mt-2">
+    <div class="row">
+      <section class="col-md-12">
+        <h2>Entrez vos adresses</h2>
+        <div id="container">
+          <hr>
+          <form id="form">
+            <div>
+              <label class="mr-1 font-weight-bold" for="street">Rue (facultatif): </label>
+              <input type="text" class="col-md-11 form-control mt-0" id="street">
+            </div>
+            <div>
+              <label class="mr-1 font-weight-bold" for="city">Ville:</label>
+              <select id="cities" class="col-md-11 form-control pt-1 pb-1 mt-0 pl-1">
+                <option th:each="city:${cities}" th:value="${city.name}" th:text="${city.name}"></option>
+              </select>
+            </div>
+            <div id="add-button" style="margin-left: 5rem;">
+              <button type="button" class="btn btn-add btn-sm mt-3 mb-1"><i class="fa fa-plus-circle fa-fw"></i>
+                Ajouter</button>
+            </div>
+          </form>
+          <ul id="addresses" class="mt-4"></ul>
+
+          <div id="save-button">
+            <button type="button" class="btnSave">Enregister</button>
+          </div>
+          <div id="skip">
+            <a href="/company/offers">Ignorer</a>
+          </div>
         </div>
-        <div>
-          <label for="city">City</label>
-          <select id="cities">
-            <option th:each="city:${cities}" th:value="${city.name}" th:text="${city.name}"></option>
-          </select>
-        </div>
-        <div id="add-button">
-          <button type="button">Add</button>
-        </div>
-      </form>
-      <div id="save-button">
-        <button type="button">Save</button>
-      </div>
-      <div id="skip">
-        <a href="/home">Skip</a>
-      </div>
-      <ul id="addresses"></ul>
+        <ul id="addresses"></ul>
+      </section>
     </div>
-    <ul id="addresses"></ul>
-  </section>
+  </div>
+  <div th:replace="fragments/footer :: footer" />
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>

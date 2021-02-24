@@ -17,15 +17,13 @@
         <link rel="stylesheet" href="../../css/jquery-ui.css" />
         <link rel="stylesheet" href="../../css/post_offer.css" />
 
-
-
     </div>
 </head>
 
 <body>
     <div th:fragment="header">
         <!-- this is header -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark nav-1">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark nav-1 mt-0">
             <a class="navbar-brand ml-3" href="/">Sta:)<span style="color: #00E8E8;">Jobs</span></a>
 
             <button class="navbar-toggler nav-link" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -42,7 +40,7 @@
                         <a class="nav-link nav1-link" href="/companies">Entreprises</a>
                     </li>
                 </ul>
-                <!--<th:block th:if="${session.isEmpty()}">-->
+
                 <div class=" border-start">
                     <ul class="navbar-nav my-md-0 mr-md-2 ">
                         <li class="nav-item">
@@ -53,20 +51,6 @@
                         </li>
                     </ul>
                 </div>
-                <!--</th:block>-->
-
-                <!--<th:block th:if="!${session.isEmpty()}">
-                <div class=" border-start">
-                    <ul class="navbar-nav my-md-0 mr-md-2 ">
-                        <li class="nav-item">
-                            <a class="nav-link nav1-link" href="">Mon compte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav1-link" href="">Se déconnecter</a>
-                        </li>
-                    </ul>
-                </div>
-                </th:block>-->
             </div>
         </nav>
     </div>

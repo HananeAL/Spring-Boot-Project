@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Profile Candidate</title>
+    <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body class="main-breadcrumb" style="background-color: #f8f9fa;">
+
+    <div th:replace="fragments/candidate_header"></div>
+
+    <form>
+        <div class="container mt-3">
+            <div class="main-body mt-3">
+                <div class="">
+                    <a class="btn btn-outline-primary mb-3 " th:href="@{/candidate/profile/update}"><i
+                            class="fa fa-edit mr-2"></i>Edite mon
+                        compte</a>
+                    <a class="btn btn-outline-primary mb-3" th:href="@{/candidate/add-skills}"><i
+                            class="fa fa-plus-circle mr-2"></i>Add skills</a>
+                </div>
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+
+                        <div class="card">
+                            <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img th:src="@{'data:image/png;base64,'+${session.user.generateBase64Photo()}}"
+                                        alt="Company Logo" class="img-thumbnail" width="250">
+                                    <a class="btn mb-3 btn-img" th:href="@{/candidate/photo/update}"><i
+                                            class="fa fa-edit"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class=" col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Prénom</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p th:text=${session.user.firstName}></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p th:text=${session.user.lastName}></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p th:text=${session.user.email}></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Skills</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <ul class="pl-0" style="list-style: inside square; white-space: nowrap;">
+                                            <li class="" th:each="skill : ${skills}">
+                                                <span th:text="${skill.getName()}"></span> -
+                                                <span></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <p th:text=${session.user.description}></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </form>
+</body>
+
+</html>

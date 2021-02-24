@@ -1,0 +1,53 @@
+@charset "ISO-8859-1";
+#retour {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.btn {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 52%);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1%;
+  background: #343a40;
+  color: #fff;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-top: 1px;
+}
+.btnSave {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 52%);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1%;
+  background: #de7537;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
+form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+}
+.register-add {
+  background: #e9ecef;
+  margin-top: 0%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 72%);
+  width: 700px;
+  font-family: "ui-rounded";
+}
+section {
+  margin-top: 10%;
+}

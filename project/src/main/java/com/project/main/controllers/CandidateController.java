@@ -1,10 +1,14 @@
 package com.project.main.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import com.project.main.models.Candidate;
 import com.project.main.models.CandidateForm;
+import com.project.main.models.Skill;
 import com.project.main.models.User;
+import com.project.main.services.AddSkillsService;
 import com.project.main.services.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +22,9 @@ public class CandidateController {
 
   @Autowired
   private CandidateService candidateService;
+
+  @Autowired
+  private AddSkillsService addSkillService;
 
   @GetMapping("/candidate/signup")
   public String getSignUpForm(Model model) {
@@ -40,6 +47,15 @@ public class CandidateController {
   @GetMapping("/candidate/add-skills")
   public String getAddSkillsPage() {
     return Views.ADD_SKILLS;
+  }
+
+  @GetMapping("/candidate/profile")
+  public String getcandidateProfile(Model model, HttpSession session) {
+    User user = (User) session.getAttribute("user");
+    // List<Skill> skills = addSkillService.getSkills(user);
+    model.addAttribute("candidat", user);
+    // model.addAttribute("skills", skills);
+    return Views.CANDIDATE_PROFILE;
   }
 
 }

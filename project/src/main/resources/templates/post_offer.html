@@ -6,18 +6,20 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>Post Offer</title>
   <div th:replace="fragments/header :: header-css" />
-
+  <link rel="stylesheet" href="../../css/offre.css" />
   <script th:src="@{/js/post_offer.js}"></script>
 </head>
 
-<body>
-  <nav>
+<body style="background-color: #f8f9fa;">
+  <div th:replace="fragments/company_header"></div>
+  <!--<nav id="retour">
     <a href="/company/offers">Retour</a>
-  </nav>
-  <div id="wrapper">
+  </nav>-->
+  <div id="wrapper" class="container register-add">
     <form id="post-offer-form">
-      <label for="type">Type d'offre</label>
-      <select id="type">
+
+      <label class="mr-1 font-weight-bold" for="type">Type d'offre</label>
+      <select id="type" class="col-md-12 form-control pt-1 pb-1 mt-0 pl-1">
         <option value="cdi">CDI</option>
         <option value="cdd">CDD</option>
         <option value="stage">STAGE</option>
@@ -25,40 +27,40 @@
         <option value="pfe">PFE</option>
       </select>
 
-      <label for="speciality">Specialité</label>
-      <input type="text" id="speciality" />
+      <label class="mr-1 font-weight-bold" for="speciality">Specialité</label>
+      <input type="text" class="col-md-12 form-control mt-0" id="speciality" />
 
-      <label for="position">Position *</label>
-      <input type="text" id="position" />
+      <label class="mr-1 font-weight-bold" for="position">Position <span class="error">*</span></label>
+      <input type="text" class="col-md-12 form-control mt-0" id="position" />
 
-      <label for="city">Ville</label>
-      <select id="city">
+      <label class="mr-1 font-weight-bold" for="city">Ville</label>
+      <select id="city" class="col-md-12 form-control pt-1 pb-1 mt-0 pl-1">
         <option th:each="city: ${cities}" th:value="${city.name}" th:text="${city.name}"></option>
       </select>
-      <label for="start-date">Date début *</label>
-      <input type="date" id="start-date" />
+      <label class="mr-1 font-weight-bold" for="start-date">Date début <span class="error">*</span></label>
+      <input type="date" class="col-md-12 form-control mt-0" id="start-date" />
 
-      <label for="closing-date">Date de fermuture de l'offre</label>
-      <input type="date" id="closing-date">
+      <label class="mr-1 font-weight-bold" for="closing-date">Date de fermuture de l'offre</label>
+      <input type="date" class="col-md-12 form-control mt-0" id="closing-date">
 
-      <label for="description">Description *</label>
-      <textarea id="description"></textarea>
+      <label class="mr-1 font-weight-bold" for="description">Description <span class="error">*</span></label>
+      <textarea id="description" class="col-md-12 form-control mt-0"></textarea>
 
-      <label for="add-skill">Les Compétence</label>
+      <label class="mr-1 font-weight-bold" for="add-skill">Les Compétence</label>
       <div id="skills-container"></div>
-      <input type="button" id="add-skill" value="Ajouter compétence" />
+      <input type="button" class="btn" id="add-skill" value="Ajouter compétence" />
 
-      <label for="add-responsibility">Les Résponsabilitées</label>
+      <label class="mr-1 font-weight-bold" for="add-responsibility">Les Résponsabilitées</label>
       <div id="responsibilities-container"></div>
-      <input type="button" id="add-responsibility" value="Ajouter résponsabilitée" />
+      <input type="button" class="btn" id="add-responsibility" value="Ajouter résponsabilitée" />
 
-      <label for="public">Public</label>
-      <input type="checkbox" id="public" />
+      <label class="mr-1 font-weight-bold" for="public">Public</label>
+      <input type="checkbox" class="mt-2" id="public" />
 
-      <label for="receive-recomm">Reçevoir des recommendations</label>
-      <input type="checkbox" id="receive-recomm" />
+      <label class="mr-1 font-weight-bold" for="receive-recomm">Reçevoir des recommendations</label>
+      <input type="checkbox" class="mt-1" id="receive-recomm" />
 
-      <input type="button" id="post-offer" value="Poster l'offre" />
+      <input type="button" class="btnSave" id="post-offer" value="Poster l'offre" />
     </form>
   </div>
 </body>

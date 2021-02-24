@@ -1,57 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Profile Entreprise</title>
-<div th:replace="fragments/header :: header-css" />
-</head>
-<body class="main-breadcrumb">
 
-<div th:replace="fragments/header :: header" />
-   
-<form action="#">    
-<div class="container mt-5">
-  <button class="btn btn-outline-primary">mes offres</button>
-  <button class="btn btn-outline-primary">creer un offre</button>
-    <div class="main-body mt-3">
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="" alt="Company Logo" class="rounded-circle" width="150">
-                    <!-- <div class="mt-3">
-                      <h4>Company Name</h4>
-                      <p class="text-secondary mb-1">Web Application</p>
-                      <p class="text-muted font-size-sm">Casa , Hay Alfarah</p>
-                    </div> -->
-                  </div>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Profile Entreprise</title>
+  <div th:replace="fragments/header :: header-css" />
+</head>
+
+<body class="main-breadcrumb" style="background-color: #f8f9fa;">
+
+  <div th:replace="fragments/company_header"></div>
+
+  <form>
+    <div class="container mt-3">
+      <div class="main-body mt-3">
+        <div class="">
+          <a class="btn btn-outline-primary mb-3 " th:href="@{/company/profile/update}"><i
+              class="fa fa-edit mr-2"></i>Edite mon
+            compte</a>
+          <a class="btn btn-outline-primary mb-3" th:href="@{/company/add-addresses}"><i
+              class="fa fa-plus-circle mr-2"></i>Add adresses</a>
+        </div>
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+
+            <div class="card">
+              <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img th:src="@{'data:image/png;base64,'+${company.generateBase64Logo()}}" alt="Company Logo"
+                    class="img-thumbnail" width="250">
+                  <a class="btn mb-3 btn-img" th:href="@{/company/logo/update}"><i class="fa fa-edit"></i></a>
                 </div>
               </div>
             </div>
 
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <input type="text" th:value="${company.name}"></input>
-                    </div>
+
+          </div>
+
+          <div class=" col-md-8">
+            <div class="card mb-3">
+              <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
                   </div>
-                  <hr>
-                  <div  class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input type="email" th:value=${company.email} /> 
-                    </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.name}></p>
                   </div>
-                  <hr>
-                  <!-- <div  class="row">
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.email}></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Site web</i></h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.site_web}></p>
+                  </div>
+                </div>
+                <!-- <div  class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0"><i class="material-icons text-info mr-2">Password</i></h6>
                     </div>
@@ -59,54 +74,70 @@
                      <input type="password" value=""></input> 
                     </div>
                   </div> -->
-                  <hr>
+                <hr>
 
-                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Size</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <input type="number" th:value=${company.size}/> 
-                    </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Size</i></h6>
                   </div>
-                  <hr>
-                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Foundation Date</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <input type="date" th:value=${company.foundationDate}/>  
-                    </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.size}></p>
                   </div>
-                  <hr>
-
-                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Wallet Paper</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <input type="file" placeholder="Wallet Paper" class="form-control-file" name="wallpaper" id="wallpaper">
-                    </div>
-                  </div>
-                  <hr>
-                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <textarea class="form-control"  placeholder ="Description *"name="description" id="description" rows="3" th:text=${company.description}></textarea> 
-                    </div>
-                  </div>
-                  
                 </div>
-              </div>
-              <input type="submit" class="btn btn-outline-primary" value="Editer">
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Foundation Date</i>
+                    </h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.foundationDate}></p>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Wallet Paper</i></h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <img th:src="@{'data:image/png;base64,'+${company.generateBase64Wallpaper()}}"
+                      alt="Company Wallet Paper" class="img-thumbnail" width="170">
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Addresses</i></h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <ul class="pl-0" style="list-style: inside square; white-space: nowrap;">
+                      <li class="" th:each="address : ${addresses}">
+                        <span th:text="${address.street}"></span> -
+                        <span th:text="${address.getCity().name}"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <p th:text=${company.description}></p>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
-       <br>
-       <br>
-</form>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </form>
 </body>
+
 </html>

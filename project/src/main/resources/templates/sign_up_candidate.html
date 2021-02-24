@@ -50,8 +50,9 @@
                                 <div class="col-md-6 mb-0">
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="firstName">Prénom *:</label>
-                                        <input type="text" class="form-control mt-0" placeholder="Prénom *"
+                                        <label class="mb-0 font-weight-bold" for="firstName">Prénom <span
+                                                class="error">*</span></label>
+                                        <input type="text" class="form-control mt-0" placeholder="Prénom "
                                             name="firstName" id="firstName" th:field="*{firstName}" />
                                         <p class="error" th:if="${#fields.hasErrors('firstName')}"
                                             th:errors="*{firstName}">
@@ -59,8 +60,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="lastName">Nom *:</label>
-                                        <input type="text" class="form-control mt-0" placeholder="Nom *" name="lastName"
+                                        <label class="mb-0 font-weight-bold" for="lastName">Nom <span
+                                                class="error">*</span></label>
+                                        <input type="text" class="form-control mt-0" placeholder="Nom " name="lastName"
                                             id="lastName" th:field="*{lastName}" />
                                         <p class="error" th:if="${#fields.hasErrors('lastName')}"
                                             th:errors="*{lastName}">
@@ -68,7 +70,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="cv">Ajouter votre CV *:</label>
+                                        <label class="mb-0 font-weight-bold" for="cv">Ajouter votre CV <span
+                                                class="error">*</span></label>
                                         <input class="form-control mt-0" type="file" aria-describedby="cv" name="cv"
                                             id="cv" th:field="*{cv}" />
                                         <p class="error" th:if="${#fields.hasErrors('cv')}" th:errors="*{cv}">
@@ -80,22 +83,25 @@
                                 <div class="col-md-6 mb-0">
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="email">Email *:</label>
-                                        <input type="email" class="form-control mt-0" placeholder="Email *" name="email"
+                                        <label class="mb-0 font-weight-bold" for="email">Email <span
+                                                class="error">*</span></label>
+                                        <input type="email" class="form-control mt-0" placeholder="Email " name="email"
                                             id="email" th:field="*{email}">
                                         <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="password">Mot de passe *:</label>
-                                        <input type="password" class="form-control mt-0" placeholder="Mot de passe *"
+                                        <label class="mb-0 font-weight-bold" for="password">Mot de passe <span
+                                                class="error">*</span></label>
+                                        <input type="password" class="form-control mt-0" placeholder="Mot de passe "
                                             name="password" id="password" th:field="*{password}">
                                         <p class="error" th:if="${#fields.hasErrors('password')}"
                                             th:errors="*{password}"></p>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="photo">Ajouter une photo *:</label>
+                                        <label class="mb-0 font-weight-bold" for="photo">Ajouter une photo <span
+                                                class="error">*</span></label>
                                         <input type="file" class="form-control mt-0" aria-describedby="photo"
                                             name="photo" id="photo" th:field="*{photo}" />
                                         <p class="error" th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></p>
@@ -104,9 +110,10 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="mb-0 font-weight-bold" for="description">Description *:</label>
+                                        <label class="mb-0 font-weight-bold" for="description">Description <span
+                                                class="error">*</span></label>
                                         <textarea name="description" class="form-control mt-0"
-                                            placeholder="Description *" id="description" th:field="*{description}"
+                                            placeholder="Description " id="description" th:field="*{description}"
                                             rows="3" style="margin-top: 0px;"></textarea>
                                         <p class="error" th:if="${#fields.hasErrors('description')}"
                                             th:errors="*{description}"></p>

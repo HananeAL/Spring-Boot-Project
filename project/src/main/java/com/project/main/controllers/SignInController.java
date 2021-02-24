@@ -29,7 +29,7 @@ public class SignInController {
       User user = signInService.getUser();
       session.setAttribute("user", user);
       if (UserType.isCandidate(user))
-        return Views.HOME_PAGE; // ? is it good
+        return "redirect:/home";// ? is it good
       else
         return "redirect:/company/offers";
     } else {

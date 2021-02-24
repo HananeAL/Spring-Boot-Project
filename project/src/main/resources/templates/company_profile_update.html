@@ -11,7 +11,7 @@
 
     <div th:replace="fragments/company_header"></div>
 
-    <form th:action="@{/company/profile/update}" method="post" enctype="multipart/form-data" th:object="${company}">
+    <form th:action="@{/company/profile/update}" method="post" enctype="multipart/form-data" th:object="${companyForm}">
         <div class="container mt-3">
             <div class="main-body mt-3">
                 <div class="row gutters-sm">
@@ -31,8 +31,9 @@
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" id="newPname" name="newPname"
+                                        <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
                                             th:value="${session.user.name}"></input>
+                                        <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -41,7 +42,9 @@
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="email" class="form-control" th:value=${session.user.email} />
+                                        <input type="email" class="form-control" th:value=${session.user.email}
+                                            th:field="*{email}" />
+                                        <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -50,7 +53,10 @@
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Site web</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="site_web" class="form-control" th:value=${session.user.site_web} />
+                                        <input type="text" class="form-control" th:value=${session.user.site_web}
+                                            th:field="*{site_web}" />
+                                        <p class="error" th:if="${#fields.hasErrors('site_web')}"
+                                            th:errors="*{site_web}"></p>
                                     </div>
                                 </div>
                                 <!-- <div  class="row">
@@ -68,7 +74,9 @@
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Size</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="number" class="form-control" th:value=${session.user.size} />
+                                        <input type="number" class="form-control" th:value=${session.user.size}
+                                            th:field="*{size}" />
+                                        <p class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -78,8 +86,10 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="date" class="form-control"
-                                            th:value=${session.user.foundationDate} />
+                                        <input type="date" class="form-control" th:value=${session.user.foundationDate}
+                                            th:field="*{foundationDate}" />
+                                        <p class="error" th:if="${#fields.hasErrors('foundationDate')}"
+                                            th:errors="*{foundationDate}"></p>
                                     </div>
                                 </div>
                                 <!--<hr>
@@ -112,7 +122,10 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <textarea class="form-control" placeholder="Description *" name="description"
-                                            id="description" rows="3" th:text=${session.user.description}></textarea>
+                                            id="description" rows="3" th:text=${session.user.description}
+                                            th:field="*{description}"></textarea>
+                                        <p class="error" th:if="${#fields.hasErrors('description')}"
+                                            th:errors="*{description}"></p>
                                     </div>
                                 </div>
                                 <div class="text-center">

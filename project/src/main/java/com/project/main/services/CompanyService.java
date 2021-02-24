@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 import com.project.main.models.Company;
 import com.project.main.models.CompanyGeneralInfo;
@@ -48,27 +49,26 @@ public class CompanyService {
         return getCompanyById(id);
     }
 
-    public void saveCompany(CompanyGeneralInfo companyGeneralInfo, int id) {
-        Company company1 = companyRepository.findById(id).get();
-        company1.setName(companyGeneralInfo.getName());
-        company1.setEmail(companyGeneralInfo.getEmail());
-        companyRepository.save(company1);
-
+    public Company updateCompany(Company oldOne, Company newOne) {
+        oldOne.setName(newOne.getName());
+        oldOne.setEmail(newOne.getEmail());
+        companyRepository.save(oldOne);
+        return oldOne;
     }
 
-    public void changeName(int id, String name) {
-        Company p = new Company();
-        p = companyRepository.findById(id).get();
-        p.setName(p.getName());
-        companyRepository.save(p);
+    public boolean canUpdate(Company company, BindingResult errors) {
+        if (errors.hasFieldErrors("email")) {
+            if (errors.getFieldError("email").getDefaultMessage().equals("email already in use")) {
+                System.out.println(true);
+                if (company.getEmail().equals(errors.getFieldError("email").getRejectedValue()))
+                    return true;
+                else
+                    return false;
+            } else
+                return false;
+        }
+        return true;
     }
 
-    public CompanyGeneralInfo updateCompany(CompanyGeneralInfo company) {
-        Company company1 = companyRepository.findById(company.getId()).get();
-        company1.setId(company.getId());
-        company1.setName(company.getName());
-        company1.setEmail(company.getEmail());
-        return companyRepository.save(company1);
-    }
-
+   
 }

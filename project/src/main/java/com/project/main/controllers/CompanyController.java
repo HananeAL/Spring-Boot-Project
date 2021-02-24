@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import com.project.main.models.Address;
 import com.project.main.models.Company;
 import com.project.main.models.CompanyForm;
-import com.project.main.models.CompanyGeneralInfo;
 import com.project.main.models.Offer;
 import com.project.main.models.User;
 import com.project.main.services.AddressService;
@@ -22,10 +21,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CompanyController {
@@ -119,15 +117,32 @@ public class CompanyController {
     @GetMapping("/company/profile/update")
     public String getCompanyProfileUpdate(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        model.addAttribute("company", user);
+        model.addAttribute("companyForm", user); // !
         return Views.COMPANY_PROFILE_UPDATE;
     }
 
     @PostMapping("/company/profile/update")
-    public String getchangename(@RequestParam("id") int id, @RequestParam("newPname") String name,
-            HttpSession session) {
-        companyService.changeName(id, name);
+    public String updateCompany(@Valid CompanyForm companyForm, BindingResult result, HttpSession session) {
+        Company company = getCompany(session);
+        if (!companyService.canUpdate(company, result)) {
+            System.out.println("------error--------");
+            return Views.COMPANY_PROFILE_UPDATE;
+        }
+        // print(company);
+        Company newOne = companyService.updateCompany(company, new Company(companyForm));
+        session.setAttribute("user", newOne);
         return "redirect:/company/profile";
+    }
+
+    private void print(Company company) {
+        System.out.println("email: " + company.getEmail());
+        System.out.println("website" + company.getSite_web());
+        System.out.println("fd: " + company.getFoundationDate());
+    }
+
+    private Company getCompany(HttpSession session) {
+        Company company = (Company) session.getAttribute("user");
+        return company;
     }
 
     /*

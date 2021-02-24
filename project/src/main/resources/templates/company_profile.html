@@ -45,7 +45,7 @@
                     <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <p th:text=${company.name}></p>
+                    <p th:text=${session.user.name}></p>
                   </div>
                 </div>
                 <hr>
@@ -54,7 +54,7 @@
                     <h6 class="mb-0"><i class="material-icons text-info mr-2">Email</i></h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <p th:text=${company.email}></p>
+                    <p th:text=${session.user.email}></p>
                   </div>
                 </div>
                 <hr>

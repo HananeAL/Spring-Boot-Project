@@ -25,12 +25,14 @@ public class Company extends CompanyGeneralInfo {
   public Company(CompanyForm companyForm) {
     super(companyForm);
     try {
-      setLogo(companyForm.getLogo().getBytes());
+      if (companyForm.getLogo() != null)
+        setLogo(companyForm.getLogo().getBytes());
     } catch (IOException e) {
       e.printStackTrace();
     }
     try {
-      setWallpaper(companyForm.getWallpaper().getBytes());
+      if (companyForm.getWallpaper() != null)
+        setWallpaper(companyForm.getWallpaper().getBytes());
     } catch (IOException e) {
       e.printStackTrace();
     }

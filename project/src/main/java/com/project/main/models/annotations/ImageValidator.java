@@ -13,7 +13,7 @@ public class ImageValidator implements ConstraintValidator<Image, MultipartFile>
     /*RequiredFileValidator fileValidator = new RequiredFileValidator();
     // if file not present
     if (!fileValidator.isValid(file, context))  return true;*/
-    if (file.isEmpty()) return true;
+    if (file == null || file.isEmpty()) return true;
     String extension = FilenameUtils.getExtension(file.getOriginalFilename());
     return isPng(extension) || isJpg(extension);
   }

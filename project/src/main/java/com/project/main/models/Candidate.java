@@ -25,6 +25,10 @@ public class Candidate extends CandidateGeneralInfo {
   public Candidate() {
   }
 
+  public Candidate(int id) {
+    setId(id);
+  }
+
   public Candidate(User user) {
     setId(user.getId());
   }

@@ -18,6 +18,8 @@ public class Skill extends SkillForm {
   @JoinColumn(name = "candidate_id")
   private Candidate candidate;
 
+  public Skill() {}
+  
   public Skill(SkillForm skillForm, Candidate candidate) {
     super(skillForm);
     this.candidate = candidate;

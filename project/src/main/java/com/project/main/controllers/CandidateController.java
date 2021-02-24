@@ -1,7 +1,6 @@
 package com.project.main.controllers;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import com.project.main.models.Candidate;
@@ -10,12 +9,15 @@ import com.project.main.models.Skill;
 import com.project.main.models.User;
 import com.project.main.services.AddSkillsService;
 import com.project.main.services.CandidateService;
+import com.project.main.services.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CandidateController {
@@ -25,6 +27,9 @@ public class CandidateController {
 
   @Autowired
   private AddSkillsService addSkillService;
+
+  @Autowired
+  private SkillService skillService;
 
   @GetMapping("/candidate/signup")
   public String getSignUpForm(Model model) {
@@ -57,5 +62,22 @@ public class CandidateController {
     // model.addAttribute("skills", skills);
     return Views.CANDIDATE_PROFILE;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

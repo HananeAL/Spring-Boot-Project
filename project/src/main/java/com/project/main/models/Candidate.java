@@ -35,8 +35,10 @@ public class Candidate extends CandidateGeneralInfo {
 
   public Candidate(CandidateForm candidateForm) {
     super(candidateForm);
-    setPhoto(candidateForm.getPhoto());
-    setCv(candidateForm.getCv());
+    if (candidateForm.getPhoto() != null)
+      setPhoto(candidateForm.getPhoto());
+    if (candidateForm.getCv() != null)
+      setCv(candidateForm.getCv());
   }
 
   private void setCv(MultipartFile cv) {

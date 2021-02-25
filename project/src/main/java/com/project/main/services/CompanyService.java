@@ -52,6 +52,20 @@ public class CompanyService {
     public Company updateCompany(Company oldOne, Company newOne) {
         oldOne.setName(newOne.getName());
         oldOne.setEmail(newOne.getEmail());
+        oldOne.setSite_web(newOne.getSite_web());
+        oldOne.setFoundationDate(newOne.getFoundationDate());
+        oldOne.setDescription(newOne.getDescription());
+        oldOne.setSize(newOne.getSize());
+        if (newOne.getLogo().length < 1) {
+            oldOne.setLogo(oldOne.getLogo());
+        } else {
+            oldOne.setLogo(newOne.getLogo());
+        }
+        if (newOne.getWallpaper().length < 1) {
+            oldOne.setWallpaper(oldOne.getWallpaper());
+        } else {
+            oldOne.setWallpaper(newOne.getWallpaper());
+        }
         companyRepository.save(oldOne);
         return oldOne;
     }
@@ -70,5 +84,4 @@ public class CompanyService {
         return true;
     }
 
-   
 }

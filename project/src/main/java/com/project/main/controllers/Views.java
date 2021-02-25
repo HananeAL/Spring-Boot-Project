@@ -9,6 +9,7 @@ abstract public class Views {
   public static final String COMPANY_PROFILE = "company_profile";
   public static final String CANDIDATE_PROFILE = "candidate_profile";
   public static final String COMPANY_PROFILE_UPDATE = "company_profile_update";
+  public static final String CANDIDATE_PROFILE_UPDATE = "candidate_profile_update";
   public static final String SIGN_IN_FORM = "sign_in";
   public static final String CANDIDATE_SIGN_UP_FORM = "sign_up_candidate";
   public static final String COMPANY_SIGN_UP_FORM = "sign_up_company";

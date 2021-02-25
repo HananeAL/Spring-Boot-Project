@@ -138,6 +138,7 @@ public class CompanyController {
         System.out.println("email: " + company.getEmail());
         System.out.println("website" + company.getSite_web());
         System.out.println("fd: " + company.getFoundationDate());
+        System.out.println("pass" + company.getPassword());
     }
 
     private Company getCompany(HttpSession session) {
@@ -145,10 +146,4 @@ public class CompanyController {
         return company;
     }
 
-    /*
-     * @GetMapping("/company/logo/update") public String getCompanyLogoUpdate(Model
-     * model, HttpSession session) { User user = (User)
-     * session.getAttribute("user"); model.addAttribute("company", user); return
-     * Views.COMPANY_LOGO_UPDATE; }
-     */
 }

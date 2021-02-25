@@ -27,26 +27,26 @@
         <option value="pfe">PFE</option>
       </select>
 
-      <label class="mr-1 font-weight-bold" for="speciality">Specialité</label>
-      <input type="text" class="col-md-12 form-control mt-0" id="speciality" />
+      <label class="mr-1 font-weight-bold" for="speciality">Specialité <span class="error">*</span></label>
+      <input type="text" class="col-md-12 form-control mt-0" id="speciality" placeholder="Specialité" required />
 
       <label class="mr-1 font-weight-bold" for="position">Position <span class="error">*</span></label>
-      <input type="text" class="col-md-12 form-control mt-0" id="position" />
+      <input type="text" class="col-md-12 form-control mt-0" id="position" placeholder="Position" required />
 
       <label class="mr-1 font-weight-bold" for="city">Ville</label>
       <select id="city" class="col-md-12 form-control pt-1 pb-1 mt-0 pl-1">
         <option th:each="city: ${cities}" th:value="${city.name}" th:text="${city.name}"></option>
       </select>
       <label class="mr-1 font-weight-bold" for="start-date">Date début <span class="error">*</span></label>
-      <input type="date" class="col-md-12 form-control mt-0" id="start-date" />
+      <input type="date" class="col-md-12 form-control mt-0" id="start-date" placeholder="Date début" required />
 
       <label class="mr-1 font-weight-bold" for="closing-date">Date de fermuture de l'offre</label>
       <input type="date" class="col-md-12 form-control mt-0" id="closing-date">
 
       <label class="mr-1 font-weight-bold" for="description">Description <span class="error">*</span></label>
-      <textarea id="description" class="col-md-12 form-control mt-0"></textarea>
+      <textarea id="description" class="col-md-12 form-control mt-0" placeholder="Description" required></textarea>
 
-      <label class="mr-1 font-weight-bold" for="add-skill">Les Compétence</label>
+      <label class="mr-1 font-weight-bold" for="add-skill">Les Compétences</label>
       <div id="skills-container"></div>
       <input type="button" class="btn" id="add-skill" value="Ajouter compétence" />
 

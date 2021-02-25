@@ -11,7 +11,7 @@ const FORM_ID = "form";
 const INPUT_FIELD_ID = "skill";
 const LEVELS_LIST_ID = "level";
 const REMOVE_BUTTON_CLASS = "removeButton";
-const HOME = "/home";
+const PROFILE = "/candidate/profile";
 const URL = "/signup/add-skills";
 
 /* object that holds errors messages */
@@ -27,7 +27,7 @@ function sendSkills() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      window.location = HOME; // redirect the candidate to the home
+      window.location = PROFILE; // redirect the candidate to the profile
     }
   }
   var skills = JSON.stringify(getSkills());

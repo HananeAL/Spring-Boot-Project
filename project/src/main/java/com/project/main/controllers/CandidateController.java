@@ -26,9 +26,6 @@ public class CandidateController {
   private CandidateService candidateService;
 
   @Autowired
-  private AddSkillsService addSkillService;
-
-  @Autowired
   private SkillService skillService;
 
   @GetMapping("/candidate/signup")
@@ -56,28 +53,34 @@ public class CandidateController {
 
   @GetMapping("/candidate/profile")
   public String getcandidateProfile(Model model, HttpSession session) {
-    User user = (User) session.getAttribute("user");
-    // List<Skill> skills = addSkillService.getSkills(user);
-    model.addAttribute("candidat", user);
-    // model.addAttribute("skills", skills);
+    Candidate candidate = (Candidate) session.getAttribute("user");
+    List<Skill> skills = skillService.getSkills(candidate);
+    model.addAttribute("candidat", candidate);
+    model.addAttribute("skills", skills);
     return Views.CANDIDATE_PROFILE;
   }
 
+  @GetMapping("/candidate/profile/update")
+  public String getcandidateProfileUpdate(Model model, HttpSession session) {
+    User user = (User) session.getAttribute("user");
+    model.addAttribute("candidateForm", user); // !
+    return Views.CANDIDATE_PROFILE_UPDATE;
+  }
 
+  @PostMapping("/candidate/profile/update")
+  public String updateCandidate(@Valid CandidateForm candidateForm, BindingResult result, HttpSession session) {
+    Candidate candidate = getCandidate(session);
+    if (!candidateService.canUpdate(candidate, result)) {
+      System.out.println("------error--------");
+      return Views.CANDIDATE_PROFILE_UPDATE;
+    }
+    Candidate newOne = candidateService.updateCandidate(candidate, new Candidate(candidateForm));
+    session.setAttribute("user", newOne);
+    return "redirect:/candidate/profile";
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  private Candidate getCandidate(HttpSession session) {
+    Candidate candidate = (Candidate) session.getAttribute("user");
+    return candidate;
+  }
 }

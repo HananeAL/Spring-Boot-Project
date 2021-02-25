@@ -1,8 +1,5 @@
 package com.project.main.services;
 
-import java.util.List;
-
-import com.project.main.models.Candidate;
 import com.project.main.models.Skill;
 import com.project.main.models.SkillForm;
 import com.project.main.models.User;
@@ -23,10 +20,5 @@ public class AddSkillsService {
       skillRepository.save(skill);
     }
   }
-
-  
-  //public List<Skill> getSkills(User user) { return
-  //skillRepository.findByUserId(user.getId()); }
-  
 
 }

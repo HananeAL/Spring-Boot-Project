@@ -2,6 +2,8 @@ $(function () {
     
 'use strict';
 
+datePickerId.max = new Date().toISOString().split("T")[0];
+
 // Navbar
 /*var  height = $('.navbar').height();
 $(window).scroll(function(){

@@ -10,7 +10,7 @@ const CITIES_LIST_ID = "cities";
 const ADDRESS_LIST_ID = "addresses";
 const ERROR_ID = "error";
 const REMOVE_BUTTON_CLASS = "remove-button";
-const PROFILE = "/company/offers";
+const PROFILE = "/company/profile";
 const URL = "/signup/add-company-addresses";
 
 const errorMessage = {

@@ -9,11 +9,13 @@ public class DocumentValidator implements ConstraintValidator<Document, Multipar
 
   @Override
   public boolean isValid(MultipartFile file, ConstraintValidatorContext context) {
-    /*RequiredFileValidator fileValidator = new RequiredFileValidator();
-    if (!fileValidator.isValid(file, context)) // if file not present
-      return true;*/
-    if (file.isEmpty()) return true;
-    String extension  = FilenameUtils.getExtension(file.getOriginalFilename());
+    /*
+     * RequiredFileValidator fileValidator = new RequiredFileValidator(); if
+     * (!fileValidator.isValid(file, context)) // if file not present return true;
+     */
+    if (file == null || file.isEmpty())
+      return true;
+    String extension = FilenameUtils.getExtension(file.getOriginalFilename());
     return isPdf(extension) || isWord(extension);
   }
 
@@ -24,23 +26,19 @@ public class DocumentValidator implements ConstraintValidator<Document, Multipar
   private boolean isPdf(String extension) {
     return extension != null && extension.equals("pdf");
   }
-  
+
 }
 
-
 /*
-public class ContactNumberValidator implements 
-  ConstraintValidator<ContactNumberConstraint, String> {
-
-    @Override
-    public void initialize(ContactNumberConstraint contactNumber) {
-    }
-
-    @Override
-    public boolean isValid(String contactField,
-      ConstraintValidatorContext cxt) {
-        return contactField != null && contactField.matches("[0-9]+")
-          && (contactField.length() > 8) && (contactField.length() < 14);
-    }
-
-}*/
+ * public class ContactNumberValidator implements
+ * ConstraintValidator<ContactNumberConstraint, String> {
+ * 
+ * @Override public void initialize(ContactNumberConstraint contactNumber) { }
+ * 
+ * @Override public boolean isValid(String contactField,
+ * ConstraintValidatorContext cxt) { return contactField != null &&
+ * contactField.matches("[0-9]+") && (contactField.length() > 8) &&
+ * (contactField.length() < 14); }
+ * 
+ * }
+ */

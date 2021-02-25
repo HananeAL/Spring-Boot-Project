@@ -354,11 +354,11 @@ function elementExists(id) {
 
 // this part is responsible for add-skill and add-responsibility
 
-const SKILL_NAME_LABEL = "Skill: *";
-const SKILL_LEVEL_LABEL = 'Level Skill: *';
-const BEGINNER = "beginner";
-const INTERMIDATE = "intermidate";
-const ADVANCED = "advanced";
+const SKILL_NAME_LABEL = "Compétence: ";
+const SKILL_LEVEL_LABEL = 'Niveau de compétence: ';
+const BEGINNER = "Débutant";
+const INTERMIDATE = "Intermédiaire";
+const ADVANCED = "Avancé";
 const SKILL_INPUT_CLASS = "skill";
 const SELECT_SKILL_CLASS = "skill-level";
 const SKILLS_CONTAINER = "skills-container";
@@ -378,7 +378,7 @@ function addSkill() {
   var input = createElement('input');
   var attributes = {
     type: "text",
-    placeholder: "skill",
+    placeholder: "Compétence",
     class: "skill form-control mt-0"
   };
   
@@ -414,6 +414,7 @@ function addResponsibility() {
   var textarea = createElement('textarea');
   textarea.value = '';
   var attributes = {
+    placeholder: "Responsabilité",
     class: "responsibility form-control"/**/
   };
   setAttribute(textarea, attributes);

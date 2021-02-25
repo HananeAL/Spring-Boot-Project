@@ -18,5 +18,5 @@ public class SkillService {
   public List<Skill> getSkills(Candidate candidate) {
     return skillRepository.findByCandidateId(candidate.getId());
   }
-  
+
 }

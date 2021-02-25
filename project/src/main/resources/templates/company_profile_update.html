@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Profile Entreprise</title>
+    <title>Edite Profile Entreprise</title>
     <div th:replace="fragments/header :: header-css" />
 </head>
 
@@ -18,21 +18,21 @@
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="card-body pt-0" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="col-sm-3">
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="hidden" th:value="${session.user.id}" class="form-control"
                                             name="id">
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="row">
                                     <div class="col-sm-3 mt-3">
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Nom</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
-                                            th:value="${session.user.name}"></input>
+                                            th:value="${session.user.name}" required></input>
                                         <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="email" class="form-control" th:value=${session.user.email}
-                                            th:field="*{email}" />
+                                            th:field="*{email}" required maxlength="100">
                                         <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" class="form-control" th:value=${session.user.site_web}
-                                            th:field="*{site_web}" />
+                                            th:field="*{site_web}" required />
                                         <p class="error" th:if="${#fields.hasErrors('site_web')}"
                                             th:errors="*{site_web}"></p>
                                     </div>
@@ -75,55 +75,55 @@
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="number" class="form-control" th:value=${session.user.size}
-                                            th:field="*{size}" />
+                                            th:field="*{size}" required min="0" />
                                         <p class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></p>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3 mt-3">
-                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Foundation Date</i>
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Date de fondation</i>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="date" class="form-control" th:value=${session.user.foundationDate}
-                                            th:field="*{foundationDate}" />
+                                            th:field="*{foundationDate}" required id="datePickerId" />
                                         <p class="error" th:if="${#fields.hasErrors('foundationDate')}"
                                             th:errors="*{foundationDate}"></p>
                                     </div>
                                 </div>
-                                <!--<hr>
-
+                                <hr>
                                 <div class="row">
-                                    <div class="col-sm-3 mt-4">
-                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">Wallet Paper</i></h6>
+                                    <div class="col-sm-3 mt-3">
+                                        <h6 class="mb-0"><i class="material-icons text-info mr-2">WallePaper</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="file" placeholder="Wallet Paper"
-                                            class="form-control form-control-file" name="wallpaper" id="wallpaper">
+                                        <input type="file" class="form-control" name="wallpaper" id="wallpaper"
+                                            th:field="*{wallpaper} " accept="image/png,.jpg">
+                                        <p class="error" th:if="${#fields.hasErrors('wallpaper')}"
+                                            th:errors="*{wallpaper}"></p>
                                     </div>
-                                </div>-->
-
-                                <!--<hr>
-
+                                </div>
+                                <hr>
                                 <div class="row">
-                                    <div class="col-sm-3 mt-4">
+                                    <div class="col-sm-3 mt-3">
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Logo</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="file" placeholder="Logo" class="form-control form-control-file"
-                                            name="ogo" id="logo" th:value=${session.user.logo}>
+                                        <input type="file" class="form-control" name="logo" id="logo" th:field="*{logo}"
+                                            accept="image/png,.jpg">
+                                        <p class="error" th:if="${#fields.hasErrors('logo')}" th:errors="*{logo}"></p>
                                     </div>
-                                </div>-->
+                                </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3 mt-3">
                                         <h6 class="mb-0"><i class="material-icons text-info mr-2">Description</i></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <textarea class="form-control" placeholder="Description *" name="description"
-                                            id="description" rows="3" th:text=${session.user.description}
-                                            th:field="*{description}"></textarea>
+                                        <textarea class="form-control" name="description" id="description" rows="3"
+                                            th:text=${session.user.description} th:field="*{description}" required
+                                            minlength="20"></textarea>
                                         <p class="error" th:if="${#fields.hasErrors('description')}"
                                             th:errors="*{description}"></p>
                                     </div>
@@ -143,6 +143,7 @@
         <br>
         <br>
     </form>
+    <div th:replace="fragments/footer :: footer" />
 </body>
 
 </html>

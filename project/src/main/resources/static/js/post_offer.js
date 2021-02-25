@@ -15,8 +15,8 @@ const PRESENT_OR_FUTURE = 8;
 const FUTURE = 9;
 
 var offer = {
-  offerSkills: [],
-  offerResponsibilities: []
+  skills: [],
+  responsibilities: []
 };
 
 var fields = { // value can be an object: {id, constraints}
@@ -29,36 +29,11 @@ var fields = { // value can be an object: {id, constraints}
     id: "position",
     constraints: [REQUIRED, TEXT_ONLY]
   },
-  // minExperience: {
-  //   name: "expérience min",
-  //   id: "min-experience",
-  //   constraints: [OPTIONAL, POSITIVE_NUMBER]
-  // },
-  // maxExperience: {
-  //   name: "expérience max",
-  //   id: "max-experience",
-  //   constraints: [OPTIONAL, POSITIVE_NUMBER]
-  // },
-  // minSalary: {
-  //   name: "salaire min",
-  //   id: "min-salary",
-  //   constraints: [OPTIONAL, POSITIVE_NUMBER]
-  // },
-  // maxSalary: {
-  //   name: "salaire max",
-  //   id: "max-salary",
-  //   constraints: [OPTIONAL, POSITIVE_NUMBER]
-  // },
   startDate: {
     name: "date de début",
     id: "start-date",
     constraints: [REQUIRED, PRESENT_OR_FUTURE]
   },
-  // endDate: {
-  //   name: "date de fin",
-  //   id: "end-date",
-  //   constraints: [OPTIONAL, FUTURE]
-  // },
   closingDate: {
     name: "date de fermuture",
     id: "closing-date",
@@ -146,8 +121,8 @@ function getSkills() {
       var select = skillWrappers[i].querySelector('select');
       var skillLevel = select.value;
       var skill = { name: skillName, level: skillLevel };
-      if (!isSkillExists(skill, offer.offerSkills))
-        offer.offerSkills.push(skill);
+      if (!isSkillExists(skill, offer.skills))
+        offer.skills.push(skill);
     }
   }
 }
@@ -157,8 +132,8 @@ function getResponsibilities() {
   for (var i = 0; i < responsibilityWrappers.length; i++) {
     var textarea = responsibilityWrappers[i].querySelector('textarea');
     var responsibility = { name: textarea.value };
-    if (!isEmpty(responsibility.name) && !isResponsibilityExists(responsibility, offer.offerResponsibilities)) {
-      offer.offerResponsibilities.push(responsibility);
+    if (!isEmpty(responsibility.name) && !isResponsibilityExists(responsibility, offer.responsibilities)) {
+      offer.responsibilities.push(responsibility);
     }
   }
 }
@@ -354,11 +329,11 @@ function elementExists(id) {
 
 // this part is responsible for add-skill and add-responsibility
 
-const SKILL_NAME_LABEL = "Compétence: ";
-const SKILL_LEVEL_LABEL = 'Niveau de compétence: ';
-const BEGINNER = "Débutant";
-const INTERMIDATE = "Intermédiaire";
-const ADVANCED = "Avancé";
+const SKILL_NAME_LABEL = "Compétences: ";
+const SKILL_LEVEL_LABEL = 'Niveau de compétences: ';
+const BEGINNER = "beginner";
+const INTERMIDATE = "intermidate";
+const ADVANCED = "advanced";
 const SKILL_INPUT_CLASS = "skill";
 const SELECT_SKILL_CLASS = "skill-level";
 const SKILLS_CONTAINER = "skills-container";
@@ -405,6 +380,7 @@ function addSkill() {
 function addResponsibility() {
   var respoWrapper = createElement('div');
   var attributes = {
+    placeholder: "Résponsabilité",
     class: "responsibility-wrapper"
   };
   setAttribute(respoWrapper, attributes);
@@ -414,7 +390,6 @@ function addResponsibility() {
   var textarea = createElement('textarea');
   textarea.value = '';
   var attributes = {
-    placeholder: "Responsabilité",
     class: "responsibility form-control"/**/
   };
   setAttribute(textarea, attributes);

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import com.project.main.models.Company;
 import com.project.main.models.Offer;
+import com.project.main.models.OfferForm;
 import com.project.main.repositories.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,13 @@ public class OfferService {
   @Autowired
   private OfferResponsibilityService offerResponsibilityService;
 
-  public void saveOffer(Offer offer, Company company) {
-    offer.setCreationDate(LocalDate.now());
-    offer.setCompany(company);
+  public void saveOffer(OfferForm offerForm) {
+    Offer offer = new Offer(offerForm);
     offerRepository.save(offer);
 
-    offerSkillService.saveAll(offer.getOfferSkills(), offer);
+    offerSkillService.saveAll(offerForm.getSkills(), offer);
 
-    offerResponsibilityService.saveAll(offer.getOfferResponsibilities(), offer);
-
+    offerResponsibilityService.saveAll(offerForm.getResponsibilities(), offer);
   }
 
   public List<Offer> getAll() {
@@ -41,6 +40,11 @@ public class OfferService {
 
   public int countOffers(Company company) {
     return offerRepository.countByCompanyId(company.getId());
+  }
+
+  public Offer getOffer(int id) {
+    Offer offer = offerRepository.findById(id);
+    return offer;
   }
 
 }

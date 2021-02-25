@@ -5,6 +5,7 @@
 <head>
     <title>Offres d'emploi</title>
     <div th:replace="fragments/header :: header-css" />
+    <script th:src="@{/js/company_offers.js}"></script>
 </head>
 
 <body>
@@ -72,26 +73,25 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body panel-body" style="padding: 0px;">
-                                <!--Panel Body-->
-                                <!--Card1-->
-
-                                <div th:each="offer: ${offers}" class="card offre-card">
+                                <div th:each="offer: ${offers}" class="card offre-card offer" th:id="${offer.id}">
                                     <div class="row">
                                         <div class="card-body" style="padding-bottom: 5px;">
                                             <div class="clearfix">
+                                                <!-- <img class="company-logo img-thumbnail float-left mr-5 mt-0" src="../img/3.jpg" alt=""> -->
                                                 <img class="company-logo img-thumbnail float-left mr-5 mt-0"
-                                                    src="../img/3.jpg" alt="">
+                                                    th:src="@{'data:image/png;base64,'+${offer.company.generateBase64Logo()}}">
 
                                                 <h5 class="card-name">
-                                                    <a href=""><b th:text="${offer.position}">Name d'offre</b></a>
+                                                    <a href=""><b th:text="${offer.position}"></b></a>
                                                 </h5>
                                                 <div class="offres-info mb-2">
-                                                    <span class="name-entrp">Name Entreprise</span>
+                                                    <span class="name-entrp" th:text="${offer.company.name}">Name
+                                                        Entreprise</span>
                                                     <span class="ville-entrp" th:text="${offer.city}">ville</span>
                                                 </div>
                                                 <!-- <p class="commentaire">
-                                                    commentaire commentaire
-                                                </p> -->
+                                                                      commentaire commentaire
+                                                                  </p> -->
                                             </div>
                                         </div>
                                         <div class="card-right">
@@ -104,81 +104,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span class="date" th:text="${offer.creationDate}">Date</span><br>
-                                            <span class="type" th:text="${offer.type}">Type</span>
+                                            <span class="date" th:text="${offer.creationDate}"></span><br>
+                                            <span class="type" th:text="${offer.type}"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <!--Card2-->
-                                <!-- <div class="card offre-card">
-                                    <div class="row">
-                                        <div class="card-body" style="padding-bottom: 5px;">
-                                            <div class="clearfix">
-                                                <img class="company-logo img-thumbnail float-left mr-5 mt-0"
-                                                    src="../img/3.jpg" alt="">
-
-                                                <h5 class="card-name">
-                                                    <a href=""><b>Name d'offre</b></a>
-                                                </h5>
-                                                <div class="offres-info mb-2">
-                                                    <span class="name-entrp">Name Entreprise</span>
-                                                    <span class="ville-entrp">ville</span>
-                                                </div>
-                                                <p class="commentaire">
-                                                    commentaire commentaire
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="card-right">
-                                            <div class="row ml-5 mt-1">
-                                                <div class="flexbox">
-                                                    <div class="fav-btn">
-                                                        <span href="" class="favme dashicons dashicons-heart"><i
-                                                                class="fa fa-heart fa-fw fa-10x"
-                                                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="date">Date</span><br>
-                                            <span class="type">Type</span>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!--Card3-->
-                                <!-- <div class="card offre-card">
-                                    <div class="row">
-                                        <div class="card-body" style="padding-bottom: 5px;">
-                                            <div class="clearfix">
-                                                <img class="company-logo img-thumbnail float-left mr-5 mt-0"
-                                                    src="../img/3.jpg" alt="">
-
-                                                <h5 class="card-name">
-                                                    <a href=""><b>Name d'offre</b></a>
-                                                </h5>
-                                                <div class="offres-info mb-2">
-                                                    <span class="name-entrp">Name Entreprise</span>
-                                                    <span class="ville-entrp">ville</span>
-                                                </div>
-                                                <p class="commentaire">
-                                                    commentaire commentaire
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="card-right">
-                                            <div class="row ml-5 mt-1">
-                                                <div class="flexbox">
-                                                    <div class="fav-btn">
-                                                        <span href="" class="favme dashicons dashicons-heart"><i
-                                                                class="fa fa-heart fa-fw fa-10x"
-                                                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="date">Date</span><br>
-                                            <span class="type">Type</span>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -192,9 +122,8 @@
                                     <div class="container-fluid">
                                         <div class="container">
                                             <div class="clearfix">
-                                                <img class="company-logo img-thumbnail float-left mr-5"
-                                                    src="../img/3.jpg" alt="">
-                                                <div class="row borderd float-right" style="margin-top: 33px;">
+                                                <!-- <img class="company-logo img-thumbnail float-left mr-5" src="../img/3.jpg" alt=""> -->
+                                                <div class="row borderd float-right" style="margin-top: 18px;">
                                                     <div class="flexbox">
                                                         <div class="fav-btn">
                                                             <span href="" class="favme dashicons dashicons-heart">
@@ -204,39 +133,47 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h1 class="company-name"> Name d'Offre </h1>
+                                                <h1 class="company-name" id="position"></h1>
                                                 <ul class="company-info">
                                                     <li class="company-link mr-30">
                                                         <a href="/company-page">
-                                                            <i class="fa fa-globe fa-fw"></i>N.Entreprise
+                                                            <i class="fa fa-globe fa-fw"></i>
+                                                            <span id="company-name"></span>
                                                         </a>
                                                     </li>
 
                                                     <li class="company-lieu">
-                                                        <i class="fa fa-map-marker fa-fw"></i>Ville
+                                                        <i class="fa fa-map-marker fa-fw"></i>
+                                                        <span id="city">Ville</span>
                                                     </li>
 
                                                     <li class="company-date mr-30">
-                                                        <i class="fa fa-calendar fa-fw"></i>Date
+                                                        <i class="fa fa-calendar fa-fw"></i>
+                                                        <span id="creation-date"></span>
                                                     </li>
 
                                                     <li class="company-type">
-                                                        <button type="button" class="btn btn-type btn-sm">type</button>
+                                                        <button type="button" class="btn btn-type btn-sm"
+                                                            id="type"></button>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
+                                <div id="description"></div>
+                                <ul id="responsibilities"></ul>
+                                <ul id="skills"></ul>
                             </div>
-                            <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
-                                <!--Panel body-->
+                        </div>
+                        <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
+                            <!--Panel body-->
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
     <div th:replace="fragments/footer :: footer" />

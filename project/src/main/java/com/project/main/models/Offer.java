@@ -1,14 +1,12 @@
 package com.project.main.models;
 
 import java.time.LocalDate;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Offer {
@@ -41,11 +39,22 @@ public class Offer {
   @JoinColumn(name = "company_id")
   private Company company;
 
-  @OneToMany(mappedBy = "offer")
-  private List<OfferSkill> offerSkills;
+  public Offer() {
+  }
 
-  @OneToMany(mappedBy = "offer")
-  private List<OfferResponsibility> offerResponsibilities;
+  public Offer(Offer offer) {
+    setCity(offer.getCity());
+    setSpeciality(offer.getSpeciality());
+    setPosition(offer.getPosition());
+    setDescription(offer.getDescription());
+    setStartDate(offer.getStartDate());
+    setCreationDate(LocalDate.now());
+    setClosingDate(offer.getClosingDate());
+    setPublic(offer.isPublic());
+    setReceiveRecommendations(offer.isReceiveRecommendations());
+    setCompany(offer.getCompany());
+    setType(offer.getType());
+  }
 
   public int getId() {
     return id;
@@ -133,22 +142,6 @@ public class Offer {
 
   public void setCompany(Company company) {
     this.company = company;
-  }
-
-  public List<OfferSkill> getOfferSkills() {
-    return offerSkills;
-  }
-
-  public void setOfferSkills(List<OfferSkill> offerSkills) {
-    this.offerSkills = offerSkills;
-  }
-
-  public List<OfferResponsibility> getOfferResponsibilities() {
-    return offerResponsibilities;
-  }
-
-  public void setOfferResponsibilities(List<OfferResponsibility> offerResponsibilities) {
-    this.offerResponsibilities = offerResponsibilities;
   }
 
   public String getType() {

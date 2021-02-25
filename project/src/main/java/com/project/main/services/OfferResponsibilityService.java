@@ -21,4 +21,8 @@ public class OfferResponsibilityService {
       offerRespRepository.save(responsibility);
     }
   }
+
+  public List<OfferResponsibility> getResponsibilities(Offer offer) {
+    return offerRespRepository.findByOfferId(offer.getId());
+  }
 }

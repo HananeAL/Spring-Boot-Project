@@ -20,4 +20,32 @@ public class OfferSkillService {
       offerSkillRepository.save(skill);
     }
   }
+
+  public List<OfferSkill> getAll() {
+    return offerSkillRepository.findAll();
+  }
+
+  // get skills of an offer
+  public List<OfferSkill> getSkills(Offer offer) {
+    return offerSkillRepository.findByOfferId(offer.getId());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

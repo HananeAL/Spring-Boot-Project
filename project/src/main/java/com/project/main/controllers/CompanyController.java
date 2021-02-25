@@ -65,14 +65,13 @@ public class CompanyController {
         return Views.ADD_COMPANY_ADDRESSES;
     }
 
-    @GetMapping("/company/offers")
-    public String getCompanyOffersPage(Model model, HttpSession session) {
-        // we are sure the user is signed in and it's a company (thanks to filters)
-        User user = (User) session.getAttribute("user");
-        Company company = new Company(user);
-        model.addAttribute("offers", offerService.getOffers(company));
-        return Views.COMPANY_OFFERS_PAGE;
-    }
+    /*
+     * @GetMapping("/company/offers") public String getCompanyOffersPage(Model
+     * model, HttpSession session) { // we are sure the user is signed in and it's a
+     * company (thanks to filters) User user = (User) session.getAttribute("user");
+     * Company company = new Company(user); model.addAttribute("offers",
+     * offerService.getOffers(company)); return Views.COMPANY_OFFERS_PAGE; }
+     */
 
     @RequestMapping("/companies")
     public String getAllCoympanies(Model model, @RequestParam(defaultValue = "") String name) {

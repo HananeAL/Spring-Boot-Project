@@ -13,4 +13,6 @@ public interface OfferRepository extends CrudRepository<Offer, Integer> {
   List<Offer> findByCompanyId(int id);
 
   int countByCompanyId(int id);
+
+  Offer findById(int id);
 }

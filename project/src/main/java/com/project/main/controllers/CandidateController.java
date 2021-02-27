@@ -1,12 +1,12 @@
 package com.project.main.controllers;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import com.project.main.models.Candidate;
 import com.project.main.models.CandidateForm;
 import com.project.main.models.Skill;
+import com.project.main.models.SkillForm;
 import com.project.main.models.User;
 import com.project.main.services.CandidateService;
 import com.project.main.services.SkillService;
@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CandidateController {
@@ -49,6 +51,14 @@ public class CandidateController {
     return Views.ADD_SKILLS;
   }
 
+  @PostMapping("/candidate/add-skills")
+  @ResponseBody
+  public void addSkills(@RequestBody SkillForm[] skillsForm, HttpSession session) {
+
+    User user = (User) session.getAttribute("user");
+    skillService.addSkills(skillsForm, user);
+  }
+
   @GetMapping("/candidate/profile")
   public String getcandidateProfile(Model model, HttpSession session) {
     Candidate candidate = (Candidate) session.getAttribute("user");
@@ -61,7 +71,7 @@ public class CandidateController {
   @GetMapping("/candidate/profile/update")
   public String getcandidateProfileUpdate(Model model, HttpSession session) {
     User user = (User) session.getAttribute("user");
-    model.addAttribute("candidateForm", user); // !
+    model.addAttribute("candidateForm", user);
     return Views.CANDIDATE_PROFILE_UPDATE;
   }
 

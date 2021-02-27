@@ -18,7 +18,7 @@ public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
 
   @Override
   public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment jdbcEnvironment) {
-    return name;
+    return Identifier.toIdentifier(name.getText().toLowerCase());
   }
 
   @Override
@@ -32,29 +32,32 @@ public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
   }
 
   private Identifier convertToSnakeCase(final Identifier identifier) {
-    if (identifier == null) return null;
+    if (identifier == null)
+      return null;
     final String regex = "([a-z])([A-Z])";
     final String replacement = "$1_$2";
     final String newName = identifier.getText().replaceAll(regex, replacement).toLowerCase();
     return Identifier.toIdentifier(newName);
-}
-  
+  }
+
 }
 
 /*
-
-public class RealNamingStrategyImpl extends org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy implements Serializable {
-
-    public static final PhysicalNamingStrategyImpl INSTANCE = new PhysicalNamingStrategyImpl();
-
-    @Override
-    public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment context) {
-        return new Identifier(name.getText(), name.isQuoted());
-    }
-
-    @Override
-    public Identifier toPhysicalColumnName(Identifier name, JdbcEnvironment context) {
-        return new Identifier(name.getText(), name.isQuoted());
-    }
-
-}*/
+ * 
+ * public class RealNamingStrategyImpl extends
+ * org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+ * implements Serializable {
+ * 
+ * public static final PhysicalNamingStrategyImpl INSTANCE = new
+ * PhysicalNamingStrategyImpl();
+ * 
+ * @Override public Identifier toPhysicalTableName(Identifier name,
+ * JdbcEnvironment context) { return new Identifier(name.getText(),
+ * name.isQuoted()); }
+ * 
+ * @Override public Identifier toPhysicalColumnName(Identifier name,
+ * JdbcEnvironment context) { return new Identifier(name.getText(),
+ * name.isQuoted()); }
+ * 
+ * }
+ */

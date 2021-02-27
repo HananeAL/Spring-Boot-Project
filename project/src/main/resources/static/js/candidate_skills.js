@@ -12,7 +12,7 @@ const INPUT_FIELD_ID = "skill";
 const LEVELS_LIST_ID = "level";
 const REMOVE_BUTTON_CLASS = "removeButton";
 const PROFILE = "/candidate/profile";
-const URL = "/signup/add-skills";
+const URL = "/candidate/add-skills";
 
 /* object that holds errors messages */
 const errorMessage = {

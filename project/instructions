@@ -1,0 +1,10 @@
+hi, in order to run these app you need to follow these steps:
+1-you need MYSQL on your machine
+
+2-once MYSQL is installed, run this command:
+  source <path-to-sb.sql-file>
+  it will take a moment to create the database and fill it with some data
+
+3-now you can ran the main method in the file ProjectApplication.java
+
+4-go to the browser and put: http://localhost:8083/

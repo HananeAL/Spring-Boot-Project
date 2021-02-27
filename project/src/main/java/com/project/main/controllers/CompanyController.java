@@ -21,6 +21,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,13 +66,13 @@ public class CompanyController {
         return Views.ADD_COMPANY_ADDRESSES;
     }
 
-    /*
-     * @GetMapping("/company/offers") public String getCompanyOffersPage(Model
-     * model, HttpSession session) { // we are sure the user is signed in and it's a
-     * company (thanks to filters) User user = (User) session.getAttribute("user");
-     * Company company = new Company(user); model.addAttribute("offers",
-     * offerService.getOffers(company)); return Views.COMPANY_OFFERS_PAGE; }
-     */
+    @PostMapping("/company/add-addresses")
+    @ResponseBody
+    public void addAddr(@RequestBody Address[] addresses, HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        addressService.saveAll(addresses, user);
+    }
 
     @RequestMapping("/companies")
     public String getAllCoympanies(Model model, @RequestParam(defaultValue = "") String name) {
@@ -127,20 +128,13 @@ public class CompanyController {
             System.out.println("------error--------");
             return Views.COMPANY_PROFILE_UPDATE;
         }
-        // print(company);
         Company newOne = companyService.updateCompany(company, new Company(companyForm));
         session.setAttribute("user", newOne);
         return "redirect:/company/profile";
     }
 
-    private void print(Company company) {
-        System.out.println("email: " + company.getEmail());
-        System.out.println("website" + company.getSite_web());
-        System.out.println("fd: " + company.getFoundationDate());
-        System.out.println("pass" + company.getPassword());
-    }
-
     private Company getCompany(HttpSession session) {
+
         Company company = (Company) session.getAttribute("user");
         return company;
     }

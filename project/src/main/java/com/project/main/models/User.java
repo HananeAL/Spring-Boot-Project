@@ -1,8 +1,6 @@
 package com.project.main.models;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -47,8 +44,9 @@ public class User implements Serializable {
 
   private String userType;
 
-  @OneToMany(mappedBy = "user")
-  private List<Address> addresses;
+  // ! to be deleted (like we did in Offer)
+  // @OneToMany(mappedBy = "user")
+  // private List<Address> addresses;
 
   public User() {
   }
@@ -117,7 +115,7 @@ public class User implements Serializable {
     this.password = password;
   }
 
-  public List<Address> getAddresses() {
-    return addresses;
-  }
+  // public List<Address> getAddresses() {
+  //   return addresses;
+  // }
 }

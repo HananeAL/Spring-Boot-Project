@@ -6,14 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div th:replace="fragments/header :: header-css" />
+  <link rel="stylesheet" th:href="@{/css/company_offers.css}" />
   <script th:src="@{/js/company_offers.js}"></script>
   <title>Offre d'entreprise</title>
-  <style>
-    nav {
-      margin-bottom: 20px;
-      margin-left: 20px;
-    }
-  </style>
 </head>
 
 <body>
@@ -53,16 +48,6 @@
       </form>
     </div>
   </section>
-
-  <!--<nav>
-
-    <a>
-      <button class="btn btn-outline-primary">Mes offres</button>
-    </a>
-    <a href="/company/post-offer">
-      <button class="btn btn-outline-primary">Creer un offre</button>
-    </a>
-  </nav>-->
 
   <!-- Main -->
   <main>
@@ -143,7 +128,7 @@
 
                           <li class="company-lieu">
                             <i class="fa fa-map-marker fa-fw"></i>
-                            <span id="city">Ville</span>
+                            <span id="city"></span>
                           </li>
 
                           <li class="company-date mr-30">
@@ -159,9 +144,11 @@
                     </div>
                   </div>
                 </section>
-                <div id="description"></div>
-                <ul id="responsibilities"></ul>
-                <ul id="skills"></ul>
+                <div id="offer-info">
+                  <div id="description"></div>
+                  <ul id="responsibilities"></ul>
+                  <ul id="skills"></ul>
+                </div>
               </div>
               <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
                 <!--Panel body-->

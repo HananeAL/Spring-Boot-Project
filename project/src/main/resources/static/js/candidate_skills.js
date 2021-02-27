@@ -89,7 +89,7 @@ function extractSkillName(text) {
 
 /* validate only a skill name */
 function isValid(skillName) {
-  var regex = new RegExp("^[a-z]([a-z- ])+$", "i");
+  var regex = new RegExp("^[a-z]([a-z-. ])+$", "i");
   return regex.test(skillName);
 }
 

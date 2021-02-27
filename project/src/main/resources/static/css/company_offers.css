@@ -1,0 +1,20 @@
+#offer-info {
+  border: 1px solid black;
+}
+
+#offer-info h2 {
+  text-align: center;
+
+}
+
+#offer-info li {
+  list-style: none;
+}
+
+#description, #responsibilities {
+  margin-bottom: 30px;
+}
+
+#description p {
+  margin-left: 40px;
+}

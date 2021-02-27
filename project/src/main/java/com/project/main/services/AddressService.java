@@ -35,7 +35,10 @@ public class AddressService {
     }
   }
 
-  /* return (cityName, id) of cities stored in database */
+  /*
+   * return (cityName, id) of cities stored in database we need this so we can get
+   * the id of a city based on it's name
+   */
   private Map<String, Integer> getIds() {
     Map<String, Integer> ids = new HashMap<>();
     List<City> cities = cityRepository.findAll();
@@ -48,5 +51,5 @@ public class AddressService {
   public List<Address> getAddresses(Company company) {
     return addressRepository.findByUserId(company.getId());
   }
-  
+
 }

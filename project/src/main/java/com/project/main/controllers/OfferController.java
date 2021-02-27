@@ -12,7 +12,6 @@ import com.project.main.services.CityService;
 import com.project.main.services.OfferResponsibilityService;
 import com.project.main.services.OfferService;
 import com.project.main.services.OfferSkillService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,7 +68,7 @@ public class OfferController {
     return Views.COMPANY_OFFERS_PAGE;
   }
 
-  @GetMapping("/company/offers/{id}")
+  @GetMapping("/offers/{id}")
   @ResponseBody
   public Offer getOffer(@PathVariable int id) {
 

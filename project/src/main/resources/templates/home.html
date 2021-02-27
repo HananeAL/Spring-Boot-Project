@@ -5,6 +5,7 @@
 <head>
     <title>Offres d'emploi</title>
     <div th:replace="fragments/header :: header-css" />
+    <link rel="stylesheet" th:href="@{/css/company_offers.css}" />
     <script th:src="@{/js/company_offers.js}"></script>
 </head>
 
@@ -161,9 +162,11 @@
                                         </div>
                                     </div>
                                 </section>
-                                <div id="description"></div>
-                                <ul id="responsibilities"></ul>
-                                <ul id="skills"></ul>
+                                <div id="offer-info">
+                                    <div id="description"></div>
+                                    <ul id="responsibilities"></ul>
+                                    <ul id="skills"></ul>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">

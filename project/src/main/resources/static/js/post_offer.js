@@ -60,6 +60,7 @@ function sendOffer() {
   xhttp.open("POST", URL, true);
   xhttp.setRequestHeader('Content-type', 'application/json');
   xhttp.send(data);
+  console.log('sending offer');
 }
 
 function collecte() {
@@ -331,9 +332,9 @@ function elementExists(id) {
 
 const SKILL_NAME_LABEL = "Compétences: ";
 const SKILL_LEVEL_LABEL = 'Niveau de compétences: ';
-const BEGINNER = "beginner";
-const INTERMIDATE = "intermidate";
-const ADVANCED = "advanced";
+const BEGINNER = "débutant(e)";
+const INTERMIDATE = "intermédiaire";
+const ADVANCED = "avancé(e)";
 const SKILL_INPUT_CLASS = "skill";
 const SELECT_SKILL_CLASS = "skill-level";
 const SKILLS_CONTAINER = "skills-container";
@@ -385,7 +386,7 @@ function addResponsibility() {
   };
   setAttribute(respoWrapper, attributes);
 
-  var label = createElement('label', 'Responsibility');
+  var label = createElement('label', 'Responsabilité');
 
   var textarea = createElement('textarea');
   textarea.value = '';

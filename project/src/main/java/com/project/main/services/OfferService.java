@@ -1,6 +1,5 @@
 package com.project.main.services;
 
-import java.time.LocalDate;
 import java.util.List;
 import com.project.main.models.Company;
 import com.project.main.models.Offer;

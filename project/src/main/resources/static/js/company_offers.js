@@ -1,8 +1,6 @@
-window.onload = function() {
+window.onload = function () {
   let offers = document.querySelectorAll('.offer');
-  offers.forEach(offer => {
-    offer.addEventListener('click', getOffer);
-  });
+  offers.forEach(offer => offer.addEventListener('click', getOffer));
   // global variabes
   window.descContainer = document.getElementById('description');
   window.skillsContainer = document.getElementById('skills');
@@ -14,12 +12,11 @@ function getOffer(e) {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let offer = JSON.parse(this.response);
-      // console.log(offer);
       displayOffer(offer);
     }
   }
   // console.log(`offer id: ${this.id}`);
-  const URL = `/company/offers/${this.id}`; // this.id <=> offer id
+  const URL = `/offers/${this.id}`; // this.id <=> offer id
   xhttp.open("GET", URL, true);
   xhttp.send();
 }

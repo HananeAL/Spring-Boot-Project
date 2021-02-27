@@ -1,17 +1,13 @@
 package com.project.main.services;
 
-import java.util.Optional;
 import java.util.List;
-
+import java.util.Optional;
+import com.project.main.models.Company;
+import com.project.main.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-
-import com.project.main.models.Company;
-import com.project.main.models.CompanyGeneralInfo;
-import com.project.main.models.User;
-import com.project.main.repositories.CompanyRepository;
 
 @Service
 @Transactional

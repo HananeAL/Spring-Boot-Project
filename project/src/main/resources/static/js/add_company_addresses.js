@@ -11,7 +11,7 @@ const ADDRESS_LIST_ID = "addresses";
 const ERROR_ID = "error";
 const REMOVE_BUTTON_CLASS = "remove-button";
 const PROFILE = "/company/profile";
-const URL = "/signup/add-company-addresses";
+const URL = "/company/add-addresses";
 
 const errorMessage = {
   addressExists: "a similar address exists in the list"

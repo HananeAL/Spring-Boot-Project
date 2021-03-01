@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -37,9 +38,11 @@ public class OfferController {
   private OfferResponsibilityService offerResponsibilityService;
 
   @GetMapping({ "/", "/home" })
-  public String getOffers(Model model) {
+  public String getOffers(@RequestParam(defaultValue = "") String speciality,
+      @RequestParam(defaultValue = "") String city, @RequestParam(defaultValue = "") String type, Model model) {
 
-    model.addAttribute("offers", offerService.getAll());
+    model.addAttribute("offers", offerService.getOffers(speciality, city, type));
+    model.addAttribute("cities", offerService.getCities());
     return Views.HOME_PAGE;
   }
 
@@ -61,10 +64,12 @@ public class OfferController {
   }
 
   @GetMapping("/company/offers")
-  public String getCompanyOffersPage(Model model, HttpSession session) {
+  public String getCompanyOffersPage(@RequestParam(defaultValue = "") String speciality,
+  @RequestParam(defaultValue = "") String city, @RequestParam(defaultValue = "") String type, Model model, HttpSession session) {
 
     Company company = getCompany(session);
-    model.addAttribute("offers", offerService.getOffers(company));
+    model.addAttribute("offers", offerService.getOffers(company, speciality, city, type));
+    model.addAttribute("cities", offerService.getCities(company));
     return Views.COMPANY_OFFERS_PAGE;
   }
 
@@ -80,6 +85,16 @@ public class OfferController {
     OfferForm offerForm = new OfferForm(offer, skills, responsibilities);
     return offerForm;
   }
+
+  // @GetMapping("/offers")
+  // public String getOffers(@RequestParam(defaultValue = "") String speciality,
+  // @RequestParam(defaultValue = "") String city, @RequestParam(defaultValue =
+  // "") String type, Model model) {
+  // System.out.println(speciality + ", " + city + ", " + type);
+  // model.addAttribute("offers", offerService.getOffers(speciality, city, type));
+  // return Views.HOME_PAGE; // ! we need to use this in both home and comp
+  // profile
+  // }
 
   private Company getCompany(HttpSession session) {
 

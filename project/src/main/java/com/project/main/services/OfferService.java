@@ -37,6 +37,13 @@ public class OfferService {
     return offerRepository.findByCompanyId(company.getId());
   }
 
+  public List<Offer> getOffers(Company company, String speciality, String city, String type) {
+    speciality = "%" + speciality + "%";
+    city = "%" + city + "%";
+    type = "%" + type + "%";
+    return offerRepository.search(company.getId(), speciality, city, type);
+  }
+
   public int countOffers(Company company) {
     return offerRepository.countByCompanyId(company.getId());
   }
@@ -46,4 +53,37 @@ public class OfferService {
     return offer;
   }
 
+  public List<Offer> getOffers(String speciality, String city, String type) {
+    
+    speciality = "%" + speciality + "%";
+    city = "%" + city + "%";
+    type = "%" + type + "%";
+    return offerRepository.search(speciality, city, type);
+  }
+
+  /* get list of cities where we have at least an offer */
+  public List<String> getCities() {
+    return offerRepository.findCities();
+  }
+
+  public List<String> getCities(Company company) {
+    return offerRepository.findCities(company.getId());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

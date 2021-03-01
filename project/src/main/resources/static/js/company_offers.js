@@ -51,9 +51,11 @@ function displayDescription(description) {
 // skills: an array of skill objects
 function displaySkills(skills) {
   skillsContainer.innerHTML = '';
-  let title = createElement('h2', 'Compétences');
-  skillsContainer.appendChild(title);
-  skills.forEach(skill => addSkill(skill));
+  if (skills.length != 0) {
+    let title = createElement('h2', 'Compétences');
+    skillsContainer.appendChild(title);
+    skills.forEach(skill => addSkill(skill));
+  }
 }
 
 function addSkill(skill) {
@@ -63,9 +65,11 @@ function addSkill(skill) {
 
 function displayResponsibilities(responsibilities) {
   responsibilitiesContainer.innerHTML = '';
-  let title = createElement('h2', 'Responsabilitées');
-  responsibilitiesContainer.appendChild(title);
-  responsibilities.forEach(respo => addResponsibility(respo));
+  if (responsibilities.length != 0) {
+    let title = createElement('h2', 'Responsabilitées');
+    responsibilitiesContainer.appendChild(title);
+    responsibilities.forEach(respo => addResponsibility(respo));
+  }
 }
 
 

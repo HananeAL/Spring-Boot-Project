@@ -140,8 +140,8 @@ function getResponsibilities() {
 }
 
 function getAdditionalInfo() {
-  offer.isPublic = document.getElementById('public').checked;
-  offer.receiveRecommendations = document.getElementById('receive-recomm').checked;
+  offer.isPublic = true;
+  offer.receiveRecommendations = false;
 }
 
 /* check if skill already exists in skills(array of object) */

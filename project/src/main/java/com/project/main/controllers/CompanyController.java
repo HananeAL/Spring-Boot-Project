@@ -75,7 +75,7 @@ public class CompanyController {
     }
 
     @RequestMapping("/companies")
-    public String getAllCoympanies(Model model, @RequestParam(defaultValue = "") String name) {
+    public String getAllCompanies(Model model, @RequestParam(defaultValue = "") String name) {
 
         List<Company> companies = companyService.findByName(name);
         Map<Integer, Integer> map = new HashMap<>();
@@ -91,11 +91,11 @@ public class CompanyController {
     @RequestMapping("/company-page/{id}")
     public String getCompanyPage(@PathVariable int id, Model model) {
         Company company = companyService.getCompanyById(id);
-        List<Address> addresses = addressService.getAddresses(company);
-        List<Offer> offers = offerService.getOffers(company);
         if (company == null) {
             return "redirect:/companies";
         } else {
+            List<Address> addresses = addressService.getAddresses(company);
+            List<Offer> offers = offerService.getOffers(company);
             model.addAttribute("company", company);
             model.addAttribute("addresses", addresses);
             model.addAttribute("offers", offers);

@@ -22,30 +22,31 @@
     <!-- Searchbar -->
     <section class="bar">
         <div class="container-fluid">
-            <form>
+            <form method="GET" action="/">
                 <div class="site-content text-center">
                     <h1 class="site-title">Trouvez le job qui vous correspond</h1>
                 </div>
                 <div class="form-group row d-flex justify-content-center">
                     <label class=" control-label">Spécialité</label>
                     <div class="col-sm-3">
-                        <select name="" class="form-control">
+                        <input type="text" name="speciality" class="form-control" />
+                        <!-- <select name="" class="form-control">
                             <option class="hidden" selected="" disabled="">Spécialité</option>
                             <option value="1">One</option>
-                        </select>
+                        </select> -->
                     </div>
 
                     <label class="control-label">Ville</label>
                     <div class="col-sm-3">
-                        <select name="" class="form-control">
+                        <select name="city" class="form-control">
                             <option class="hidden" selected="" disabled="">Ville</option>
-                            <option value="1">One</option>
+                            <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
                         </select>
                     </div>
 
                     <label class="control-label ">Type</label>
                     <div class="col-sm-2">
-                        <select name="" class="form-control">
+                        <select name="type" class="form-control">
                             <option class="hidden" selected="" disabled="">Type</option>
                             <option>CDI</option>
                             <option>CDD</option>
@@ -69,6 +70,9 @@
     <!-- Main -->
     <main>
         <div class="container-fluid">
+            <div class="alert alert-companies text-center" th:if="${offers.empty}">
+                Aucun Offre trouvé
+            </div>
             <div class="row">
                 <div class="col-sm-6 mr-0">
                     <div class="col-md-12">
@@ -78,7 +82,6 @@
                                     <div class="row">
                                         <div class="card-body" style="padding-bottom: 5px;">
                                             <div class="clearfix">
-                                                <!-- <img class="company-logo img-thumbnail float-left mr-5 mt-0" src="../img/3.jpg" alt=""> -->
                                                 <img class="company-logo img-thumbnail float-left mr-5 mt-0"
                                                     th:src="@{'data:image/png;base64,'+${offer.company.generateBase64Logo()}}">
 
@@ -86,13 +89,10 @@
                                                     <a href=""><b th:text="${offer.position}"></b></a>
                                                 </h5>
                                                 <div class="offres-info mb-2">
-                                                    <span class="name-entrp" th:text="${offer.company.name}">Name
-                                                        Entreprise</span>
+                                                    <a th:href="'/companies?name='+${offer.company.name}" th:text="${offer.company.name}"></a>
+                                                    <!-- <span class="name-entrp" th:text="${offer.company.name}"></span> -->
                                                     <span class="ville-entrp" th:text="${offer.city}">ville</span>
                                                 </div>
-                                                <!-- <p class="commentaire">
-                                                                      commentaire commentaire
-                                                                  </p> -->
                                             </div>
                                         </div>
                                         <div class="card-right">

@@ -1,34 +1,34 @@
-// $(function () {
+ $(function () {
     
-// 'use strict';
+ 'use strict';
 
-// datePickerId.max = new Date().toISOString().split("T")[0];
+datePickerId.max = new Date().toISOString().split("T")[0];
 
-// // Navbar
-// /*var  height = $('.navbar').height();
-// $(window).scroll(function(){
-//     if($(this).scrollTop() > height){
-//         $('.navbar').addClass('fixed');
-//     }else{
-//         $('.navbar').removeClass('fixed');
-//     }
-// });*/
+  //Navbar
+ /*var  height = $('.navbar').height();
+ $(window).scroll(function(){
+     if($(this).scrollTop() > height){
+         $('.navbar').addClass('fixed');
+     }else{
+         $('.navbar').removeClass('fixed');
+     }
+ });*/
 
 
-// // Favorite Button - Heart
-// $('.favme').click(function() {
-// 	$(this).toggleClass('active1');
-// });
+  //Favorite Button - Heart
+ /*$('.favme').click(function() {
+ 	$(this).toggleClass('active1');
+ });
 
-// /* when a user clicks, toggle the 'is-animating' class */
-// $(".favme").on('click touchstart', function(){
-//   $(this).toggleClass('is_animating');
-// });
+ /* when a user clicks, toggle the 'is-animating' class 
+ $(".favme").on('click touchstart', function(){
+   $(this).toggleClass('is_animating');
+ });
 
-// /*when the animation is over, remove the class*/
-// $(".favme").on('animationend', function(){
-//   $(this).toggleClass('is_animating');
-// });
+ /*when the animation is over, remove the class
+ $(".favme").on('animationend', function(){
+   $(this).toggleClass('is_animating');
+});*/
 
-// });
+ });
 

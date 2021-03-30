@@ -152,6 +152,7 @@ body {
 .logo-wrapper img {
   width: auto;
   max-height: 65px !important;
+  max-width: 110px;
 }
 
 .company-card .container {
@@ -267,6 +268,8 @@ body {
 .clearfix .company-logo {
   max-width: 143px;
   max-height: 143px;
+  min-width: 143px;
+  min-height: 143px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -569,4 +572,6 @@ label {
   width: 50%;
   cursor: pointer;
 }
-
+.icone-delete i:hover{
+color: #bd2130;
+}

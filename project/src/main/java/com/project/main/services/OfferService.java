@@ -71,6 +71,11 @@ public class OfferService {
   }
 
 
+  public void deletOffer(int id) {
+    offerRepository.deleteById(id);
+  }
+
+
 
 
 

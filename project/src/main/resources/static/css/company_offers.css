@@ -1,10 +1,10 @@
 #offer-info {
-  /* border: 1px solid black; */
+  padding: 20px;
 }
 
 #offer-info h2 {
+  color: #d05a07;
   text-align: center;
-
 }
 
 #offer-info li {
@@ -12,9 +12,12 @@
 }
 
 #description, #responsibilities {
-  margin-bottom: 30px;
+  margin-bottom: 30px;  
+  padding-left: 0px;
+  font-family: serif;
 }
 
-#description p {
-  margin-left: 40px;
+ul#responsibilities, ul#skills {
+  padding-left: 0px;
+  font-family: serif;
 }

@@ -1,6 +1,7 @@
 window.onload = function () {
   let offers = document.querySelectorAll('.offer');
   offers.forEach(offer => offer.addEventListener('click', getOffer));
+  
   // global variabes
   window.descContainer = document.getElementById('description');
   window.skillsContainer = document.getElementById('skills');

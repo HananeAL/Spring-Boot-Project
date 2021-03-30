@@ -29,7 +29,7 @@
                 <div class="form-group row d-flex justify-content-center">
                     <label class=" control-label">Spécialité</label>
                     <div class="col-sm-3">
-                        <input type="text" name="speciality" class="form-control" />
+                        <input type="text" name="speciality" class="form-control"  th:value="${s}"/>
                         <!-- <select name="" class="form-control">
                             <option class="hidden" selected="" disabled="">Spécialité</option>
                             <option value="1">One</option>
@@ -89,7 +89,7 @@
                                                     <a href=""><b th:text="${offer.position}"></b></a>
                                                 </h5>
                                                 <div class="offres-info mb-2">
-                                                    <a th:href="'/companies?name='+${offer.company.name}" th:text="${offer.company.name}"></a>
+                                                    <a th:href="'/companies?name='+${offer.company.name}" th:text="${offer.company.name}" class="mr-5"></a>
                                                     <!-- <span class="name-entrp" th:text="${offer.company.name}"></span> -->
                                                     <span class="ville-entrp" th:text="${offer.city}">ville</span>
                                                 </div>
@@ -162,16 +162,16 @@
                                         </div>
                                     </div>
                                 </section>
-                                <div id="offer-info">
-                                    <div id="description"></div>
-                                    <ul id="responsibilities"></ul>
-                                    <ul id="skills"></ul>
-                                </div>
+                               
                             </div>
                         </div>
-                        <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
+                        <div class="card panel-body" style="max-height: 790px;min-height: 790px;margin-bottom: 20px;">
                             <!--Panel body-->
-
+                            <div id="offer-info">
+                                <div id="description"></div>
+                                <ul id="responsibilities"></ul>
+                                <ul id="skills"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>

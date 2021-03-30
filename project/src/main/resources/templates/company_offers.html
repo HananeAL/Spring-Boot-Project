@@ -23,7 +23,7 @@
         <div class="form-group row d-flex justify-content-center">
           <label class=" control-label">Spécialité</label>
           <div class="col-sm-3">
-            <input type="text" name="speciality" class="form-control" />
+            <input type="text" name="speciality" class="form-control" th:value="${s}"/>
             <!-- <select name="" class="form-control">
                     <option class="hidden" selected="" disabled="">Spécialité</option>
                     <option value="1">One</option>
@@ -98,8 +98,10 @@
                       <div class="row ml-5 mt-1">
                         <div class="flexbox">
                           <div class="fav-btn">
-                            <span href="" class="favme dashicons dashicons-heart"><i class="fa fa-heart fa-fw fa-10x"
-                                style="margin-bottom: 15px; font-size: 20px;"></i></span>
+                            <span href="" class="icone-delete">
+                              <a th:href="'/offers/delete/'+${offer.id}">
+                                <i class="fa fa-remove fa-fw fa-10x" style="margin-bottom: 15px; font-size: 20px;"></i>
+                            </a></span>
                           </div>
                         </div>
                       </div>
@@ -158,15 +160,15 @@
                     </div>
                   </div>
                 </section>
+               
+              </div>
+              <div class="card-body panel-body" style="max-height: 790px;min-height: 790px;margin-bottom: 20px;">
+                <!--Panel body-->
                 <div id="offer-info">
                   <div id="description"></div>
                   <ul id="responsibilities"></ul>
                   <ul id="skills"></ul>
                 </div>
-              </div>
-              <div class="card-body panel-body" style="max-height: 50pc; min-height: 50pc;">
-                <!--Panel body-->
-
               </div>
             </div>
           </div>

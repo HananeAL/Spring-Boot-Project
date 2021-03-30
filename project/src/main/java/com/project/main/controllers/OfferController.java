@@ -1,5 +1,6 @@
 package com.project.main.controllers;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import com.project.main.models.Company;
@@ -43,6 +44,7 @@ public class OfferController {
 
     model.addAttribute("offers", offerService.getOffers(speciality, city, type));
     model.addAttribute("cities", offerService.getCities());
+    model.addAttribute("s", speciality);
     return Views.HOME_PAGE;
   }
 
@@ -70,6 +72,7 @@ public class OfferController {
     Company company = getCompany(session);
     model.addAttribute("offers", offerService.getOffers(company, speciality, city, type));
     model.addAttribute("cities", offerService.getCities(company));
+    model.addAttribute("s",speciality);
     return Views.COMPANY_OFFERS_PAGE;
   }
 
@@ -85,6 +88,14 @@ public class OfferController {
     OfferForm offerForm = new OfferForm(offer, skills, responsibilities);
     return offerForm;
   }
+
+  @GetMapping("/offers/delete/{id}")
+  public String deleteOffer(@PathVariable int id) {
+    offerService.deletOffer(id);
+    return "redirect:/company/offers";
+  }
+
+
 
   // @GetMapping("/offers")
   // public String getOffers(@RequestParam(defaultValue = "") String speciality,

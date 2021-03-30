@@ -332,9 +332,9 @@ function elementExists(id) {
 
 const SKILL_NAME_LABEL = "Compétences: ";
 const SKILL_LEVEL_LABEL = 'Niveau de compétences: ';
-const BEGINNER = "débutant(e)";
-const INTERMIDATE = "intermédiaire";
-const ADVANCED = "avancé(e)";
+const BEGINNER = "beginner";
+const INTERMIDATE = "intermidate";
+const ADVANCED = "advanced";
 const SKILL_INPUT_CLASS = "skill";
 const SELECT_SKILL_CLASS = "skill-level";
 const SKILLS_CONTAINER = "skills-container";
